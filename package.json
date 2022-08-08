@@ -1,0 +1,15 @@
+{
+  "name": "api-rest-javascript-practico",
+  "version": "1.0.0",
+  "description": "Curso Práctico de Consumo de API REST con JavaScript",
+  "main": "main.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Jairo Rodriguez M",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.27.2"
+  },
+  "devDependencies": {}
+}
