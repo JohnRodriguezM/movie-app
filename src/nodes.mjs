@@ -12,8 +12,10 @@ export const DOM_ELEMENTS = {
 
   //list & Containers
   searchForm: select('#searchForm'),
+  categoryTitle: select('.category-title'),
   trendingMoviesPreviewList: select('.trendingPreview-movieList'),
   categoriesPreviewList: select('.categoriesPreview-list'),
+  genericSection: select('#genericList'),
   movieDetailsCategoriesList: select('#movieDetail .categories-list'),
   relatedMoviesContainer: select('.relatedMovies-scrollContainer'),
 
@@ -23,8 +25,9 @@ export const DOM_ELEMENTS = {
   headerCategoryTitle: select('.header-title--categoryView'),
 
   //search and form
+  searchForm: select('#searchForm'),
   searchFormInput: select('#searchForm input'),
-  searchFormButton: select('#searchBtn'),
+  searchFormBtn: select('#searchBtn'),
   trendingBtm: select('.trendingPreview-btn'),
   movieDetailTitle: select('.movieDetail-title'),
   movieDetailDescription: select('.movieDetail-description'),

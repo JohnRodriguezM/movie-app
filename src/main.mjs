@@ -2,11 +2,11 @@
 
 import { URLS } from "./utils/urls.mjs";
 
-import {DOM_ELEMENTS} from "./nodes.mjs"
+import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY } = URLS;
 
-const {  trendingMoviesPreviewList, categoriesPreviewList } = DOM_ELEMENTS;
+const { trendingMoviesPreviewList, categoriesPreviewList } = DOM_ELEMENTS;
 
 
 //!
@@ -67,6 +67,7 @@ export const getCategegoriesPreview = async () => {
       let id = `id${elMap.id}`
       const categoryContainer = document.createElement('div')
       const categoryTitle = document.createElement('h3')
+      categoryTitle.dataset.id = elMap.name;
 
       //*div
       categoryContainer.classList.add('category-container')
@@ -80,6 +81,20 @@ export const getCategegoriesPreview = async () => {
       //!father container
       categoriesPreviewList.appendChild(categoryContainer)
 
+     /* 
+     
+     //!pasar este codigo a otra función para dividirlo
+     const nodos = document.querySelectorAll('.category-title')
+      console.log(nodos);
+      const nodosArray = [...nodos]
+
+      const cambio = () => {
+        for (let nodo of nodosArray) {
+
+          nodo.addEventListener('click', () => location.hash = `#category=${nodo.dataset.id}`)
+        }
+      }
+      cambio()*/
     }
     )
     //*
@@ -101,78 +116,3 @@ export const getCategegoriesPreview = async () => {
   getCategegoriesPreview()
 })
 */
-
-
-//*funciones que se ejecutan a la carga de la website
-
-//sumas
-export const getSum = (a, b) => a + b;
-export const getSubtraction = (a, b) => a - b;
-export const getMultiplication = (a, b) => a * b;
-export const getDivision = (a, b) => a / b;
-export const getModulo = (a, b) => a % b;
-//restas
-export const getRest = (a, b) => a - b;
-export const getRest2 = (a, b) => a % b;
-//multiplicaciones
-export const getMult = (a, b) => a * b;
-export const getMult2 = (a, b) => a / b;
-//divisiones
-export const getDiv = (a, b) => a / b;
-export const getDiv2 = (a, b) => a % b;
-//modulos
-export const getMod = (a, b) => a % b;
-export const getMod2 = (a, b) => a - b;
-//potencias
-export const getPow = (a, b) => a ** b;
-export const getPow2 = (a, b) => a * b;
-//raiz
-export const getRoot = (a, b) => a ** (1 / b);
-export const getRoot2 = (a, b) => a * b;
-//logaritmos
-export const getLog = (a, b) => Math.log(a) / Math.log(b);
-export const getLog2 = (a, b) => a * b;
-//exponenciales
-export const getExp = (a, b) => Math.pow(a, b);
-export const getExp2 = (a, b) => a / b;
-//senos
-export const getSin = (a, b) => Math.sin(a);
-export const getSin2 = (a, b) => a * b;
-//cosenos
-export const getCos = (a, b) => Math.cos(a);
-export const getCos2 = (a, b) => a / b;
-//tangentes
-export const getTan = (a, b) => Math.tan(a);
-export const getTan2 = (a, b) => a % b;
-//raices
-export const getRoot3 = (a, b) => Math.sqrt(a);
-export const getRoot4 = (a, b) => a / b;
-//logaritmos
-export const getLog3 = (a, b) => Math.log(a) / Math.log(b);
-export const getLog4 = (a, b) => a * b;
-//exponenciales
-export const getExp3 = (a, b) => Math.pow(a, b);
-export const getExp4 = (a, b) => a / b;
-//senos
-export const getSin3 = (a, b) => Math.sin(a);
-export const getSin4 = (a, b) => a * b;
-//cosenos
-export const getCos3 = (a, b) => Math.cos(a);
-export const getCos4 = (a, b) => a / b;
-//tangentes
-export const getTan3 = (a, b) => Math.tan(a);
-export const getTan4 = (a, b) => a % b;
-//raices
-export const getRoot5 = (a, b) => Math.sqrt(a);
-export const getRoot6 = (a, b) => a / b;
-//logaritmos
-export const getLog5 = (a, b) => Math.log(a) / Math.log(b);
-export const getLog6 = (a, b) => a * b;
-//exponenciales
-export const getExp5 = (a, b) => Math.pow(a, b);
-export const getExp6 = (a, b) => a / b;
-
-// do a calculator
-export const doCalculator = (a, b, operator) => {
-      
-}
