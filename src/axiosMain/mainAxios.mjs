@@ -20,6 +20,7 @@ const api = axios.create({
 })
 
 
+
 //* axios nos devuelve el objeto de una vez seteado en json
 
 const getTrendingMoviesPreviewAxios = async () => {
@@ -44,10 +45,12 @@ const getCategegoriesPreviewAxios = async () => {
 
 
 
-
-/*window.addEventListener('DOMContentLoaded', (e) => {
+/*
+window.addEventListener('DOMContentLoaded', (e) => {
   getTrendingMoviesPreviewAxios()
   getCategegoriesPreviewAxios()
+  console.log(api);
 })
-*/
 
+
+*/

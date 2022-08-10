@@ -1,29 +1,39 @@
 
 "use strict"
 
-import { getCategegoriesPreview, getTrendingMoviesPreview } from "./main.mjs"
+import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory } from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-//! pasar multiples elementos a display none, con la clase inactive o remover class inactive
+const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection, searchFormBtn, trendingBtn,categoryTitle } = DOM_ELEMENTS;
+
 export const displayNoneAdd = (...elements) => elements.map(el => el.classList.add('inactive'))
 export const displayNoneRemove = (...elements) => elements.map(el => el.classList.remove('inactive'))
 
 
-const { arrowButton, categoryTitle } = DOM_ELEMENTS;
-
-arrowButton.addEventListener('click', (e) => {
-  location.hash = "#home"
+window.addEventListener('DOMContentLoaded', e => {
+  navigator()
 })
 
+window.addEventListener('hashchange', e => {
+  location.reload()
+  navigator()
+})
+
+searchFormBtn.addEventListener('click', e => location.hash = "#search=")
+
+arrowButton.addEventListener('click', e => location.hash = "#home")
+
+trendingBtn.addEventListener('click', e => location.hash = "#trends")
+
+
 const homePage = () => {
-
-  const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection } = DOM_ELEMENTS;
-
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
+
   displayNoneAdd(arrowButton, headerCategoryTitle, genericSection, movieDetailSection)
+ 
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   getCategegoriesPreview()
@@ -34,44 +44,55 @@ const homePage = () => {
 
 
 const categoriesPage = () => {
-  const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection, categoryTitle } = DOM_ELEMENTS;
-  
+
+  let el = categoryTitle;
+
+  let arr = el.id.slice(2)
+
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-  
+  getMovieByCategory(arr)
+
+
   console.log('estamos en categories');
 }
 
 const movieDetailsPage = () => {
-
-  const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection } = DOM_ELEMENTS;
-  
   headerSection.classList.add('header-container--long');
   headerSection.style.background = ''; //*definir la imagen de la pelicula
-
   arrowButton.classList.add('header-arrow--white')
-  
 
-  displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection,headerCategoryTitle,genericSection)
-  displayNoneRemove( arrowButton,movieDetailSection)
+  displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
 
-
-
-
-
-
-
+  displayNoneRemove(arrowButton, movieDetailSection)
 
   console.log('estamos en los detalles de la pelicula')
 }
+
 const trendsPage = () => {
+  headerSection.classList.remove('header-container--long');
+  headerSection.style.background = '';
+  arrowButton.classList.remove('header-arrow--white')
+
+  displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
+
+  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
+
   console.log('estamos en trends');
 }
 
 const searchPage = () => {
+  headerSection.classList.remove('header-container--long');
+  headerSection.style.background = '';
+  arrowButton.classList.remove('header-arrow--white')
+
+  displayNoneAdd(headerTitle, movieDetailSection, trendingPreviewSection, categoriesPreviewSection)
+
+  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection, searchForm)
+
   console.log('estamos en la busqueda')
 }
 
@@ -102,39 +123,9 @@ const navigator = () => {
 }
 
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  /*location.hash = ''*/
-  navigator()
-
-})
-
-window.addEventListener('hashchange', (event) => {
-  location.reload()
-  navigator()
-})
-
-
-const select = (id) => document.getElementById(id)
-
-const header = select('arrow')
-/*console.log(header)*/
 
 
 
-const h = document.getElementById('movieDetail')
-const j = document.getElementById('trendingPreview')
-const k = document.getElementById('categoriesPreview')
-
-
-
-
-
-
-
-//*pendiente de implementación, funciona perfecto
-/*header.addEventListener('click', () => {
-  displayNone(h, j, k)
-})*/
 
 
 

@@ -28,7 +28,7 @@ export const DOM_ELEMENTS = {
   searchForm: select('#searchForm'),
   searchFormInput: select('#searchForm input'),
   searchFormBtn: select('#searchBtn'),
-  trendingBtm: select('.trendingPreview-btn'),
+  trendingBtn: select('.trendingPreview-btn'),
   movieDetailTitle: select('.movieDetail-title'),
   movieDetailDescription: select('.movieDetail-description'),
   movieDetailScore: select('.movieDetail-score')

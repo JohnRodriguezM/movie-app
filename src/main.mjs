@@ -4,7 +4,7 @@ import { URLS } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-const { URL_TRENDING_MOVIES, URL_CATEGORY } = URLS;
+const { URL_TRENDING_MOVIES, URL_CATEGORY,BASE_URL,API_KEY } = URLS;
 
 const { trendingMoviesPreviewList, categoriesPreviewList } = DOM_ELEMENTS;
 
@@ -81,20 +81,12 @@ export const getCategegoriesPreview = async () => {
       //!father container
       categoriesPreviewList.appendChild(categoryContainer)
 
-     /* 
-     
-     //!pasar este codigo a otra función para dividirlo
-     const nodos = document.querySelectorAll('.category-title')
-      console.log(nodos);
-      const nodosArray = [...nodos]
 
-      const cambio = () => {
-        for (let nodo of nodosArray) {
+      categoryTitle.addEventListener('click',()=> {
+        location.hash = `#category=${elMap.id}-${elMap.name}`
+      })
 
-          nodo.addEventListener('click', () => location.hash = `#category=${nodo.dataset.id}`)
-        }
-      }
-      cambio()*/
+ 
     }
     )
     //*
@@ -105,6 +97,42 @@ export const getCategegoriesPreview = async () => {
 }
 
 
+export async function getMovieByCategory(id){
+ try {
+    let response = await fetch(`${BASE_URL}discover/movie?with_genres=${id}${API_KEY}`)
+    let json = await response.json();
+    const data = json.results;
+
+    const mapeo = data.map(movie => {
+      return {
+        adult: movie.adult,
+        id: movie.id,
+        title: movie.title,
+        backPath: movie.backdrop_path,
+        posterPath: movie.poster_path,
+        voteAverage: movie.vote_average,
+        overview: movie.overview,
+        releaseDate: movie.release_date
+      }
+    })
+    const mapOverMap = mapeo.map(elMap => {
+      let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
+      const movieContainer = document.createElement('div')
+      movieContainer.classList.add('movie-container')
+
+      const img = document.createElement('img')
+      img.classList.add('movie-img')
+
+      movieContainer.appendChild(img)
+
+      img.src = imageMovie;
+
+      trendingMoviesPreviewList.appendChild(movieContainer)
+
+    })
+
+  } catch (error) { console.error(error) }
+}
 
 
 
@@ -116,3 +144,17 @@ export const getCategegoriesPreview = async () => {
   getCategegoriesPreview()
 })
 */
+
+
+ /*
+     const nodos = document.querySelectorAll('.category-title')
+      console.log(nodos);
+      const nodosArray = [...nodos]
+
+      const cambio = () => {
+        for (let nodo of nodosArray) {
+
+          nodo.addEventListener('click', () => location.hash = `#category=${elMap.id}`)
+        }
+      }
+      cambio()*/
