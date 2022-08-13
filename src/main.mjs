@@ -4,10 +4,11 @@ import { URLS } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-const { URL_TRENDING_MOVIES, URL_CATEGORY,BASE_URL,API_KEY } = URLS;
+const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
 const { trendingMoviesPreviewList, categoriesPreviewList } = DOM_ELEMENTS;
 
+import { navigator } from './navigation.mjs'
 
 //!
 export const getTrendingMoviesPreview = async () => {
@@ -15,10 +16,8 @@ export const getTrendingMoviesPreview = async () => {
     let response = await fetch(URL_TRENDING_MOVIES)
     let json = await response.json();
     const data = json.results;
-    /*console.log(data)*/ //! me trae la data completa
-
+    trendingMoviesPreviewList.innerHTML = ""
     const mapeo = data.map(movie => {
-      //! en esta funcion me permito recortar la data a ciertas propiedades para no hacer muy grande el json
       return {
         adult: movie.adult,
         id: movie.id,
@@ -30,6 +29,7 @@ export const getTrendingMoviesPreview = async () => {
         releaseDate: movie.release_date
       }
     })
+   
     const mapOverMap = mapeo.map(elMap => {
       let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
       const movieContainer = document.createElement('div')
@@ -63,12 +63,16 @@ export const getCategegoriesPreview = async () => {
     const data = json.genres;
     /*console.log(data)*/ //! me trae la data completa
 
+    categoriesPreviewList.innerHTML = ""
     const mapeoCategories = data.map(elMap => {
+
+
       let id = `id${elMap.id}`
       const categoryContainer = document.createElement('div')
       const categoryTitle = document.createElement('h3')
-      categoryTitle.dataset.id = elMap.name;
-
+      categoryTitle.dataset.id = elMap.id;
+      categoryTitle.dataset.name = elMap.name;
+      categoryContainer.dataset.id = elMap.id;
       //*div
       categoryContainer.classList.add('category-container')
       //*h3
@@ -82,11 +86,14 @@ export const getCategegoriesPreview = async () => {
       categoriesPreviewList.appendChild(categoryContainer)
 
 
-      categoryTitle.addEventListener('click',()=> {
+      categoryContainer.addEventListener('click', (e) => {
+        navigator(`#category=${elMap.id}-${elMap.name}`)
+        getMovieByCategory(String(e.target.dataset.id))
         location.hash = `#category=${elMap.id}-${elMap.name}`
+        console.log(String(e.target.dataset.id))
       })
 
- 
+
     }
     )
     //*
@@ -97,45 +104,19 @@ export const getCategegoriesPreview = async () => {
 }
 
 
-export async function getMovieByCategory(id){
- try {
-    let response = await fetch(`${BASE_URL}discover/movie?with_genres=${id}${API_KEY}`)
+export async function getMovieByCategory(id) {
+  try {
+    let url = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
+
+    let response = await fetch(url)
     let json = await response.json();
-    const data = json.results;
-
-    const mapeo = data.map(movie => {
-      return {
-        adult: movie.adult,
-        id: movie.id,
-        title: movie.title,
-        backPath: movie.backdrop_path,
-        posterPath: movie.poster_path,
-        voteAverage: movie.vote_average,
-        overview: movie.overview,
-        releaseDate: movie.release_date
-      }
-    })
-    const mapOverMap = mapeo.map(elMap => {
-      let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
-      const movieContainer = document.createElement('div')
-      movieContainer.classList.add('movie-container')
-
-      const img = document.createElement('img')
-      img.classList.add('movie-img')
-
-      movieContainer.appendChild(img)
-
-      img.src = imageMovie;
-
-      trendingMoviesPreviewList.appendChild(movieContainer)
-
-    })
+    console.log(json)
 
   } catch (error) { console.error(error) }
 }
 
 
-
+/*`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`*/
 
 //*funciones que se ejecutan a la carga de la website
 
@@ -144,17 +125,3 @@ export async function getMovieByCategory(id){
   getCategegoriesPreview()
 })
 */
-
-
- /*
-     const nodos = document.querySelectorAll('.category-title')
-      console.log(nodos);
-      const nodosArray = [...nodos]
-
-      const cambio = () => {
-        for (let nodo of nodosArray) {
-
-          nodo.addEventListener('click', () => location.hash = `#category=${elMap.id}`)
-        }
-      }
-      cambio()*/

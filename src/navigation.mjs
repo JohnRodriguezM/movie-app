@@ -5,18 +5,23 @@ import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory } 
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection, searchFormBtn, trendingBtn,categoryTitle } = DOM_ELEMENTS;
+const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection, searchFormBtn, trendingBtn, categoryTitle } = DOM_ELEMENTS;
 
 export const displayNoneAdd = (...elements) => elements.map(el => el.classList.add('inactive'))
 export const displayNoneRemove = (...elements) => elements.map(el => el.classList.remove('inactive'))
 
 
+
+
+
+
 window.addEventListener('DOMContentLoaded', e => {
+
   navigator()
 })
 
 window.addEventListener('hashchange', e => {
-  location.reload()
+  /*location.reload()*/
   navigator()
 })
 
@@ -33,7 +38,7 @@ const homePage = () => {
   arrowButton.classList.remove('header-arrow--white')
 
   displayNoneAdd(arrowButton, headerCategoryTitle, genericSection, movieDetailSection)
- 
+
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   getCategegoriesPreview()
@@ -45,16 +50,16 @@ const homePage = () => {
 
 const categoriesPage = () => {
 
-  let el = categoryTitle;
+  /*let el = categoryTitle;
 
   let arr = el.id.slice(2)
-
+*/
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-  getMovieByCategory(arr)
+  /*getMovieByCategory(arr)*/
 
 
   console.log('estamos en categories');
@@ -101,12 +106,12 @@ const searchPage = () => {
 
 
 
-const navigator = () => {
+export const navigator = (category = "#category=") => {
   switch (location.hash) {
     case '#trends':
       trendsPage()
       break;
-    case '#category=':
+    case category:
       categoriesPage()
       break;
     case '#search=':
