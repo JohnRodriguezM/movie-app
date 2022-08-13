@@ -28,6 +28,7 @@
 }
 
 html {
+  user-select: none;
   padding: 2px;
   background-color: var(--purple-medium-3);
 }
@@ -230,7 +231,35 @@ footer {
 
 
 
+/*
+card hover elementos de tendencias
+*/
 
+.card-hover{
+  background-color: var(--green);
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  z-index: 999;
+  opacity: 0;
+  top: 20%;
+  transition: opacity .6s ease-in-out;
+  animation:  all 2s;
+  /*animation: card-hover 5s ease-in-out 1s;
+  transition: animation 5s;*/
+}
+
+@keyframes card-hover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 
 
@@ -246,9 +275,9 @@ footer {
   height: 225px;
   min-height: 225px;
   max-height: 225px;
-  width: 150px;
-  min-width: 150px;
-  max-width: 150px;
+  width: 170px;
+  min-width: 170px;
+
 }
 
 /* Categories */
@@ -335,15 +364,20 @@ footer {
 /* Generic List (search, trending & category) */
 .genericList-container {
   display: flex;
+  gap:15px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 32px 24px;
 }
 
 .genericList-container .movie-container {
   display: inline-block;
-  width: 47.5%;
+  
+  width: 47%;
+  max-width: 400px;
+  min-height: 185px;
+  height:100%;
 }
 
 .genericList-container .movie-img {

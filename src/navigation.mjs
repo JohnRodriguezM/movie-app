@@ -1,7 +1,7 @@
 
 "use strict"
 
-import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory } from "./main.mjs"
+import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory,getMovie } from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
@@ -25,11 +25,21 @@ window.addEventListener('hashchange', e => {
   navigator()
 })
 
-searchFormBtn.addEventListener('click', e => location.hash = "#search=")
+searchFormBtn.addEventListener('click', e => {
+  console.log(e.target);
+  location.hash = "#search="})
 
-arrowButton.addEventListener('click', e => location.hash = "#home")
+arrowButton.addEventListener('click', e =>{
+  if(location.hash === "#movie=") return location.hash = "#category="
+  if(location.hash === "#category=") return location.hash = "#home"
 
-trendingBtn.addEventListener('click', e => location.hash = "#trends")
+  else{
+    location.hash = "#home"
+  }
+  })
+
+
+/*trendingBtn.addEventListener('click', e => location.hash = "#trends")*/
 
 
 const homePage = () => {
@@ -50,10 +60,6 @@ const homePage = () => {
 
 const categoriesPage = () => {
 
-  /*let el = categoryTitle;
-
-  let arr = el.id.slice(2)
-*/
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
@@ -77,7 +83,7 @@ const movieDetailsPage = () => {
   console.log('estamos en los detalles de la pelicula')
 }
 
-const trendsPage = () => {
+/*const trendsPage = () => {
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
@@ -87,16 +93,20 @@ const trendsPage = () => {
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
   console.log('estamos en trends');
-}
+}*/
 
 const searchPage = () => {
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
   arrowButton.classList.remove('header-arrow--white')
 
-  displayNoneAdd(headerTitle, movieDetailSection, trendingPreviewSection, categoriesPreviewSection)
+  displayNoneAdd(headerTitle, movieDetailSection, trendingPreviewSection, categoriesPreviewSection,searchForm)
 
-  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection, searchForm)
+  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
+
+
+    //* se ejecuta la función que me trae las peliculas en el search
+  getMovie()
 
   console.log('estamos en la busqueda')
 }
@@ -108,9 +118,9 @@ const searchPage = () => {
 
 export const navigator = (category = "#category=") => {
   switch (location.hash) {
-    case '#trends':
+    /*case '#trends':
       trendsPage()
-      break;
+      break;*/
     case category:
       categoriesPage()
       break;

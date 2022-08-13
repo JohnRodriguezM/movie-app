@@ -12,6 +12,7 @@ export const DOM_ELEMENTS = {
 
   //list & Containers
   searchForm: select('#searchForm'),
+  Title: select('#categoryTitle'),
   categoryTitle: select('.category-title'),
   trendingMoviesPreviewList: select('.trendingPreview-movieList'),
   categoriesPreviewList: select('.categoriesPreview-list'),

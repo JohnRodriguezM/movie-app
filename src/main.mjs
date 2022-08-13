@@ -6,7 +6,8 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList, genericSection } = DOM_ELEMENTS;
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title,searchFormInput
+} = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
 
@@ -31,6 +32,7 @@ export const getTrendingMoviesPreview = async () => {
     })
 
     const mapOverMap = mapeo.map(elMap => {
+
       let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
       const movieContainer = document.createElement('div')
       movieContainer.classList.add('movie-container')
@@ -42,7 +44,35 @@ export const getTrendingMoviesPreview = async () => {
 
       img.src = imageMovie;
 
-      trendingMoviesPreviewList.appendChild(movieContainer)
+
+      //* manejo de la card al hover del elemento tarjeta
+      const containerHoverDetails = document.createElement('div')
+      containerHoverDetails.classList.add('card-hover')
+      /*containerHoverDetails.classList.add('inactive')*/
+      const pHoverDetails = document.createElement('p')
+
+      containerHoverDetails.append(pHoverDetails)
+
+      pHoverDetails.innerHTML = elMap.title;
+
+
+
+
+      trendingMoviesPreviewList.append(movieContainer, containerHoverDetails)
+
+
+      img.addEventListener('mouseover', (e) => {
+        console.log(e.target)
+        /*containerHoverDetails.classList.remove('inactive')*/
+        containerHoverDetails.style.opacity = 1
+
+      })
+
+      img.addEventListener('mouseout', (e) => {
+        /*containerHoverDetails.classList.add('inactive')*/
+        containerHoverDetails.style.opacity = 0
+      })
+
 
     })
 
@@ -88,7 +118,7 @@ export const getCategegoriesPreview = async () => {
 
       categoryContainer.addEventListener('click', (e) => {
         navigator(`#category=${elMap.id}-${elMap.name}`)
-        getMovieByCategory(String(e.target.dataset.id))
+        getMovieByCategory(String(e.target.dataset.id), elMap.name)
 
         location.hash = `#category=${elMap.id}-${elMap.name}`
         /*console.log(String(e.target.dataset.id))*/
@@ -105,7 +135,8 @@ export const getCategegoriesPreview = async () => {
 }
 
 
-export async function getMovieByCategory(id) {
+export async function getMovieByCategory(id, name) {
+  Title.innerHTML = `${name}`;
   try {
     let url = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
 
@@ -119,39 +150,69 @@ export async function getMovieByCategory(id) {
       console.log(el)
       let divContent = document.createElement('div')
       divContent.classList.add('movie-container')
-
+      let p = document.createElement('p')
+      p.innerHTML = el.title
       let img = document.createElement('img')
       img.classList.add('movie-img')
       img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
+      img.alt = el.title
 
-      divContent.appendChild(img)
-
-
-
+      divContent.append(img, p)
 
 
-
+      divContent.addEventListener('click', function (e) {
+        alert(e.target.alt)
+        location.hash = "#movie="
+      })
 
       genericSection.appendChild(divContent)
 
     })
 
-
-
-
-
-
-
   } catch (error) { console.error(error) }
 }
 
 
-/*`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`*/
 
-//*funciones que se ejecutan a la carga de la website
 
-/*window.addEventListener('DOMContentLoaded', (event) => {
-  getTrendingMoviesPreview()
-  getCategegoriesPreview()
-})
-*/
+
+export const getMovie = async () => {
+
+
+
+
+  let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=8250c76f81ee5b7089c23a813705401b&query=${searchFormInput.value}&page=1&include_adult=false`)
+  let { results } = await response.json()
+
+  genericSection.innerHTML = ""
+
+  results.map(el => {
+
+    console.log(el)
+    let divContent = document.createElement('div')
+    divContent.classList.add('movie-container')
+    let p = document.createElement('p')
+    p.innerHTML = el.title
+    let img = document.createElement('img')
+    img.classList.add('movie-img')
+    img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
+    img.alt = el.title
+
+    divContent.append(img, p)
+
+
+    divContent.addEventListener('click', function (e) {
+      alert(e.target.alt)
+      location.hash = "#movie="
+    })
+
+
+    genericSection.appendChild(divContent)
+
+  })
+
+}
+
+/*window.addEventListener("DOMContentLoaded", () => {
+  getMovie()
+})*/
