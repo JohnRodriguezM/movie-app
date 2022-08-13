@@ -6,7 +6,7 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList } = DOM_ELEMENTS;
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
 
@@ -29,7 +29,7 @@ export const getTrendingMoviesPreview = async () => {
         releaseDate: movie.release_date
       }
     })
-   
+
     const mapOverMap = mapeo.map(elMap => {
       let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
       const movieContainer = document.createElement('div')
@@ -89,8 +89,9 @@ export const getCategegoriesPreview = async () => {
       categoryContainer.addEventListener('click', (e) => {
         navigator(`#category=${elMap.id}-${elMap.name}`)
         getMovieByCategory(String(e.target.dataset.id))
+
         location.hash = `#category=${elMap.id}-${elMap.name}`
-        console.log(String(e.target.dataset.id))
+        /*console.log(String(e.target.dataset.id))*/
       })
 
 
@@ -109,8 +110,37 @@ export async function getMovieByCategory(id) {
     let url = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
 
     let response = await fetch(url)
-    let json = await response.json();
-    console.log(json)
+    let { results } = await response.json();
+
+    genericSection.innerHTML = ""
+
+    results.map(el => {
+
+      console.log(el)
+      let divContent = document.createElement('div')
+      divContent.classList.add('movie-container')
+
+      let img = document.createElement('img')
+      img.classList.add('movie-img')
+      img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
+
+      divContent.appendChild(img)
+
+
+
+
+
+
+
+      genericSection.appendChild(divContent)
+
+    })
+
+
+
+
+
+
 
   } catch (error) { console.error(error) }
 }
