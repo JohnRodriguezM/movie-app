@@ -73,7 +73,7 @@ const categoriesPage = () => {
 
 const movieDetailsPage = () => {
   headerSection.classList.add('header-container--long');
-  headerSection.style.background = ''; //*definir la imagen de la pelicula
+  headerSection.style.background = "https://pics.filmaffinity.com/Deadpool-777527803-large.jpg"; //*definir la imagen de la pelicula
   arrowButton.classList.add('header-arrow--white')
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
@@ -118,9 +118,6 @@ const searchPage = () => {
 
 export const navigator = (category = "#category=") => {
   switch (location.hash) {
-    /*case '#trends':
-      trendsPage()
-      break;*/
     case category:
       categoriesPage()
       break;

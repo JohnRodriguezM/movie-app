@@ -6,7 +6,7 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection
 } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
@@ -145,12 +145,8 @@ export async function getMovieByCategory(id, name) {
 
     genericSection.innerHTML = ""
 
-
-
-
     results.map(el => {
 
-      console.log(el)
       let divContent = document.createElement('div')
       divContent.classList.add('movie-container')
       let p = document.createElement('p')
@@ -158,20 +154,20 @@ export async function getMovieByCategory(id, name) {
       let img = document.createElement('img')
       img.classList.add('movie-img')
       img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
-      img.alt = el.title
+      img.alt = el.id
 
       divContent.append(img, p)
 
 
       divContent.addEventListener('click', function (e) {
         alert(e.target.alt)
+        getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
         location.hash = "#movie="
       })
 
       genericSection.appendChild(divContent)
 
     })
-
   } catch (error) { console.error(error) }
 }
 
@@ -183,8 +179,6 @@ export const getMovie = async () => {
 
   let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=8250c76f81ee5b7089c23a813705401b&query=${searchFormInput.value}&page=1&include_adult=false`)
   let { results } = await response.json()
-
-
 
   genericSection.innerHTML = ""
 
@@ -201,37 +195,37 @@ export const getMovie = async () => {
     let img = document.createElement('img')
     img.classList.add('movie-img')
     img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
-    img.alt = el.title
+    img.alt = el.id
 
     divContent.append(img, p)
 
-
     divContent.addEventListener('click', function (e) {
       alert(e.target.alt)
+      getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
       location.hash = "#movie="
     })
 
     genericSection.append(divContent)
 
-
-
-
-
-
   })
 
 }
 
-
-let myUrl = "https://api.themoviedb.org/3/movie/131953?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US"
 const getDataDetails = async (URL) => {
   try {
     let response = await fetch(URL)
-    let data = await response.json()
-    console.log(data)
+    let {poster_path} = await response.json()
+    console.log(poster_path);
+
+ 
+
+
+   let url = `https://image.tmdb.org/t/p${poster_path}`
+    console.log(url);
+    headerSection.style.background ="https://pics.filmaffinity.com/Deadpool-777527803-large.jpg";
+
+
+
+
   } catch (e) { console.log(e) }
 }
-getDataDetails(myUrl)
-window.addEventListener("DOMContentLoaded", () => {
-  getDataDetails()
-})

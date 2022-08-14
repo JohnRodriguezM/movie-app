@@ -5,7 +5,7 @@ export const select = (id) => document.querySelector(id)
 
 export const DOM_ELEMENTS = {
   //sections
-  headerSection: select('#header'),
+  headerSection: select('.header-container'),
   trendingPreviewSection: select('#trendingPreview'),
   categoriesPreviewSection: select('#categoriesPreview'),
   movieDetailSection: select('#movieDetail'),
