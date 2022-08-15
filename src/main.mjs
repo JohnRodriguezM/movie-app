@@ -6,7 +6,7 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection, movieDetailTitle, movieDetailDescription
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection, movieDetailTitle, movieDetailDescription, spanValue
 } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
@@ -147,7 +147,12 @@ export async function getMovieByCategory(id, name) {
 
     genericSection.innerHTML = ""
 
-    results.map(el => {
+    const elFilter = results.filter(el => el.backdrop_path !== null)
+    //*se filtran los elementos que si tienen imagen, los que no tienen, pa fuera
+    console.log(elFilter);
+
+
+    elFilter.map(el => {
 
       let divContent = document.createElement('div')
       divContent.classList.add('movie-container')
@@ -158,12 +163,15 @@ export async function getMovieByCategory(id, name) {
       img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
       img.alt = el.id
 
+      divContent.setAttribute('id', el.id)
+      p.setAttribute('id', el.id)
+
       divContent.append(img, p)
 
 
       divContent.addEventListener('click', function (e) {
-        getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
-        getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
+        getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt || e.target.id}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
+        getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt || e.target.id}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
         location.hash = "#movie="
       })
 
@@ -188,10 +196,17 @@ export const getMovie = async () => {
 
   genericSection.innerHTML = ""
 
+
+  const elFilter = results.filter(el => el.backdrop_path !== null)
+  //*se filtran los elementos que si tienen imagen, los que no tienen, pa fuera
+  console.log(elFilter);
+
+
+
   const presentacion = document.createElement('h3')
   presentacion.innerHTML = "coincidencias"
 
-  results.map(el => {
+  elFilter.map(el => {
 
     /*console.log(el)*/
     let divContent = document.createElement('div')
@@ -203,12 +218,15 @@ export const getMovie = async () => {
     img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
     img.alt = el.id
 
+    divContent.setAttribute('id', el.id)
+    p.setAttribute('id', el.id)
+
     divContent.append(img, p)
 
     divContent.addEventListener('click', function (e) {
       //*se trae la información de la pelicula usando 
-      getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
-      getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
+      getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt ?? e.target.id}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
+      getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt ?? e.target.id}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
       location.hash = "#movie="
     })
 
@@ -228,10 +246,14 @@ export const getDataDetails = async (URL) => {
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.poster_path || data.backdrop_path})`;
     movieDetailTitle.innerHTML = data.title;
     movieDetailDescription.innerHTML = data.overview;
+    spanValue.innerHTML = data.vote_average.toFixed(1)
 
 
     //*muestreo de generos que coinciden con la pelicula que se está mostrando
+    //* se limpia el html 
+
     const $categoryList = document.querySelector('.categories-list')
+    $categoryList.innerHTML = ""
     console.log($categoryList);
     genres.map(el => {
 
@@ -265,6 +287,28 @@ const getSimilarMovies = async (URLL) => {
 
     const arraySliced = json.results.slice(12)
     console.log(arraySliced);
+
+
+    const relatedMovies = document.querySelector('.relatedMovies-scrollContainer')
+
+    relatedMovies.innerHTML = ""
+
+
+    arraySliced.map(el => {
+      const div = document.createElement('div');
+      div.classList.add('movie-container')
+
+      const img = document.createElement('img')
+      img.classList.add('movie-img')
+      img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
+
+      div.append(img)
+
+      relatedMovies.append(div)
+
+
+    })
+
 
 
 

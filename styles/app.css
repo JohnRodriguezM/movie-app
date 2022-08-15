@@ -118,6 +118,7 @@ footer {
 
 .movie-img {
   width: 100%;
+  min-width: 170px;
   border-radius: 8px;
 }
 
@@ -379,7 +380,6 @@ card hover elementos de tendencias
 
 .genericList-container .movie-container {
   display: inline-block;
-  
   width: 47%;
   max-width: 400px;
   min-height: 185px;
@@ -451,9 +451,9 @@ card hover elementos de tendencias
 }
 
 .relatedMovies-scrollContainer .movie-img {
-  width: 125px;
-  min-width: 125px;
-  max-width: 125px;
+  width: 165px;
+  min-width: 165px;
+  max-width: 165px;
   height: 187.5px;
   min-height: 187.5px;
   max-height: 187.5px;

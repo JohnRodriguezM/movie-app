@@ -32,7 +32,8 @@ export const DOM_ELEMENTS = {
   trendingBtn: select('.trendingPreview-btn'),
   movieDetailTitle: select('.movieDetail-title'),
   movieDetailDescription: select('.movieDetail-description'),
-  movieDetailScore: select('.movieDetail-score')
+  movieDetailScore: select('.movieDetail-score'),
+  spanValue: select('.movieDetail-score')
 
 } 
 
