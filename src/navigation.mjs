@@ -30,12 +30,12 @@ searchFormBtn.addEventListener('click', e => {
   location.hash = "#search="})
 
 arrowButton.addEventListener('click', e =>{
-  if(location.hash === "#movie=") return location.hash = "#category="
-  if(location.hash === "#category=") return location.hash = "#home"
+ /* if(location.hash === "#movie=") return location.hash = "#category="
+  if(location.hash === "#category=") return location.hash = "#home"*/
 
-  else{
+ 
     location.hash = "#home"
-  }
+  
   })
 
 
@@ -73,7 +73,7 @@ const categoriesPage = () => {
 
 const movieDetailsPage = () => {
   headerSection.classList.add('header-container--long');
-  headerSection.style.background = "https://pics.filmaffinity.com/Deadpool-777527803-large.jpg"; //*definir la imagen de la pelicula
+  /*headerSection.style.background = ''*/ //*definir la imagen de la pelicula
   arrowButton.classList.add('header-arrow--white')
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)

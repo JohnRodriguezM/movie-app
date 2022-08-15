@@ -150,6 +150,10 @@ footer {
   position: fixed;
   top: 0;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 .header-container--categoryView {
@@ -388,6 +392,9 @@ card hover elementos de tendencias
 
 /* Movie Detail */
 .movieDetail-container {
+  width: 100%;
+  max-width:700px;
+  min-width: 320px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 32px 24px;

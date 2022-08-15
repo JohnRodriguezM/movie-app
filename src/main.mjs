@@ -6,10 +6,12 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection, movieDetailTitle, movieDetailDescription
 } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
+
+
 
 //!
 export const getTrendingMoviesPreview = async () => {
@@ -160,9 +162,13 @@ export async function getMovieByCategory(id, name) {
 
 
       divContent.addEventListener('click', function (e) {
-        alert(e.target.alt)
         getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
+        getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
         location.hash = "#movie="
+      })
+
+      img.addEventListener('click', e => {
+
       })
 
       genericSection.appendChild(divContent)
@@ -187,7 +193,7 @@ export const getMovie = async () => {
 
   results.map(el => {
 
-    console.log(el)
+    /*console.log(el)*/
     let divContent = document.createElement('div')
     divContent.classList.add('movie-container')
     let p = document.createElement('p')
@@ -200,8 +206,9 @@ export const getMovie = async () => {
     divContent.append(img, p)
 
     divContent.addEventListener('click', function (e) {
-      alert(e.target.alt)
+      //*se trae la información de la pelicula usando 
       getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
+      getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
       location.hash = "#movie="
     })
 
@@ -211,21 +218,61 @@ export const getMovie = async () => {
 
 }
 
-const getDataDetails = async (URL) => {
+export const getDataDetails = async (URL) => {
   try {
     let response = await fetch(URL)
-    let {poster_path} = await response.json()
-    console.log(poster_path);
-
- 
-
-
-   let url = `https://image.tmdb.org/t/p${poster_path}`
-    console.log(url);
-    headerSection.style.background ="https://pics.filmaffinity.com/Deadpool-777527803-large.jpg";
+    let data = await response.json()
+    let genres = data.genres;
+    console.log(genres);
+    console.log(data)
+    headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.poster_path || data.backdrop_path})`;
+    movieDetailTitle.innerHTML = data.title;
+    movieDetailDescription.innerHTML = data.overview;
 
 
+    //*muestreo de generos que coinciden con la pelicula que se está mostrando
+    const $categoryList = document.querySelector('.categories-list')
+    console.log($categoryList);
+    genres.map(el => {
+
+      console.log(el);
+
+
+      const div = document.createElement('div');
+      div.classList.add('category-container')
+      const h3 = document.createElement('h3')
+      h3.classList.add('category-title')
+      h3.setAttribute('id', `id${el.id}`)
+      h3.innerHTML = el.name
+      div.append(h3)
+
+      $categoryList.appendChild(div)
+
+
+
+    })
 
 
   } catch (e) { console.log(e) }
 }
+
+
+const getSimilarMovies = async (URLL) => {
+  try {
+    let response = await fetch(URLL)
+    let json = await response.json();
+
+
+    const arraySliced = json.results.slice(12)
+    console.log(arraySliced);
+
+
+
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
+
