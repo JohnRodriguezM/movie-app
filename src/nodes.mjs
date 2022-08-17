@@ -11,6 +11,7 @@ export const DOM_ELEMENTS = {
   movieDetailSection: select('#movieDetail'),
 
   //list & Containers
+  movieContainer: document.querySelectorAll('.movie-container'),
   searchForm: select('#searchForm'),
   Title: select('#categoryTitle'),
   categoryTitle: select('.category-title'),

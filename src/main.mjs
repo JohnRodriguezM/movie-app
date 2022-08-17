@@ -6,7 +6,7 @@ import { DOM_ELEMENTS } from "./nodes.mjs"
 
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY } = URLS;
 
-const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection, movieDetailTitle, movieDetailDescription, spanValue
+const { trendingMoviesPreviewList, categoriesPreviewList, genericSection, Title, searchFormInput, headerSection, movieDetailTitle, movieDetailDescription, spanValue,categoriesPreviewSection,movieContainer,
 } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
@@ -34,7 +34,7 @@ export const getTrendingMoviesPreview = async () => {
     })
 
     const mapOverMap = mapeo.map(elMap => {
-
+      console.log('soyyyyy',elMap)
       let imageMovie = `https://image.tmdb.org/t/p/w400${elMap.backPath}`
       const movieContainer = document.createElement('div')
       movieContainer.classList.add('movie-container')
@@ -46,16 +46,26 @@ export const getTrendingMoviesPreview = async () => {
 
       img.src = imageMovie;
 
-
+      /*voteAverage: 8.264
+      
+      overview
+      */
       //* manejo de la card al hover del elemento tarjeta
       const containerHoverDetails = document.createElement('div')
       containerHoverDetails.classList.add('card-hover')
-      /*containerHoverDetails.classList.add('inactive')*/
+
+
       const pHoverDetails = document.createElement('p')
+      const br  = document.createElement('br')
+      const average = document.createElement('p')
 
-      containerHoverDetails.append(pHoverDetails)
 
-      pHoverDetails.innerHTML = elMap.title;
+
+      containerHoverDetails.append(pHoverDetails,br, average)
+      average.innerHTML =` ⭐${
+        elMap.voteAverage
+      }`
+      pHoverDetails.innerHTML = `${elMap.title} -`;
 
 
 
@@ -67,12 +77,20 @@ export const getTrendingMoviesPreview = async () => {
         console.log(e.target)
         /*containerHoverDetails.classList.remove('inactive')*/
         containerHoverDetails.style.opacity = 1
+        headerSection.style.opacity = .7;
+        categoriesPreviewSection.style.opacity = .7;
+        trendingMoviesPreviewList.style.opacity = .85;
+        movieContainer.style.opacity = .6;
 
       })
 
       img.addEventListener('mouseout', (e) => {
         /*containerHoverDetails.classList.add('inactive')*/
         containerHoverDetails.style.opacity = 0
+        headerSection.style.opacity = 1;
+        categoriesPreviewSection.style.opacity = 1;
+        trendingMoviesPreviewList.style.opacity = 1;
+        movieContainer.style.opacity = 1;
       })
 
 

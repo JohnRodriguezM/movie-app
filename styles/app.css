@@ -243,17 +243,39 @@ card hover elementos de tendencias
 */
 
 .card-hover{
-  background-color: var(--green);
+  display: flex;
+/*  align-items: center;*/
+  position: relative;
+  justify-content:center;
+  flex-wrap: wrap;
+  background-color: var(--purple-medium-2);
   position: absolute;
-  width: 150px;
+  width: 300px;
   height: 150px;
   z-index: 999;
   opacity: 0;
   top: 20%;
+  left: 20%;
   transition: opacity .6s ease-in-out;
   animation:  all 2s;
   /*animation: card-hover 5s ease-in-out 1s;
   transition: animation 5s;*/
+}
+.card-hover  p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--purple-light-1);
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: var(--purple-light-1);
+
+
+
+  
+
 }
 
 @keyframes card-hover {
