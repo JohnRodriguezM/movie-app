@@ -5,12 +5,12 @@
 
 :root {
   --purple-light-1: #fbfafb;
-  --purple-light-2: #eeeaf2;
-  --purple-medium-1: #aa83c8;
-  --purple-medium-2: #8b48bf;
-  --purple-medium-3: #5c218a;
-  --purple-dark-1: #3e0f64;
-  --purple-dark-2: #2a0646;
+  --purple-light-2: #d4e9fb;
+  --purple-medium-1: #082a3a;
+  --purple-medium-2: #1f6cab;
+  --purple-medium-3: #1f6cab;
+  --purple-dark-1: #082a3a;
+  --purple-dark-2: #082a3a;
 
   --yellow: #eecc75;
   --green: #cad297;
@@ -81,7 +81,7 @@ input {
 }
 
 input::placeholder {
-  color: var(--purple-medium-1);
+  color: var(--purple-medium-2);
   font-family: var(--font-family-text);
 }
 
@@ -214,6 +214,7 @@ footer {
   width: 72px;
 }
 
+
 .trendingPreview-movieList {
   user-select:none;
   overflow-x: scroll;
@@ -252,9 +253,9 @@ card hover elementos de tendencias
   position: absolute;
   width: 300px;
   height: 150px;
-  z-index: 999;
+  z-index: 9999999;
   opacity: 0;
-  top: 20%;
+  top: 30%;
   left: 20%;
   transition: opacity .6s ease-in-out;
   animation:  all 2s;
