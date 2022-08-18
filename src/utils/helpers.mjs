@@ -12,8 +12,8 @@ export const displayNoneAdd = (...elements) => elements.map(el => el.classList.a
 
 export const displayNoneRemove = (...elements) => elements.map(el => el.classList.remove('inactive'))
 
-export const toggleOpacity = (value,...elements) => {
+export const toggleOpacity = (opacity, ...elements) => {
   elements.map(el => {
-    el.style.opacity = value;
+    el.style.opacity = opacity;
   })
 }

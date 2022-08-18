@@ -2,7 +2,7 @@
 
 //@ts-check
 
-import { URLS } from "./utils/urls.mjs";
+import { URLS,APIKEY,BASE_URL } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
@@ -32,7 +32,7 @@ export const getTrendingMoviesPreview = async () => {
     const response = await fetch(URL_TRENDING_MOVIES)
     const { results } = await response.json();
 
-    trendingMoviesPreviewList.innerHTML = ""
+    
 
     const mapeo = results.map(movie => {
       return {
@@ -47,13 +47,17 @@ export const getTrendingMoviesPreview = async () => {
       }
     })
 
+
+    trendingMoviesPreviewList.innerHTML = ""
+
+
     const mapOverMap = mapeo.map(elMap => {
 
-      let imageMovie = `${BASE_IMG}${elMap.backPath}`
+      /*let imageMovie = `${BASE_IMG}${elMap.backPath}`*/
 
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container">
-          <img class="movie-img" src="${imageMovie}">
+          <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
         </div>
       `)
 
@@ -68,22 +72,22 @@ export const getTrendingMoviesPreview = async () => {
       const containerMovie = movieContainer.querySelector('.movie-container')
       const img = movieContainer.querySelector('.movie-img')
 
-
-      trendingMoviesPreviewList.append(movieContainer, containerHoverDetails)
-
-
-      img.addEventListener('mouseover', (e) => {
+      img.addEventListener('mouseover', e => {
         console.log(e.target)
         card.style.opacity = 1
-        toggleOpacity(.7, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
+        card.style.top = '20%'
+        toggleOpacity(.7, headerSection, categoriesPreviewSection,containerMovie)
+        toggleOpacity(.97,trendingMoviesPreviewList)
 
       })
 
-      img.addEventListener('mouseout', (e) => {
+      img.addEventListener('mouseout', e => {
         card.style.opacity = 0
+        card.style.top = '-40%'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
       })
 
+      trendingMoviesPreviewList.append(movieContainer, containerHoverDetails)
 
     })
   } catch (error) { console.error(error) }
@@ -96,6 +100,7 @@ export const getCategegoriesPreview = async () => {
     let { genres } = await response.json();
 
     categoriesPreviewList.innerHTML = ""
+
     const mapeoCategories = genres.map(elMap => {
 
       let id = `id${elMap.id}`
@@ -113,9 +118,10 @@ export const getCategegoriesPreview = async () => {
       categoriesPreviewList.appendChild(categoryContainer)
 
       categoryTitle.addEventListener('click', (e) => {
-        navigator(`#category=${elMap.id}-${elMap.name}`)
+        /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
+        //!pendiente pasar data a navigator pero sin necesidad de un doble click
+        location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
         getMovieByCategory(String(e.target.dataset.id), elMap.name)
-        location.hash = `#category=${elMap.id}-${elMap.name}`
       })
     })
   } catch (error) { console.error(error) }
@@ -124,14 +130,14 @@ export const getCategegoriesPreview = async () => {
 
 //* se obtienen los trends de la tv
 export const getCategegoriesPageTwo = async () => {
-
+  let urlCategoryPageTwo = `${BASE_URL}trending/tv/week?api_key=${APIKEY}`
   try {
-    const response = await fetch(
-      "https://api.themoviedb.org/3/trending/tv/week?api_key=8250c76f81ee5b7089c23a813705401b")
+    const response = await fetch(urlCategoryPageTwo)
     const { results } = await response.json();
 
     genericSection.innerHTML = ""
-    Title.innerHTML = `Trends part two`;
+
+    Title.innerHTML = `Trends on tv`;
     const mapeo = results.map(movie => {
       return {
         adult: movie.adult,
@@ -146,46 +152,29 @@ export const getCategegoriesPageTwo = async () => {
     })
 
     const mapOverMap = mapeo.map(elMap => {
-      console.log(elMap)
-      let imageMovie = `https://image.tmdb.org/t/p/w300${elMap.backPath}`
-      const movieContainer = document.createElement('div')
-      movieContainer.classList.add('movie-container')
+      const movieContainer = document.createRange().createContextualFragment(/*html*/`
+        <div class="movie-container">
+          <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
+          <p>${elMap.title}</p>
+        </div>
+      `)
 
-      const img = document.createElement('img')
-      img.classList.add('movie-img')
-      let p = document.createElement('p')
-      p.innerHTML = elMap.title
+      const mainMovieContainer = movieContainer.querySelector('.movie-container')
 
-      movieContainer.append(img, p)
-
-      img.src = imageMovie;
-
-      genericSection.append(movieContainer)
+      genericSection.append(mainMovieContainer)
     })
-
-
   } catch (error) { console.error(error) }
-  finally {
-    /*console.log('peticion realizada, get categories');*/
-  }
 }
 
-
-
-
-
 export async function getMovieByCategory(id, name) {
-  Title.innerHTML = `${name}`;
   try {
     let url = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
 
     let response = await fetch(url)
     let { results } = await response.json();
-    console.log(url)
-    console.log(results)
 
     genericSection.innerHTML = ""
-
+    Title.innerHTML = `${name}`;
     const elFilter = results.filter(el => el.backdrop_path !== null)
     //*se filtran los elementos que si tienen imagen, los que no tienen, pa fuera
     console.log(elFilter);
@@ -280,8 +269,14 @@ export const getDataDetails = async (URL) => {
     let response = await fetch(URL)
     let data = await response.json()
     let genres = data.genres;
+
+/*
+
     console.log(genres);
-    console.log(data)
+    console.log(data)*/
+    const $categoryList = document.querySelector('.categories-list')
+    $categoryList.innerHTML = ""
+
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.poster_path || data.backdrop_path})`;
     movieDetailTitle.innerHTML = data.title;
     movieDetailDescription.innerHTML = data.overview;
@@ -291,8 +286,7 @@ export const getDataDetails = async (URL) => {
     //*muestreo de generos que coinciden con la pelicula que se está mostrando
     //* se limpia el html 
 
-    const $categoryList = document.querySelector('.categories-list')
-    $categoryList.innerHTML = ""
+    
     console.log($categoryList);
     genres.map(el => {
 

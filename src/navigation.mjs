@@ -28,8 +28,12 @@ const {
 
 
 
+
+
+
 window.addEventListener('DOMContentLoaded', e => {
   navigator()
+  if (location.hash !== '#home') return location.hash = '#home'
 })
 
 window.addEventListener('hashchange', e => {
