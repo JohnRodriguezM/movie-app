@@ -4,21 +4,19 @@
 }
 
 :root {
-  --purple-light-1: #fbfafb;
-  --purple-light-2: #d4e9fb;
-  --purple-medium-1: #082a3a;
-  --purple-medium-2: #1f6cab;
-  --purple-medium-3: #1f6cab;
-  --purple-dark-1: #082a3a;
-  --purple-dark-2: #082a3a;
-
+  --light-1: #fbfafb;
+  --light-2: #d4e9fb;
+  --medium-1: #082a3a;
+  --medium-2: #1f6cab;
+  --medium-3: #1f6cab;
+  --dark-1: #082a3a;
+  --dark-2: #082a3a;
   --yellow: #eecc75;
   --green: #cad297;
   --aqua: #b7eac5;
   --lightBlue: #a2eee5;
   --darkBlue: #8ea2ea;
   --red: #f09d9d;
-
   --font-family-titles: "Dosis", sans-serif;
   --font-family-text: "Red Hat Display", sans-serif;
   --font-weight-title1: 800;
@@ -30,12 +28,12 @@
 html {
   user-select: none;
   padding: 2px;
-  background-color: var(--purple-medium-3);
+  background-color: var(--medium-3);
 }
 
 body {
-  background-color: var(--purple-light-1);
-  color: var(--purple-dark-2);
+  background-color: var(--light-1);
+  color: var(--dark-2);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-text1);
   font-size: 16px;
@@ -53,7 +51,7 @@ h3 {
 h1,
 h2 {
   font-size: 24px;
-  color: var(--purple-dark-2);
+  color: var(--dark-2);
   font-family: var(--font-family-titles);
   font-weight: var(--font-weight-title1);
   margin: 0;
@@ -62,33 +60,33 @@ h2 {
 
 h2 {
   font-size: 18px;
-  color: var(--purple-dark-1);
+  color: var(--dark-1);
   font-weight: var(--font-weight-title2);
 }
 
 h3 {
-  color: var(--purple-dark-2);
+  color: var(--dark-2);
   font-weight: var(--font-weight-text2);
   font-size: 16px;
 }
 
 input {
-  background-color: var(--purple-light-2);
-  color: var(--purple-medium-2);
+  background-color: var(--light-2);
+  color: var(--medium-2);
   border: none;
   font-size: 18px;
   padding-left: 16px;
 }
 
 input::placeholder {
-  color: var(--purple-medium-2);
+  color: var(--medium-2);
   font-family: var(--font-family-text);
 }
 
 button {
-  background-color: var(--purple-dark-1);
+  background-color: var(--dark-1);
   border: none;
-  color: var(--purple-light-2);
+  color: var(--light-2);
   font-weight: var(--font-weight-text2);
   font-size: 14px;
   cursor: pointer;
@@ -137,16 +135,6 @@ footer {
 }
 
 .header-container--long {
- /* background-image: url("https://pics.filmaffinity.com/Deadpool-777527803-large.jpg");*/
- /* background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.35) 19.27%,
-      rgba(0, 0, 0, 0) 29.17%
-    );*/
-    
-    /*,
-    url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
-  background-size: cover !important;*/
   height: 480px;
   position: fixed;
   top: 0;
@@ -177,7 +165,7 @@ footer {
   display: inline-block;
 }
 .header-arrow--white {
-  color: var(--purple-light-1);
+  color: var(--light-1);
 }
 
 .header-searchForm {
@@ -232,7 +220,7 @@ footer {
 
 .trendingPreview-movieList::-webkit-scrollbar-thumb {
   width: 150px;
-  background-color: var(--purple-medium-2);
+  background-color: var(--medium-2);
   border-radius: 10px;
 }
 
@@ -249,7 +237,7 @@ card hover elementos de tendencias
   position: relative;
   justify-content:center;
   flex-wrap: wrap;
-  background-color: var(--purple-medium-2);
+  background-color: var(--medium-2);
   position: absolute;
   width: 300px;
   height: 150px;
@@ -267,11 +255,11 @@ card hover elementos de tendencias
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: var(--purple-light-1);
+  color: var(--light-1);
   margin-top: 10px;
   text-align: center;
   font-size: 20px;
-  color: var(--purple-light-1);
+  color: var(--light-1);
 
 
 
@@ -349,10 +337,10 @@ card hover elementos de tendencias
   --idColor: var(--darkBlue);
 }
 #id99 {
-  --idColor: var(--purple-dark-1);
+  --idColor: var(--dark-1);
 }
 #id18 {
-  --idColor: var(--purple-medium-1);
+  --idColor: var(--medium-1);
 }
 #id10751 {
   --idColor: var(--yellow);
@@ -370,10 +358,10 @@ card hover elementos de tendencias
   --idColor: var(--darkBlue);
 }
 #id9648 {
-  --idColor: var(--purple-dark-1);
+  --idColor: var(--dark-1);
 }
 #id10749 {
-  --idColor: var(--purple-medium-1);
+  --idColor: var(--medium-1);
 }
 #id878 {
   --idColor: var(--yellow);
@@ -424,7 +412,7 @@ card hover elementos de tendencias
   margin-top: 403px;
   z-index: 1;
   position: absolute;
-  background-color: var(--purple-light-1);
+  background-color: var(--light-1);
 }
 
 .movieDetail-title {
@@ -484,8 +472,8 @@ card hover elementos de tendencias
 
 /* Footer */
 footer {
-  background-color: var(--purple-medium-3);
-  color: var(--purple-light-2);
+  background-color: var(--medium-3);
+  color: var(--light-2);
   text-align: center;
   height: 48px;
   display: flex;

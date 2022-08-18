@@ -1,6 +1,8 @@
 "use strict";
 
-export const select = (id) => document.querySelector(id)
+//@ts-check
+
+import {select} from './utils/helpers.mjs'
 
 
 export const DOM_ELEMENTS = {
@@ -20,6 +22,7 @@ export const DOM_ELEMENTS = {
   genericSection: select('#genericList'),
   movieDetailsCategoriesList: select('#movieDetail .categories-list'),
   relatedMoviesContainer: select('.relatedMovies-scrollContainer'),
+  imageMovies: select('.movie-img'),
 
   //elements
   headerTitle: select('.header-title'),
@@ -36,6 +39,6 @@ export const DOM_ELEMENTS = {
   movieDetailScore: select('.movieDetail-score'),
   spanValue: select('.movieDetail-score')
 
-} 
+}
 
 console.log(DOM_ELEMENTS)

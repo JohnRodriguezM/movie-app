@@ -1,17 +1,32 @@
 
 "use strict"
 
-import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory, getMovie,getCategegoriesPageTwo } from "./main.mjs"
+//@ts-check
+//? ready
+import {
+  getCategegoriesPreview,
+  getTrendingMoviesPreview,
+  getMovie,
+  getCategegoriesPageTwo } from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-const { headerSection, arrowButton, headerTitle, headerCategoryTitle, searchForm, trendingPreviewSection, genericSection, movieDetailSection, categoriesPreviewSection, searchFormBtn, trendingBtn } = DOM_ELEMENTS;
+import { removeClass, addClass, displayNoneRemove, displayNoneAdd } from './utils/helpers.mjs'
 
-export const displayNoneAdd = (...elements) => elements.map(el => el.classList.add('inactive'))
-export const displayNoneRemove = (...elements) => elements.map(el => el.classList.remove('inactive'))
+const {
+  headerSection,
+  arrowButton,
+  headerTitle,
+  headerCategoryTitle,
+  searchForm,
+  trendingPreviewSection,
+  genericSection,
+  movieDetailSection,
+  categoriesPreviewSection,
+  searchFormBtn,
+  trendingBtn } = DOM_ELEMENTS;
 
 
-//!se definen los eventos
 
 window.addEventListener('DOMContentLoaded', e => {
   navigator()
@@ -29,10 +44,11 @@ document.addEventListener('click', e => {
 })
 
 
+
 const homePage = () => {
-  headerSection.classList.remove('header-container--long');
+  removeClass(headerSection, 'header-container--long')
+  removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  arrowButton.classList.remove('header-arrow--white')
 
   displayNoneAdd(arrowButton, headerCategoryTitle, genericSection, movieDetailSection)
 
@@ -41,36 +57,36 @@ const homePage = () => {
   getCategegoriesPreview()
   getTrendingMoviesPreview()
 
-  console.log('estamos en el home')
+  console.log('we are in home mode')
 }
 
 
 const categoriesPage = () => {
-
-  headerSection.classList.remove('header-container--long');
+  removeClass(headerSection, 'header-container--long')
+  removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  arrowButton.classList.remove('header-arrow--white')
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
-  console.log('estamos en categories');
+  console.log('we are in categories mode');
 }
 
 const movieDetailsPage = () => {
-  headerSection.classList.add('header-container--long');
-  arrowButton.classList.add('header-arrow--white')
+  addClass(headerSection, 'header-container--long')
+  addClass(arrowButton, 'header-arrow--white')
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
 
   displayNoneRemove(arrowButton, movieDetailSection)
 
-  console.log('estamos en los detalles de la pelicula')
+  console.log('we are in movie details mode')
 }
 
 const trendsPage = () => {
-  headerSection.classList.remove('header-container--long');
+  removeClass(headerSection, 'header-container--long')
+  removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  arrowButton.classList.remove('header-arrow--white')
+
 
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
@@ -80,23 +96,18 @@ const trendsPage = () => {
 }
 
 const searchPage = () => {
-  headerSection.classList.remove('header-container--long');
+  removeClass(headerSection, 'header-container--long')
+  removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  arrowButton.classList.remove('header-arrow--white')
 
   displayNoneAdd(headerTitle, movieDetailSection, trendingPreviewSection, categoriesPreviewSection, searchForm)
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection,)
 
-
-  //* se ejecuta la función que me trae las peliculas en el search
   getMovie()
 
-  console.log('estamos en la busqueda')
+  console.log('we are in search mode')
 }
-
-
-
 
 
 
@@ -120,11 +131,4 @@ export const navigator = (category = "#category=") => {
   }
   location.hash
 }
-
-
-
-
-
-
-
 
