@@ -154,46 +154,42 @@ export const getCategegoriesPageTwo = async () => {
   try {
     let response = await fetch(
       "https://api.themoviedb.org/3/trending/tv/week?api_key=8250c76f81ee5b7089c23a813705401b")
-    let json = await response.json();
-    console.log(json)
-    /*const data = json.genres;*/
-    /*console.log(data)*/ //! me trae la data completa
+    let { results } = await response.json();
+    console.log(results)
 
-   /* categoriesPreviewList.innerHTML = ""
-    const mapeoCategories = data.map(elMap => {
+    trendingMoviesPreviewList.innerHTML = ""
+    const mapeo = results.map(movie => {
+      return {
+        adult: movie.adult,
+        id: movie.id,
+        title: movie.name,
+        backPath: movie.backdrop_path,
+        posterPath: movie.poster_path,
+        voteAverage: movie.vote_average,
+        overview: movie.overview,
+        releaseDate: movie.release_date
+      }
+    })
+    
+    const mapOverMap = mapeo.map(elMap => {
+      console.log(elMap)
+      let imageMovie = `https://image.tmdb.org/t/p/w300${elMap.backPath}`
+      const movieContainer = document.createElement('div')
+      movieContainer.classList.add('movie-container')
+  
+      const img = document.createElement('img')
+      img.classList.add('movie-img')
+      let p = document.createElement('p')
+      p.innerHTML = elMap.title
+  
+      movieContainer.append(img,p)
+  
+      img.src = imageMovie;
+
+      genericSection.append(movieContainer)
+    })
 
 
-      let id = `id${elMap.id}`
-      const categoryContainer = document.createElement('div')
-      const categoryTitle = document.createElement('h3')
-      categoryTitle.dataset.id = elMap.id;
-      categoryTitle.dataset.name = elMap.name;
-      categoryContainer.dataset.id = elMap.id;
-      //*div
-      categoryContainer.classList.add('category-container')
-      //*h3
-      categoryTitle.classList.add('category-title')
-      categoryTitle.id = id
-      //*div
-      categoryContainer.appendChild(categoryTitle)
-      //*h3
-      categoryTitle.innerHTML = elMap.name;
-      //!father container
-      categoriesPreviewList.appendChild(categoryContainer)
-
-
-      categoryContainer.addEventListener('click', (e) => {
-        navigator(`#category=${elMap.id}-${elMap.name}`)
-        getMovieByCategory(String(e.target.dataset.id), elMap.name)
-
-        location.hash = `#category=${elMap.id}-${elMap.name}`
-        console.log(String(e.target.dataset.id))
-      })
-
-
-    }
-    )*/
-    //*
   } catch (error) { console.error(error) }
   finally {
     /*console.log('peticion realizada, get categories');*/
@@ -202,7 +198,7 @@ export const getCategegoriesPageTwo = async () => {
 
 
 
-getCategegoriesPageTwo()
+
 
 export async function getMovieByCategory(id, name) {
   Title.innerHTML = `${name}`;

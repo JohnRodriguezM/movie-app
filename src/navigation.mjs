@@ -1,7 +1,7 @@
 
 "use strict"
 
-import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory, getMovie } from "./main.mjs"
+import { getCategegoriesPreview, getTrendingMoviesPreview, getMovieByCategory, getMovie,getCategegoriesPageTwo } from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
@@ -75,7 +75,7 @@ const trendsPage = () => {
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-
+  getCategegoriesPageTwo()
   console.log('estamos en trends');
 }
 
@@ -86,7 +86,7 @@ const searchPage = () => {
 
   displayNoneAdd(headerTitle, movieDetailSection, trendingPreviewSection, categoriesPreviewSection, searchForm)
 
-  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
+  displayNoneRemove(headerCategoryTitle, arrowButton, genericSection,)
 
 
   //* se ejecuta la función que me trae las peliculas en el search
