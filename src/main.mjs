@@ -2,11 +2,11 @@
 
 //@ts-check
 
-import { URLS,APIKEY,BASE_URL } from "./utils/urls.mjs";
+import { URLS, APIKEY, BASE_URL } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY,BASE_IMG } = URLS;
+const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY, BASE_IMG } = URLS;
 
 const {
   trendingMoviesPreviewList,
@@ -32,7 +32,7 @@ export const getTrendingMoviesPreview = async () => {
     const response = await fetch(URL_TRENDING_MOVIES)
     const { results } = await response.json();
 
-    
+
 
     const mapeo = results.map(movie => {
       return {
@@ -64,24 +64,26 @@ export const getTrendingMoviesPreview = async () => {
       const containerHoverDetails = document.createRange().createContextualFragment(/*html*/`
       <div class="card-hover">
         <p>${elMap.title}</p>
-        <p> ⭐ ${elMap.voteAverage}</p>
+        <div class = "close-card">❌</div>
+        <p> ⭐ ${elMap.voteAverage.toFixed(1)}</p>
       </div>
       `)
 
       const card = containerHoverDetails.querySelector('.card-hover')
+      const closeTag = containerHoverDetails.querySelector('.close-card')
       const containerMovie = movieContainer.querySelector('.movie-container')
       const img = movieContainer.querySelector('.movie-img')
 
-      img.addEventListener('mouseover', e => {
+      img.addEventListener('click', e => {
         console.log(e.target)
         card.style.opacity = 1
         card.style.top = '20%'
-        toggleOpacity(.7, headerSection, categoriesPreviewSection,containerMovie)
-        toggleOpacity(.97,trendingMoviesPreviewList)
+        toggleOpacity(.7, headerSection, categoriesPreviewSection, containerMovie)
+        toggleOpacity(.97, trendingMoviesPreviewList)
 
       })
 
-      img.addEventListener('mouseout', e => {
+      closeTag.addEventListener('click', e => {
         card.style.opacity = 0
         card.style.top = '-40%'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
@@ -96,8 +98,8 @@ export const getTrendingMoviesPreview = async () => {
 
 export const getCategegoriesPreview = async () => {
   try {
-    let response = await fetch(URL_CATEGORY)
-    let { genres } = await response.json();
+    const response = await fetch(URL_CATEGORY)
+    const { genres } = await response.json();
 
     categoriesPreviewList.innerHTML = ""
 
@@ -115,14 +117,14 @@ export const getCategegoriesPreview = async () => {
 
       const categoryTitle = categoryContainer.querySelector('.category-title')
 
-      categoriesPreviewList.appendChild(categoryContainer)
-
       categoryTitle.addEventListener('click', (e) => {
         /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
         //!pendiente pasar data a navigator pero sin necesidad de un doble click
         location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
         getMovieByCategory(String(e.target.dataset.id), elMap.name)
       })
+
+      categoriesPreviewList.appendChild(categoryContainer)
     })
   } catch (error) { console.error(error) }
 }
@@ -168,43 +170,32 @@ export const getCategegoriesPageTwo = async () => {
 
 export async function getMovieByCategory(id, name) {
   try {
-    let url = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
+    let urlMovieByCategory = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
 
-    let response = await fetch(url)
+    let response = await fetch(urlMovieByCategory)
     let { results } = await response.json();
 
     genericSection.innerHTML = ""
     Title.innerHTML = `${name}`;
-    const elFilter = results.filter(el => el.backdrop_path !== null)
-    //*se filtran los elementos que si tienen imagen, los que no tienen, pa fuera
-    console.log(elFilter);
 
+    const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
 
-    elFilter.map(el => {
+    filterElementsWithoutImg.map(el => {
 
-      let divContent = document.createElement('div')
-      divContent.classList.add('movie-container')
-      let p = document.createElement('p')
-      p.innerHTML = el.title
-      let img = document.createElement('img')
-      img.classList.add('movie-img')
-      img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
-      img.alt = el.id
+      const divContent = document.createRange().createContextualFragment(/*html*/`
+        <div class="movie-container" id = "${el.id}">
+          <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
+          <p id = "${el.id}">${el.title}</p>
+        </div>
+      `)
 
-      divContent.setAttribute('id', el.id)
-      p.setAttribute('id', el.id)
+      const mainMovieContainer = divContent.querySelector('.movie-container')
 
-      divContent.append(img, p)
-
-
-      divContent.addEventListener('click', function (e) {
-        getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt || e.target.id}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
-        getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt || e.target.id}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
+      mainMovieContainer.addEventListener('click', e => {
+        let url = `${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`
+        getDataDetails(url)
+        getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
         location.hash = "#movie="
-      })
-
-      img.addEventListener('click', e => {
-
       })
 
       genericSection.appendChild(divContent)
@@ -213,48 +204,31 @@ export async function getMovieByCategory(id, name) {
   } catch (error) { console.error(error) }
 }
 
-
-
-
-
 export const getMovie = async () => {
-
-  let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=8250c76f81ee5b7089c23a813705401b&query=${searchFormInput.value}&page=1&include_adult=false`)
+  let urlGetMoviesSearch = `${BASE_URL}search/movie?api_key=${APIKEY}&query=${searchFormInput.value}&page=1&include_adult=true`
+  let response = await fetch(urlGetMoviesSearch)
   let { results } = await response.json()
 
+  Title.innerHTML = `Results for ${searchFormInput.value}`;
   genericSection.innerHTML = ""
 
+  const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
 
-  const elFilter = results.filter(el => el.backdrop_path !== null)
-  //*se filtran los elementos que si tienen imagen, los que no tienen, pa fuera
-  console.log(elFilter);
+  filterElementsWithoutImg.map(el => {
 
+    const divContent = document.createRange().createContextualFragment(/*html*/`
+      <div class="movie-container" id = "${el.id}">
+        <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
+        <p id = "${el.id}">${el.title}</p>
+      </div>
+    `)
 
+    const mainMovieContainer = divContent.querySelector('.movie-container')
 
-  const presentacion = document.createElement('h3')
-  presentacion.innerHTML = "coincidencias"
-
-  elFilter.map(el => {
-
-    /*console.log(el)*/
-    let divContent = document.createElement('div')
-    divContent.classList.add('movie-container')
-    let p = document.createElement('p')
-    p.innerHTML = el.title
-    let img = document.createElement('img')
-    img.classList.add('movie-img')
-    img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
-    img.alt = el.id
-
-    divContent.setAttribute('id', el.id)
-    p.setAttribute('id', el.id)
-
-    divContent.append(img, p)
-
-    divContent.addEventListener('click', function (e) {
-      //*se trae la información de la pelicula usando 
-      getDataDetails(`https://api.themoviedb.org/3/movie/${e.target.alt ?? e.target.id}?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US`)
-      getSimilarMovies(`https://api.themoviedb.org/3/movie/${e.target.alt ?? e.target.id}/similar?api_key=8250c76f81ee5b7089c23a813705401b&language=en-US&page=1`)
+    mainMovieContainer.addEventListener('click', (e) => {
+      //*se trae la información de la pelicula usando el id de la pelicula
+      getDataDetails(`${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
+      getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
       location.hash = "#movie="
     })
 
@@ -264,30 +238,23 @@ export const getMovie = async () => {
 
 }
 
-export const getDataDetails = async (URL) => {
+export const getDataDetails = async URL => {
   try {
     let response = await fetch(URL)
-    let data = await response.json()
-    let genres = data.genres;
+    let { genres, poster_path, backdrop_path, title, overview, vote_average } = await response.json()
 
-/*
-
-    console.log(genres);
-    console.log(data)*/
     const $categoryList = document.querySelector('.categories-list')
     $categoryList.innerHTML = ""
 
-    headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.poster_path || data.backdrop_path})`;
-    movieDetailTitle.innerHTML = data.title;
-    movieDetailDescription.innerHTML = data.overview;
-    spanValue.innerHTML = data.vote_average.toFixed(1)
+    headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${poster_path || backdrop_path})`;
+    movieDetailTitle.innerHTML = title;
+    movieDetailDescription.innerHTML = overview;
+    spanValue.innerHTML = vote_average.toFixed(1)
 
 
     //*muestreo de generos que coinciden con la pelicula que se está mostrando
     //* se limpia el html 
 
-    
-    console.log($categoryList);
     genres.map(el => {
 
       console.log(el);

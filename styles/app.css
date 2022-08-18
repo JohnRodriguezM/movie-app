@@ -120,6 +120,10 @@ footer {
   border-radius: 8px;
 }
 
+.movie-img:hover{
+  transform: scale(1.02);
+}
+
 .categoriesPreview-list,
 .categories-list {
   display: flex;
@@ -232,9 +236,7 @@ card hover elementos de tendencias
 */
 
 .card-hover{
-  /*margin: 0 45px 0 auto;*/
   display: flex;
-/*  align-items: center;*/
   position: relative;
   justify-content:center;
   flex-wrap: wrap;
@@ -246,11 +248,8 @@ card hover elementos de tendencias
   z-index: 9999999;
   opacity: 0;
   top: -40%;
-  /*left: 20%;*/
   transition: opacity .6s ease-in-out;
   animation:  all 2s;
-  /*animation: card-hover 5s ease-in-out 1s;
-  transition: animation 5s;*/
 }
 .card-hover  p{
   display: flex;
@@ -262,11 +261,15 @@ card hover elementos de tendencias
   text-align: center;
   font-size: 20px;
   color: var(--light-1);
+}
 
-
-
-  
-
+.card-hover div{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: var(--light-1);
+  font-size: 20px;
+  cursor: pointer;
 }
 
 @keyframes card-hover {

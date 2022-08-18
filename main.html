@@ -19,10 +19,13 @@
     <header id="header" class="header-container">
       <span class="header-arrow inactive">&lt;</span>
       <h1 class="header-title">Universal Movies</h1>
-      <h1 class="header-title header-title--categoryView inactive" id = "categoryTitle"></h1>
+      <h1
+        class="header-title header-title--categoryView inactive"
+        id="categoryTitle"
+      ></h1>
 
       <form id="searchForm" class="header-searchForm">
-        <input type="text" placeholder="Ej: Avengers" />
+        <input type="text" placeholder="Ej: Avengers" autofocus />
         <button id="searchBtn">🔍</button>
       </form>
     </header>
@@ -54,7 +57,7 @@
     </section>
 
     <section id="genericList" class="genericList-container inactive">
-     <!-- <div class="movie-container">
+      <!-- <div class="movie-container">
         <img
           src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
           class="movie-img"
@@ -66,23 +69,18 @@
     <section id="movieDetail" class="movieDetail-container inactive">
       <h1 class="movieDetail-title">---</h1>
       <span class="movieDetail-score">7.6</span>
-      <p class="movieDetail-description">
-        Not founded
-      </p>
+      <p class="movieDetail-description">Not founded</p>
 
       <article class="categories-list">
-
-       <!-- <div class="category-container">
+        <!-- <div class="category-container">
           <h3 id="id14" class="category-title">X</h3>
         </div>-->
-
       </article>
 
       <article class="relatedMovies-container">
         <h2 class="relatedMovies-title">Películas similares</h2>
 
         <div class="relatedMovies-scrollContainer">
-
           <!--<div class="movie-container">
             <img
               src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
@@ -95,9 +93,9 @@
     </section>
 
     <footer>By universal moviessss</footer>
-    <script type = "module" src="./src/nodes.mjs"></script>
-    <script type = "module" src="./src/main.mjs"></script>
-    <script type = "module" src="./src/navigation.mjs"></script>
+    <script type="module" src="./src/nodes.mjs"></script>
+    <script type="module" src="./src/main.mjs"></script>
+    <script type="module" src="./src/navigation.mjs"></script>
     <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
   </body>
 </html>

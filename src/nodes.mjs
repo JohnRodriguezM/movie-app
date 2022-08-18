@@ -23,6 +23,7 @@ export const DOM_ELEMENTS = {
   movieDetailsCategoriesList: select('#movieDetail .categories-list'),
   relatedMoviesContainer: select('.relatedMovies-scrollContainer'),
   imageMovies: select('.movie-img'),
+  categoriesList: select('.categories-list'),
 
   //elements
   headerTitle: select('.header-title'),
