@@ -24,6 +24,7 @@ export const DOM_ELEMENTS = {
   relatedMoviesContainer: select('.relatedMovies-scrollContainer'),
   imageMovies: select('.movie-img'),
   categoriesList: select('.categories-list'),
+  relatedMovies: select('.relatedMovies-scrollContainer'),
 
   //elements
   headerTitle: select('.header-title'),

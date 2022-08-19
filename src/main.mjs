@@ -19,7 +19,8 @@ const {
   movieDetailDescription,
   spanValue,
   categoriesPreviewSection,
-  imageMovies,
+  categoriesList,
+  relatedMovies,
 } = DOM_ELEMENTS;
 
 import { navigator } from './navigation.mjs'
@@ -209,9 +210,9 @@ export const getMovie = async () => {
   let response = await fetch(urlGetMoviesSearch)
   let { results } = await response.json()
 
-  Title.innerHTML = `Results for ${searchFormInput.value}`;
   genericSection.innerHTML = ""
 
+  Title.innerHTML = `Results for ${searchFormInput.value}`;
   const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
 
   filterElementsWithoutImg.map(el => {
@@ -243,8 +244,7 @@ export const getDataDetails = async URL => {
     let response = await fetch(URL)
     let { genres, poster_path, backdrop_path, title, overview, vote_average } = await response.json()
 
-    const $categoryList = document.querySelector('.categories-list')
-    $categoryList.innerHTML = ""
+    categoriesList.innerHTML = ""
 
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${poster_path || backdrop_path})`;
     movieDetailTitle.innerHTML = title;
@@ -257,62 +257,39 @@ export const getDataDetails = async URL => {
 
     genres.map(el => {
 
-      console.log(el);
+      const divContent = document.createRange().createContextualFragment(/*html*/`
+        <div class="category-container">
+          <h3 class = "category-title" id = "id${el.id}">${el.name}</h3>
+        </div>
+      `)
 
-
-      const div = document.createElement('div');
-      div.classList.add('category-container')
-      const h3 = document.createElement('h3')
-      h3.classList.add('category-title')
-      h3.setAttribute('id', `id${el.id}`)
-      h3.innerHTML = el.name
-      div.append(h3)
-
-      $categoryList.appendChild(div)
-
-
+      categoriesList.appendChild(divContent)
 
     })
 
 
-  } catch (e) { console.log(e) }
+  } catch (err) { console.log(err) }
 }
 
 
 const getSimilarMovies = async (URLL) => {
   try {
     let response = await fetch(URLL)
-    let json = await response.json();
+    let { results } = await response.json();
 
-
-    const arraySliced = json.results.slice(12)
-    console.log(arraySliced);
-
-
-    const relatedMovies = document.querySelector('.relatedMovies-scrollContainer')
+    const arraySliced = results.slice(12)
 
     relatedMovies.innerHTML = ""
-
-
     arraySliced.map(el => {
-      const div = document.createElement('div');
-      div.classList.add('movie-container')
 
-      const img = document.createElement('img')
-      img.classList.add('movie-img')
-      img.src = `https://image.tmdb.org/t/p/w300/${el.backdrop_path}`
+      const divContent = document.createRange().createContextualFragment(/*html*/`
+        <div class="movie-container">
+          <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}">
+        </div>
+      `)
 
-      div.append(img)
-
-      relatedMovies.append(div)
-
-
+      relatedMovies.append(divContent)
     })
-
-
-
-
-
   } catch (err) {
     console.log(err)
   }
