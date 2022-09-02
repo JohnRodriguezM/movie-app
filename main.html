@@ -11,24 +11,29 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/app.css" />
+    <!--  <link rel="stylesheet" href="./styles/app.css"/>   --> 
+    <link rel="stylesheet" href="./styles/styles.css">
+    
 
     <title>Full Movies</title>
   </head>
   <body>
     <header id="header" class="header-container">
-      <span class="header-arrow inactive">&lt;</span>
+      <span id="back" class="header-arrow inactive">&lt;</span>
       <h1 class="header-title">Universal Movies</h1>
       <h1
         class="header-title header-title--categoryView inactive"
         id="categoryTitle"
       ></h1>
-
       <form id="searchForm" class="header-searchForm">
         <input type="text" placeholder="Ej: Avengers" autofocus />
-        <button id="searchBtn">🔍</button>
+        <button id="searchBtn">
+          <img class="iconBtn" src="./styles/icons/🦆 icon _search.svg" alt="">
+        </button>
       </form>
     </header>
+
+
     <section id="trendingPreview" class="trendingPreview-container">
       <div class="trendingPreview-header">
         <h2 class="trendingPreview-title">Trends</h2>

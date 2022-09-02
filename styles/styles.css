@@ -1,0 +1,104 @@
+:root {
+    --background-button: #f78400;
+    --background-navar: #f8be00;
+    --background: #111111;
+    --font-family-titles: "Dosis", sans-serif;
+    --font-family-text: "Red Hat Display", sans-serif;
+    --font-weight-title1: 800;
+    --font-weight-title2: 700;
+    --font-weight-text1: 400;
+    --font-weight-text2: 500;
+  }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} 
+
+
+html {
+    user-select: none;
+    padding: 2px;
+    background-color: var(--background);
+}
+
+#back {
+    padding: 5px 3rem 8rem 5px;
+}
+
+.header-container {
+    background-color: var(--background-navar);
+    font-size: 24px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: var(--font-family-titles);
+    font-weight: var(--font-weight-title1);
+
+    backdrop-filter: blur(50px);
+}
+
+.header-title{
+    width: 5rem;
+    text-align: center;
+}
+
+.header-container input{
+    max-width: 300px;
+    background-color: var(--background);
+    color: var(--background-navar);
+    border: none;
+    font-size: 24px;
+    padding-left: 24px;
+    margin-bottom: 20px;
+}
+
+.header-container input::placeholder {
+    color: var(--medium-1);
+    font-family: var(--font-family-text);
+}
+
+button {
+    background-color: var(--background-button);
+    border: none;
+    color: white;
+    font-weight: var(--font-weight-text2);
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.iconBtn{
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+#categoryTitle{
+    width: 0px;
+    height: 0px;
+}
+
+.header-searchForm {
+    display: flex;
+
+    /* width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; */
+}
+
+.header-container input{
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.header-container button {
+    width: 40px;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
