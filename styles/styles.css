@@ -22,6 +22,21 @@ html {
     user-select: none;
     font-family: 'Poppins';
     font-style: normal;
+    
+}
+
+body::-webkit-scrollbar{
+    background-color: #111111;
+    width: 12px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: linear-gradient(transparent,var(--background-button));
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(transparent,rgb(0, 140, 255));
 }
 
 /* NAVAR */
@@ -257,13 +272,65 @@ html {
     font-style: normal;
 }
 
+.trendingPreview-btn:hover {
+    color: white;
+}
+
 .container-movies{
     height: 865px;
     width: 100%;
-    background-color: aqua;
+     
     padding-left: 40px;
+
+    overflow-y: scroll;
 }
+
+.container-movies::-webkit-scrollbar{
+    width: 10px;
+    
+}
+
 .trendingPreview-movieList{
+    padding-top: 20px;
+    width: 100%;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 100px);
+    gap: 60px;
+
+    flex-wrap: wrap;
 } 
+
+/* .trendingPreview-movieList .movie-container{
+    background-color: blue;
+}  */
+
+.trendingPreview-movieList .movie-container img{
+    border-radius: 14px;
+}
+
+
+.trendingPreview-movieList .card-hover{
+    color: white;
+    
+    margin-top: 10px;
+    width: 300px; 
+    height: 170px; 
+
+    padding-left: 20px;
+    padding-top: 85px; 
+    
+    
+    position: relative;
+    left: -160px;
+    bottom: 11px; 
+
+    border-radius: 14px;
+    opacity: 0%;
+}
+
+.trendingPreview-movieList .card-hover:hover{
+    opacity: 90%;
+    background-color: #f78400;
+}
+
