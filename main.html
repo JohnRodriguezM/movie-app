@@ -11,57 +11,101 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <!--  <link rel="stylesheet" href="./styles/app.css"/>   --> 
-    <link rel="stylesheet" href="./styles/styles.css">
-    
+    <!--  <link rel="stylesheet" href="./styles/app.css"/>   -->
+    <link rel="stylesheet" href="./styles/styles.css" />
 
     <title>Full Movies</title>
   </head>
   <body>
     <header id="header" class="header-container">
-      <span id="back" class="header-arrow inactive">&lt;</span>
-      <h1 class="header-title">Universal Movies</h1>
-      <h1
-        class="header-title header-title--categoryView inactive"
-        id="categoryTitle"
-      ></h1>
-      <form id="searchForm" class="header-searchForm">
-        <input type="text" placeholder="Ej: Avengers" autofocus />
-        <button id="searchBtn">
-          <img class="iconBtn" src="./styles/icons/🦆 icon _search.svg" alt="">
-        </button>
-      </form>
+      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
+      <span id="back" class="header-arrow inactive">
+        <section class="container-icons">
+          <img
+            class="icon-back"
+            src="./styles/icons/icon_back.svg"
+            alt="icon_back"
+          />
+          <img
+            class="icon-twitter"
+            src="./styles/icons/icon_twitter.svg"
+            alt="twitter"
+          />
+          <img
+            class="icon-instagram"
+            src="./styles/icons/icon_instagram.svg"
+            alt="instagram"
+          />
+          <img
+            class="icon-usuario"
+            src="./styles/icons/icon_usuario.svg"
+            alt="usuario"
+          />
+        </section>
+      </span>
     </header>
 
+    <section class="search-background">
+      <section class="glass-search-container">
+        <h1 id="tittle-page" class="header-title">Universal Movies</h1>
+        <h1
+          class="header-title header-title--categoryView inactive"
+          id="categoryTitle"
+        ></h1>
+        <form id="searchForm" class="header-searchForm">
+          <input
+            id="input-movie"
+            type="text"
+            placeholder="Ej: Avengers"
+            autofocus
+          />
+          <button id="searchBtn">
+            <img class="iconBtn" src="./styles/icons/icon_search.svg" alt="" />
+          </button>
+        </form>
+      </section>
+    </section>
 
+    <section class="view-contenedor">
+      <!-- CATEGORIAS -->
+    <section id="categoriesPreview" class="categoriesPreview-container">
+      <div class="category-title-container">
+        <h2 class="categoriesPreview-title">Categories</h2>
+      </div>
+
+      <article class="categoriesPreview-list">
+        <!-- <div class="category-container">
+          <h3 id="id28" class="category-title">Romance</h3>
+        </div> -->
+      </article>
+    </section>
+    <!-- CATEGORIAS -->
+
+    <!-- MOVIES -->
     <section id="trendingPreview" class="trendingPreview-container">
       <div class="trendingPreview-header">
         <h2 class="trendingPreview-title">Trends</h2>
         <button class="trendingPreview-btn">Ver más</button>
       </div>
 
-      <article class="trendingPreview-movieList">
-        <!-- <div class="movie-container">
-        <img
-          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-          class="movie-img"
-          alt="Nombre de la película"
-        />
-      </div> -->
-      </article>
+      <div class="container-movies">
+        <article class="trendingPreview-movieList">
+          <!-- <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div> -->
+        </article>
+      </div>
+    </section>
+    <!-- MOVIES -->
     </section>
 
-    <section id="categoriesPreview" class="categoriesPreview-container">
-      <h2 class="categoriesPreview-title">Categories</h2>
+    
 
-      <article class="categoriesPreview-list">
-        <!-- <div class="category-container">
-        <h3 id="id28" class="category-title">Romance</h3>
-      </div> -->
-      </article>
-    </section>
-
-    <section id="genericList" class="genericList-container inactive">
+    <section id="genericList" class="genericList-container inactive"></section>
       <!-- <div class="movie-container">
         <img
           src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"

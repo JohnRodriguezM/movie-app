@@ -2,6 +2,7 @@
     --background-button: #f78400;
     --background-navar: #f8be00;
     --background: #111111;
+    --background-img: url('./icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
     --font-family-titles: "Dosis", sans-serif;
     --font-family-text: "Red Hat Display", sans-serif;
     --font-weight-title1: 800;
@@ -19,86 +20,250 @@
 
 html {
     user-select: none;
-    padding: 2px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+/* NAVAR */
+.header-container{
     background-color: var(--background);
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    position: static;
 }
 
-#back {
-    padding: 5px 3rem 8rem 5px;
+.icon-back{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
 }
 
-.header-container {
-    background-color: var(--background-navar);
-    font-size: 24px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    font-family: var(--font-family-titles);
-    font-weight: var(--font-weight-title1);
-
-    backdrop-filter: blur(50px);
+.icon-twitter{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
 }
 
-.header-title{
-    width: 5rem;
-    text-align: center;
+.icon-instagram{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 2.2rem;
+    top: 0.5rem;
 }
 
-.header-container input{
+.icon-usuario{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 4rem;
+    top: 0.5rem;
+}
+
+/* SEARCH */
+
+.search-background {
+    background-size: cover;
+    background-image: url('./icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
+    padding-top: 35px;
+    padding-bottom: 500px;
+}    
+
+.glass-search-container{
+    position: absolute;
+    width: 90%;
+    min-width: 500px;
+    max-width: 94%;
+    height: 400px;
+    left: 5%;
+    top: 65px;
+    
+
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0.47) 2.19%, rgba(255, 252, 252, 0.12) 99.95%);
+    box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
+    backdrop-filter: blur(7px);
+
+    border-radius: 59px;
+}
+
+#tittle-page{
+    width: 300px;
     max-width: 300px;
-    background-color: var(--background);
-    color: var(--background-navar);
-    border: none;
-    font-size: 24px;
-    padding-left: 24px;
-    margin-bottom: 20px;
-}
-
-.header-container input::placeholder {
-    color: var(--medium-1);
-    font-family: var(--font-family-text);
-}
-
-button {
-    background-color: var(--background-button);
-    border: none;
-    color: white;
-    font-weight: var(--font-weight-text2);
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.iconBtn{
-    padding: 5px;
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    top: 8rem;
+    left: 4rem;
+    font-size: 70px;
+    text-align: center;
+    line-height: 60px;
 }
 
 #categoryTitle{
-    width: 0px;
-    height: 0px;
+    position: absolute;
+    bottom: 1rem;
+    right: 8rem;
+    color: #313131;
 }
 
 .header-searchForm {
+    position: absolute;
+    top: 10rem;
+    left: 32rem;
+    margin: 0;
+    padding: 0;
     display: flex;
-
-    /* width: 100%;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap; */
 }
 
-.header-container input{
+#input-movie {
+    height: 50px;
+    width: 300px;
+    max-width: 500px;
+    min-width: 1px;
+    background: #FFFFFF;
+    border-radius: 20px 0px 0px 20px;
+    border-style: none;
+    outline-style: none;
+    color: #111111;
+    font-size: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
+}
+
+#input-movie::placeholder{
+    color: #111111;
+}
+
+#searchBtn{
+    height: 50px;
+    width: 50px;
+    background: #FFE500;
+    border-radius: 0px 20px 20px 0px;
+    border-style: none;
+}
+
+#searchBtn img {
+    height: 30px;
+    width: 30px;
+}
+
+/* CONTENEDOR ENTRETENIMIENTO */
+
+.view-contenedor {
+    /* display: flex;
+    flex-wrap: wrap; */
+
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
+
+
+/* CATEGORIAS */
+#categoriesPreview{
+    flex: 0%;
+    width: 270px;
+    height: 940px;
+
+    background: linear-gradient(269.86deg, #151515 0.15%, #242424 42.65%, #242424 99.9%);
+    border-radius: 0px;
+    position: static;
+}
+
+.category-title-container {
+    height: 48px;
+    width: 200px;
+    position: relative;
+    top: -26px;
+    left: 2rem;
+
+    background: #FFE600;
+    border-radius: 16px;
+}
+
+.categoriesPreview-title{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 72px;
+
+    position: relative;
+    top: -10px;
+    left: 26px;
+}
+
+.categoriesPreview-list{
+    margin-left: 30px;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 46px;
+}
+
+.categoriesPreview-list .category-container:hover{
+    background-color: #f8be00;
+    color: #111111;
+
+    border-radius: 8px;
+    margin-right: 70px;
+    padding-left: 30px;
+
+    position: relative;
+    left: 5px;
+}
+
+/* TRENDS */
+
+.trendingPreview-container{
+    flex: 60%;
     width: 100%;
-    height: 40px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    height: 940px;
+
+    background-color: #151515;
 }
 
-.header-container button {
-    width: 40px;
-    height: 40px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+.trendingPreview-header{
+    display: inline-flex;
+    padding: 10px;
+
+    position: relative;
+    top: -26px;
+    right: -250px;
+
+    background: #FFE600;
+    border-radius: 16px;
 }
 
+.trendingPreview-title{
+    padding-left: 10px;
+}
+
+.trendingPreview-btn{
+    margin-left: 30px;
+    border-radius: 8px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: #111111;
+    color: #FFE600;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.container-movies{
+    height: 865px;
+    width: 100%;
+    background-color: aqua;
+    padding-left: 40px;
+}
+.trendingPreview-movieList{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+} 
