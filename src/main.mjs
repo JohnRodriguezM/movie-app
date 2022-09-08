@@ -6,6 +6,10 @@ import { URLS, APIKEY, BASE_URL } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
+import { prueba1 } from "./mobile.mjs";
+
+console.log(prueba1);
+
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY, BASE_IMG } = URLS;
 
 const {
@@ -66,7 +70,7 @@ export const getTrendingMoviesPreview = async () => {
       <div class="card-hover">
         <p>${elMap.title}</p>
         <div class = "close-card">❌</div>
-        <p> ⭐ ${elMap.voteAverage.toFixed(1)}</p>
+        <p class= "calificacion-card" > ⭐ ${elMap.voteAverage.toFixed(1)}</p>
       </div>
       `)
 
@@ -76,12 +80,13 @@ export const getTrendingMoviesPreview = async () => {
       const img = movieContainer.querySelector('.movie-img')
 
       img.addEventListener('click', e => {
-        console.log(e.target)
+        // console.log(e.target)
+        console.log(e)
         card.style.opacity = 1
-        card.style.top = '20%'
-        toggleOpacity(.7, headerSection, categoriesPreviewSection, containerMovie)
+        card.style.top = '50%'
+        toggleOpacity(.7, headerSection, categoriesPreviewSection)
+        // toggleOpacity(.7, headerSection, categoriesPreviewSection, containerMovie)
         toggleOpacity(.97, trendingMoviesPreviewList)
-
       })
 
       closeTag.addEventListener('click', e => {
@@ -117,12 +122,18 @@ export const getCategegoriesPreview = async () => {
       `)
 
       const categoryTitle = categoryContainer.querySelector('.category-title')
+      const category = categoryContainer.querySelector('.category-container')
+
+      // console.log(category)
 
       categoryTitle.addEventListener('click', (e) => {
         /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
         //!pendiente pasar data a navigator pero sin necesidad de un doble click
         location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
         getMovieByCategory(String(e.target.dataset.id), elMap.name)
+
+        prueba1(categoriesPreviewSection);
+
       })
 
       categoriesPreviewList.appendChild(categoryContainer)
