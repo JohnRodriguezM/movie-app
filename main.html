@@ -12,15 +12,16 @@
       rel="stylesheet"
     />
      <!-- <link rel="stylesheet" href="./styles/app.css"/>   -->
-     <link rel="stylesheet" href="./styles/responsive/mobile.css" media="screen and (max-width: 480px)"/>
+     <link rel="stylesheet" href="./styles/responsive/mobile.css" media="screen and (max-width: 425px)"/>
      <link rel="stylesheet" href="./styles/responsive/tablet.css" media="screen and (min-width: 768px)" />
      <link rel="stylesheet" href="./styles/responsive/desktop.css" media="screen and (min-width: 1024px)" />
 
     <title>Full Movies</title>
   </head>
   <body>
-    <header id="header" class="header-container">
-      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
+    
+
+    <nav class="navigator-icons">
       <span id="back" class="header-arrow inactive">
         <section class="container-icons">
           <button id="button-menu" class="buttom-menu-container">
@@ -47,15 +48,12 @@
           />
         </section>
       </span>
-    </header>
+    </nav>
 
     <section class="search-background">
       <section class="glass-search-container">
         <h1 id="tittle-page" class="header-title">Universal Movies</h1>
-        <h1
-          class="header-title header-title--categoryView inactive"
-          id="categoryTitle"
-        ></h1>
+        
         <form id="searchForm" class="header-searchForm">
           <input
             id="input-movie"
@@ -72,20 +70,6 @@
 
 
     <section class="view-contenedor">
-      <!-- CATEGORIAS -->
-    <section id="categoriesPreview" class="categoriesPreview-container">
-      <div class="category-title-container">
-        <h2 class="categoriesPreview-title">Categories</h2>
-      </div>
-
-      <article class="categoriesPreview-list">
-        <!-- <div class="category-container">
-          <h3 id="id28" class="category-title">Romance</h3>
-        </div> -->
-      </article>
-    </section>
-    <!-- CATEGORIAS -->
-
     <!-- MOVIES -->
     <section id="trendingPreview" class="trendingPreview-container">
       <div class="trendingPreview-header">
@@ -108,6 +92,24 @@
     <!-- MOVIES -->
     </section>
 
+     <!-- CATEGORIAS -->
+     <section id="categoriesPreview" class="categoriesPreview-container">
+      <div class="category-title-container">
+        <h2 class="categoriesPreview-title">Categories</h2>
+      </div>
+
+      <article class="categoriesPreview-list">
+        <!-- <div class="category-container">
+          <h3 id="id28" class="category-title">Romance</h3>
+        </div> -->
+      </article>
+    </section>
+    <!-- CATEGORIAS -->
+
+    <section class="contenedor-title-category-select">
+      <h1 class="header-title header-title--categoryView inactive" id="categoryTitle" ></h1>
+    </section>
+    
     <section id="genericList" class="genericList-container inactive"></section>
     <!-- <div class="movie-container">
       <img
@@ -117,6 +119,16 @@
       />
     </div>-->
   </section>
+
+  <div class="container-detail-select-movie">
+    <header id="header" class="header-container">
+      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
+    </header>
+
+    
+    
+  </div>
+  
 
     <section id="movieDetail" class="movieDetail-container inactive">
       <h1 class="movieDetail-title">---</h1>

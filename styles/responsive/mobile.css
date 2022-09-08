@@ -23,24 +23,35 @@ html {
     user-select: none;
 }
 
+body{
+    background-color: var(--color-dark);
+}
+
 
 /* NAVAR */
-.header-container{
+
+
+.navigator-icons{
+    position: static;
     background-color: var(--color-dark);
     width: 100%;
     height: 45px;
     margin: 0;
     padding: 0;
-    padding-top: 4px;
-    position: static;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+    align-content: center;
 }
 
 .container-icons{
-    display: grid;
-    grid-template-columns: 86% 7% 7%;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
 
     position: relative;
-    top: 5px;
+    right: 10px;
 }
 
 .buttom-menu-container{
@@ -48,7 +59,7 @@ html {
     width: 40px;
     position: fixed;
     left: 5px;
-    top: 8px;
+    top: 8px; 
     border-style: none;
     background-color: var(--color-yellow-light-navar);
     border-radius: 5px;
@@ -70,18 +81,18 @@ html {
 .icon-twitter{
     height: 25px;
     width: 25px;
-    position: inherit;
-    left: 91.8%;
+    margin-right: 5px;
 }
 
 .icon-instagram{
     height: 25px;
     width: 25px;
+    margin-right: 5px;
 }
 
 .icon-usuario{
     height: 25px;
-    width: 25px;
+    width: 25px; 
 }
 
 /* SERACH */
@@ -90,29 +101,34 @@ html {
     background-size: cover;
     background-position: -240px;
     background-image: var(--background-img);
-    height: 464px;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
 }
 
 .glass-search-container{
-    position: absolute;
-    width: 85%;
-    height: 387px;
-    left: 25px;
-    top: 55px;
+    width: 88%;
+    height: auto;
 
     background: linear-gradient(180deg, rgba(217, 217, 217, 0.47) 2.19%, rgba(255, 252, 252, 0.12) 99.95%);
     box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
     backdrop-filter: blur(22px);
 
     border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #tittle-page{
     /* TITULO PAGINA */
-    width: 300px;
-    position: inherit;
-    top: 6rem;
-    left: 3.5rem;
+    width: auto;
+    margin-top: 50px;
     font-size: 48px;
     text-align: center;
     line-height: 60px;
@@ -121,13 +137,13 @@ html {
 .header-searchForm {
     /* CONTENEDOR BUSCADOR */
     width: 85%;
-    position: absolute;
-    bottom: 60px;
-    left: 30px;
 
     display: flex;
     justify-content: center;
+    align-content: center;
     align-items: center;
+
+    margin-bottom: 50px;
 }
 
 #input-movie {
@@ -151,7 +167,7 @@ html {
 
 #searchBtn{
     position: absolute;
-    right: 10px;
+    right: 10%;
     border-style: none;
     background: var(--color-yellow-light-navar);
     border-radius: 50px;
@@ -180,36 +196,33 @@ html {
 
     position: fixed;
     top: 0px;
-    padding-left: 40px;
-
-    background-color: var(--color-dark);
+    
     transform: translateX(-100%);
 }
 
 .categoriesPreview-container--show{
-    width: 100%;
-    height: 100%;
-
-    position: fixed;
-    top: 0px;
-    
-    z-index: 1;
     background-color: var(--color-dark);
-    transform: translateX(0);
 
+    z-index: 1;
+    transform: translateX(0);
     overflow-y: scroll;
 }
 
 .category-title-container{
     /* TITULO CATEGORIA */
-    width: 180px;
+    width: 70%;
+    height: 70px;
 
     position: relative;
-    left: 5rem;
+    right: 15%;
+    left: 15%;
 
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: var(--color-yellow-light-navar);
 }
 
@@ -221,6 +234,7 @@ html {
     flex-wrap: wrap;
 
     display: grid;
+    justify-items: center;
     grid-template-columns: 50% 50%;
 }
 
@@ -246,10 +260,10 @@ html {
     /* CONTENEDOR TITULO TRENDS */
     width: 100%;
     display: flex;
-
+    justify-content: center;
     
     
-    background-color: var(--color-dark);
+    
     
 }
 
@@ -258,7 +272,7 @@ html {
 
     position: relative;
     bottom: 10px;
-    left: 50px;
+    left: 35px;
 
     
     padding: 15px 20px 15px 30px;
@@ -272,7 +286,7 @@ html {
     height: 50px;
 
     position: relative;
-    right: 40px;
+    right: 56px;
     top: -2px;
 
     border-style: none;
@@ -284,7 +298,7 @@ html {
 
 .trendingPreview-movieList {
     /* CONTENEDOR LISTA DE PELICULAS */
-    background-color: var(--color-dark);
+    
     user-select:none;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -299,17 +313,17 @@ html {
     display: flex;
     justify-content:center;
     position: absolute;
-    width: 300px;
+    width: 240px;
     max-width:450px;
     height: 80px;
     z-index: 1;
-    opacity: 0;
     top: -40%;
-    left: 5rem;
+    right: 12%;
+    left: 12%;
 
     border-radius: 20px;
     color: var(--color-light);
-    background-color: var(--color-dark);
+    /* background-color: var(--color-dark); */
     transform: scale(130%);
     transition: opacity .2s ease-in-out;
     animation:  all 2s;
@@ -362,8 +376,92 @@ html {
 
     100%{
         top: -30px;
-        transform: scale(120%);
+        transform: scale(110%);
         box-shadow: 0px 4px 12px 16px rgba(0, 0, 0, 0.25);
         border-radius: 24px;
     }
 }
+
+
+/* GENERADOS DE LISTA PELICULAS */
+
+.genericList-container {
+
+    /* CONTENEDOR DE LA LISTA  */
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-title-category-select{
+    /* CONTENEDOR CATEGORIA SELECT */
+
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: var(--color-yellow-light-navar);
+    width: 180px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#categoryTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.movie-container p{
+    /* position: relative;
+    bottom: 31px; */
+
+    width: 300px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    color: #f78400;
+    position: relative;
+    bottom: 8px;
+    margin-bottom: 10px;    
+}
+
+.header-container{
+    width: 300px;
+    height: 450px;
+    
+    
+    
+}
+
+
+
+#movieDetail{
+    
+}
+
+.container-detail-select-movie{
+    display: flex;
+    justify-content: center;
+}
+
+.movieDetail-title{
+    
+    background-color: aliceblue;
+}
+
+#movieDetail{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.categories-list{
+    display: flex;
+    
+}
+
+
+

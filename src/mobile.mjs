@@ -9,6 +9,8 @@ const containerShowMenu = document.getElementById('categoriesPreview');
 //categorys
 const selectorCategorys = document.querySelector('.category-title');
 
+
+
 buttomMenu.addEventListener('click', () => {
     containerShowMenu.classList.toggle('categoriesPreview-container--show');
     categoriesPreviewSection.style.display = "block";
