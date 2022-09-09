@@ -323,7 +323,7 @@ body{
 
     border-radius: 20px;
     color: var(--color-light);
-    /* background-color: var(--color-dark); */
+    background-color: var(--color-dark);
     transform: scale(130%);
     transition: opacity .2s ease-in-out;
     animation:  all 2s;
@@ -397,14 +397,21 @@ body{
 
 .contenedor-title-category-select{
     /* CONTENEDOR CATEGORIA SELECT */
+    width: 180px;
+}
+
+.contenedor-title-category-select h1{
+    width: 100%;
+    height: 100%;
 
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+
     background-color: var(--color-yellow-light-navar);
-    width: 180px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    
 }
 
 #categoryTitle{
@@ -429,39 +436,88 @@ body{
 }
 
 .header-container{
-    width: 300px;
-    height: 450px;
-    
-    
-    
+    transform: translateX(100%);  
+    transform: scale(0);
 }
 
-
-
-#movieDetail{
-    
+.header-container.header-container--long{
+    transform: translateX(0);
+    width: 300px;
+    height: 450px; 
 }
 
 .container-detail-select-movie{
     display: flex;
-    justify-content: center;
-}
-
-.movieDetail-title{
-    
-    background-color: aliceblue;
-}
-
-#movieDetail{
-    display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    height: 500px;
+    position: relative;
+    top: 30px;
+    z-index: -1;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .categories-list{
+    width: 100%;
     display: flex;
-    
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
+.movieDetail-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 
+    background-color: var(--color-yellow-light-navar);
+
+}
+
+.relatedMovies-container{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.relatedMovies-scrollContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.relatedMovies-scrollContainer .movie-container{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.categories-list{
+    width: 100%;
+}
+
+.category-container{
+    margin-right: 5px;
+    background-color: var(--color-dark);
+}
+
+.movieDetail-score::before{
+    content: '⭐';
+}
+
+.category-title{
+
+    display: flex;
+    justify-content: center;
+    color: var(--color-yellow-light-navar);
+}
+
+footer {
+    background-color: var(--color-yellow-light-navar);
+    display: flex;
+    justify-content: center;
+}
