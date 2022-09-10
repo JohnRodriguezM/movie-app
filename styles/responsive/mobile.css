@@ -450,7 +450,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 500px;
     position: relative;
     top: 30px;
     z-index: -1;
@@ -510,7 +509,6 @@ body{
 }
 
 .category-title{
-
     display: flex;
     justify-content: center;
     color: var(--color-yellow-light-navar);
