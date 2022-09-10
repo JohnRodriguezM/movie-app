@@ -12,20 +12,25 @@
       rel="stylesheet"
     />
      <!-- <link rel="stylesheet" href="./styles/app.css"/>   -->
-     <link rel="stylesheet" href="./styles/styles.css" />
+     <link rel="stylesheet" href="./styles/responsive/mobile.css" media="screen and (max-width: 425px)"/>
+     <link rel="stylesheet" href="./styles/responsive/tablet.css" media="screen and (min-width: 768px)" />
+     <link rel="stylesheet" href="./styles/responsive/desktop.css" media="screen and (min-width: 1024px)" />
 
     <title>Full Movies</title>
   </head>
   <body>
-    <header id="header" class="header-container">
-      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
+    
+
+    <nav class="navigator-icons">
       <span id="back" class="header-arrow inactive">
         <section class="container-icons">
-          <img
+          <button id="button-menu" class="buttom-menu-container">
+            <img
             class="icon-back"
             src="./styles/icons/icon_back.svg"
             alt="icon_back"
           />
+          </button>
           <img
             class="icon-twitter"
             src="./styles/icons/icon_twitter.svg"
@@ -43,15 +48,12 @@
           />
         </section>
       </span>
-    </header>
+    </nav>
 
     <section class="search-background">
       <section class="glass-search-container">
         <h1 id="tittle-page" class="header-title">Universal Movies</h1>
-        <h1
-          class="header-title header-title--categoryView inactive"
-          id="categoryTitle"
-        ></h1>
+        
         <form id="searchForm" class="header-searchForm">
           <input
             id="input-movie"
@@ -66,21 +68,8 @@
       </section>
     </section>
 
+
     <section class="view-contenedor">
-      <!-- CATEGORIAS -->
-    <section id="categoriesPreview" class="categoriesPreview-container">
-      <div class="category-title-container">
-        <h2 class="categoriesPreview-title">Categories</h2>
-      </div>
-
-      <article class="categoriesPreview-list">
-        <!-- <div class="category-container">
-          <h3 id="id28" class="category-title">Romance</h3>
-        </div> -->
-      </article>
-    </section>
-    <!-- CATEGORIAS -->
-
     <!-- MOVIES -->
     <section id="trendingPreview" class="trendingPreview-container">
       <div class="trendingPreview-header">
@@ -103,17 +92,43 @@
     <!-- MOVIES -->
     </section>
 
-    
+     <!-- CATEGORIAS -->
+     <section id="categoriesPreview" class="categoriesPreview-container">
+      <div class="category-title-container">
+        <h2 class="categoriesPreview-title">Categories</h2>
+      </div>
 
-    <section id="genericList" class="genericList-container inactive"></section>
-      <!-- <div class="movie-container">
-        <img
-          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-          class="movie-img"
-          alt="Nombre de la película"
-        />
-      </div>-->
+      <article class="categoriesPreview-list">
+        <!-- <div class="category-container">
+          <h3 id="id28" class="category-title">Romance</h3>
+        </div> -->
+      </article>
     </section>
+    <!-- CATEGORIAS -->
+
+    <section class="contenedor-title-category-select">
+      <h1 class="header-title header-title--categoryView inactive" id="categoryTitle" ></h1>
+    </section>
+    
+    <section id="genericList" class="genericList-container inactive"></section>
+    <!-- <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>-->
+  </section>
+
+  <div class="container-detail-select-movie">
+    <header id="header" class="header-container">
+      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
+    </header>
+
+    
+    
+  </div>
+  
 
     <section id="movieDetail" class="movieDetail-container inactive">
       <h1 class="movieDetail-title">---</h1>
@@ -126,8 +141,10 @@
         </div>-->
       </article>
 
+
+      <h2 class="relatedMovies-title">Películas similares</h2>
       <article class="relatedMovies-container">
-        <h2 class="relatedMovies-title">Películas similares</h2>
+        
 
         <div class="relatedMovies-scrollContainer">
           <!--<div class="movie-container">
@@ -141,10 +158,11 @@
       </article>
     </section>
 
-    <footer>By universal moviessss</footer>
+    <footer class="footer-text">By universal moviessss</footer>
     <script type="module" src="./src/nodes.mjs"></script>
     <script type="module" src="./src/main.mjs"></script>
     <script type="module" src="./src/navigation.mjs"></script>
+    <script src="./src/mobile.js"></script>
     <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
   </body>
 </html>

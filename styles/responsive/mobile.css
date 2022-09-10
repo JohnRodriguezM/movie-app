@@ -1,0 +1,521 @@
+:root {
+    --color-light: rgb(255, 255, 255);
+    --color-yellow-medium: #f78400;
+    --color-yellow-light-navar: #f8be00;
+    --color-dark: #111111;
+    --background-img: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
+    --font-family-titles: "Dosis", sans-serif;
+    --font-family-text: "Red Hat Display", sans-serif;
+}
+
+/* NAVEGADOR */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    
+} 
+
+
+html {
+    user-select: none;
+}
+
+body{
+    background-color: var(--color-dark);
+}
+
+
+/* NAVAR */
+
+
+.navigator-icons{
+    position: static;
+    background-color: var(--color-dark);
+    width: 100%;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+    align-content: center;
+}
+
+.container-icons{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    position: relative;
+    right: 10px;
+}
+
+.buttom-menu-container{
+    height: 25px;
+    width: 40px;
+    position: fixed;
+    left: 5px;
+    top: 8px; 
+    border-style: none;
+    background-color: var(--color-yellow-light-navar);
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.buttom-menu-container:active{
+    background-color: var(--color-yellow-medium);
+}
+
+.icon-back{
+    height: 15px;
+    width: 15px;
+    position: relative;
+    left: -2px;
+    top: 3px;
+}
+
+.icon-twitter{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.icon-instagram{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.icon-usuario{
+    height: 25px;
+    width: 25px; 
+}
+
+/* SERACH */
+
+.search-background {
+    background-size: cover;
+    background-position: -240px;
+    background-image: var(--background-img);
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.glass-search-container{
+    width: 88%;
+    height: auto;
+
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0.47) 2.19%, rgba(255, 252, 252, 0.12) 99.95%);
+    box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
+    backdrop-filter: blur(22px);
+
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#tittle-page{
+    /* TITULO PAGINA */
+    width: auto;
+    margin-top: 50px;
+    font-size: 48px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.header-searchForm {
+    /* CONTENEDOR BUSCADOR */
+    width: 85%;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    margin-bottom: 50px;
+}
+
+#input-movie {
+    /* BUSCADOR */
+    height: 60px;
+    width: 100%;
+    font-size: 15px;
+    padding-left: 30px;
+    padding-right: 80px;
+
+    border-style: none;
+    outline-style: none;
+    color: var(--color-dark);
+    background: var(--color-light);
+    border-radius: 42px;
+}
+
+#input-movie::placeholder{
+    color: var(--color-dark);
+}
+
+#searchBtn{
+    position: absolute;
+    right: 10%;
+    border-style: none;
+    background: var(--color-yellow-light-navar);
+    border-radius: 50px;
+}
+
+#searchBtn img{
+    height: 25px;
+    width: 25px;
+    margin: 10px 15px;
+}
+
+#categoryTitle{
+    position: inherit;
+    right: 20px;
+    bottom: 10px;
+}
+
+/* BARRA HORIZONTAL DE PELICULAS */
+
+.categoriesPreview-container{
+    /* CONTENEDOR CATEGORIAS */
+
+    width: 100%;
+    
+    height: 100%;
+
+    position: fixed;
+    top: 0px;
+    
+    transform: translateX(-100%);
+}
+
+.categoriesPreview-container--show{
+    background-color: var(--color-dark);
+
+    z-index: 1;
+    transform: translateX(0);
+    overflow-y: scroll;
+}
+
+.category-title-container{
+    /* TITULO CATEGORIA */
+    width: 70%;
+    height: 70px;
+
+    position: relative;
+    right: 15%;
+    left: 15%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: var(--color-yellow-light-navar);
+}
+
+.categoriesPreview-list{
+    /* CONTENEDOR DE CATEGORIAS */
+    
+    color: var(--color-light);
+
+    flex-wrap: wrap;
+
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 50% 50%;
+}
+
+.category-container{
+    /* TEXTO DE CATEGORIAS */
+    width: 150px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.category-container:active{
+    /* DAR CLICK A LAS CATEGORIA */
+    color: var(--color-dark);
+    background-color: var(--color-yellow-light-navar);
+}
+
+
+/* TRENDS PELICULAS */
+
+
+.trendingPreview-header{
+    /* CONTENEDOR TITULO TRENDS */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    
+    
+    
+}
+
+.trendingPreview-header h2{
+    width: 250px;
+
+    position: relative;
+    bottom: 10px;
+    left: 35px;
+
+    
+    padding: 15px 20px 15px 30px;
+    background-color: var(--color-yellow-light-navar);
+    color: var(--color-dark);
+    border-radius: 10px;
+}
+
+.trendingPreview-header button{
+    width: 80px;
+    height: 50px;
+
+    position: relative;
+    right: 56px;
+    top: -2px;
+
+    border-style: none;
+    border-radius: 10px;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+
+.trendingPreview-movieList {
+    /* CONTENEDOR LISTA DE PELICULAS */
+    
+    user-select:none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 250px;
+    padding-top: 50px;
+    padding-left: 15px;
+}
+
+.card-hover{
+    /* TARGET PELICULA */
+    display: flex;
+    justify-content:center;
+    position: absolute;
+    width: 240px;
+    max-width:450px;
+    height: 80px;
+    z-index: 1;
+    top: -40%;
+    right: 12%;
+    left: 12%;
+
+    border-radius: 20px;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    transform: scale(130%);
+    transition: opacity .2s ease-in-out;
+    animation:  all 2s;
+}
+
+.card-hover p {
+    position: inherit;
+    left: 3rem;
+    top: 20px;
+}
+
+.card-hover .close-card{
+    position: inherit;
+    right: 10px;
+    top: 5px;
+}
+
+.card-hover .calificacion-card{
+    position: inherit;
+    top: 45px;
+}
+
+.trendingPreview-movieList .movie-container {
+    /* ARTICULO */
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.movie-container .movie-img{
+    /* IMAGEN PELICULA */
+    background-color: red;
+    border-radius: 20px;
+}
+
+.movie-container img:hover{
+    /* MOVIMIENTO DE LA PELICULA TREND */
+    position: relative;
+    animation-name: pelicula;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+@keyframes pelicula{
+    0%{
+        top: 0px;
+    }
+
+    100%{
+        top: -30px;
+        transform: scale(110%);
+        box-shadow: 0px 4px 12px 16px rgba(0, 0, 0, 0.25);
+        border-radius: 24px;
+    }
+}
+
+
+/* GENERADOS DE LISTA PELICULAS */
+
+.genericList-container {
+
+    /* CONTENEDOR DE LA LISTA  */
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-title-category-select{
+    /* CONTENEDOR CATEGORIA SELECT */
+    width: 180px;
+}
+
+.contenedor-title-category-select h1{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--color-yellow-light-navar);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    
+}
+
+#categoryTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.movie-container p{
+    /* position: relative;
+    bottom: 31px; */
+
+    width: 300px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    color: #f78400;
+    position: relative;
+    bottom: 8px;
+    margin-bottom: 10px;    
+}
+
+.header-container{
+    transform: translateX(100%);  
+    transform: scale(0);
+}
+
+.header-container.header-container--long{
+    transform: translateX(0);
+    width: 300px;
+    height: 450px; 
+}
+
+.container-detail-select-movie{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+    z-index: -1;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.categories-list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.movieDetail-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    background-color: var(--color-yellow-light-navar);
+
+}
+
+.relatedMovies-container{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.relatedMovies-scrollContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.relatedMovies-scrollContainer .movie-container{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.categories-list{
+    width: 100%;
+}
+
+.category-container{
+    margin-right: 5px;
+    background-color: var(--color-dark);
+}
+
+.movieDetail-score::before{
+    content: '⭐';
+}
+
+.category-title{
+    display: flex;
+    justify-content: center;
+    color: var(--color-yellow-light-navar);
+}
+
+footer {
+    background-color: var(--color-yellow-light-navar);
+    display: flex;
+    justify-content: center;
+}
