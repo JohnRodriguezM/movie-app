@@ -229,7 +229,11 @@ export const getMovie = async () => {
   filterElementsWithoutImg.map(el => {
 
     const divContent = document.createRange().createContextualFragment(/*html*/`
+<<<<<<< Updated upstream
       <div class="movie-container" id = "${el.id}">
+=======
+      <div data-aos="fade-up-right" class="movie-search" id = "${el.id}">
+>>>>>>> Stashed changes
         <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
         <p id = "${el.id}">${el.title}</p>
       </div>

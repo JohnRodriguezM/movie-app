@@ -29,6 +29,12 @@ body{
 
 
 /* NAVAR */
+<<<<<<< Updated upstream
+=======
+.navar{
+    width: 100%;
+    height: 70px;
+>>>>>>> Stashed changes
 
 
 .navigator-icons{
