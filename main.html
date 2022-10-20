@@ -11,126 +11,93 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
-     <!-- <link rel="stylesheet" href="./styles/app.css"/>   -->
-     <link rel="stylesheet" href="./styles/responsive/mobile.css" media="screen and (max-width: 425px)"/>
-     <link rel="stylesheet" href="./styles/responsive/tablet.css" media="screen and (min-width: 768px)" />
-     <link rel="stylesheet" href="./styles/responsive/desktop.css" media="screen and (min-width: 1024px)" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./styles/app.css" /> -->
+
+    <link
+      rel="stylesheet"
+      media="(max-width: 425px)"
+      href="./styles/responsive/mobile.css"
+    />
 
     <title>Full Movies</title>
   </head>
   <body>
-    
+    <!-- HEADER -->
+    <header id="header" class="header-container">
+      <span class="header-arrow inactive">&lt;</span>
 
-    <nav class="navigator-icons">
-      <span id="back" class="header-arrow inactive">
-        <section class="container-icons">
-          <button id="button-menu" class="buttom-menu-container">
-            <img
-            class="icon-back"
-            src="./styles/icons/icon_back.svg"
-            alt="icon_back"
-          />
-          </button>
-          <img
-            class="icon-twitter"
-            src="./styles/icons/icon_twitter.svg"
-            alt="twitter"
-          />
-          <img
-            class="icon-instagram"
-            src="./styles/icons/icon_instagram.svg"
-            alt="instagram"
-          />
-          <img
-            class="icon-usuario"
-            src="./styles/icons/icon_usuario.svg"
-            alt="usuario"
-          />
-        </section>
-      </span>
-    </nav>
+      <section class="navar">
+        <img
+          class="icon"
+          src="./styles/icons/icon_instagram.svg"
+          alt="Instagram"
+        />
+        <img class="icon" src="./styles/icons/icon_twitter.svg" alt="Twitter" />
+        <img
+          class="icon"
+          src="./styles/icons/icon_usuario.svg"
+          alt="Portafolio"
+        />
+      </section>
+      <section class="container-glass">
+        <h1 class="header-title">Universal Movies</h1>
+        <h1
+          class="header-title header-title--categoryView inactive"
+          id="categoryTitle"
+        ></h1>
 
-    <section class="search-background">
-      <section class="glass-search-container">
-        <h1 id="tittle-page" class="header-title">Universal Movies</h1>
-        
         <form id="searchForm" class="header-searchForm">
-          <input
-            id="input-movie"
-            type="text"
-            placeholder="Ej: Avengers"
-            autofocus
-          />
-          <button id="searchBtn">
-            <img class="iconBtn" src="./styles/icons/icon_search.svg" alt="" />
-          </button>
+          <input type="text" placeholder="Ej: Avengers" autofocus />
+          <button id="searchBtn">🔍</button>
         </form>
       </section>
-    </section>
+    </header>
 
-
-    <section class="view-contenedor">
-    <!-- MOVIES -->
+    <!-- MOVIE PREVIEW  -->
     <section id="trendingPreview" class="trendingPreview-container">
       <div class="trendingPreview-header">
-        <h2 class="trendingPreview-title">Trends</h2>
-        <button class="trendingPreview-btn">Ver más</button>
+        <div class="container-trens">
+          <h2 class="trendingPreview-title">Trends</h2>
+          <button class="trendingPreview-btn">Ver más</button>
+        </div>
       </div>
 
-      <div class="container-movies">
-        <article class="trendingPreview-movieList">
-          <!-- <div class="movie-container">
-          <img
-            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-            class="movie-img"
-            alt="Nombre de la película"
-          />
-        </div> -->
-        </article>
-      </div>
-    </section>
-    <!-- MOVIES -->
+      <article class="trendingPreview-movieList">
+        <!-- <div class="movie-container">
+        <img
+          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+          class="movie-img"
+          alt="Nombre de la película"
+        />
+      </div> -->
+      </article>
     </section>
 
-     <!-- CATEGORIAS -->
-     <section id="categoriesPreview" class="categoriesPreview-container">
-      <div class="category-title-container">
-        <h2 class="categoriesPreview-title">Categories</h2>
-      </div>
+    <!-- CATEGORYS MOVIES -->
+    <section data-aos="fade-right" id="categoriesPreview" class="categoriesPreview-container">
+      <h2 class="categoriesPreview-title">Categories</h2>
 
       <article class="categoriesPreview-list">
         <!-- <div class="category-container">
-          <h3 id="id28" class="category-title">Romance</h3>
-        </div> -->
+        <h3 id="id28" class="category-title">Romance</h3>
+      </div> -->
       </article>
     </section>
-    <!-- CATEGORIAS -->
 
-    <section class="contenedor-title-category-select">
-      <h1 class="header-title header-title--categoryView inactive" id="categoryTitle" ></h1>
+    <!-- MOVIES BY CATEGORY AND SEARCH -->
+    <section id="genericList" class="genericList-container inactive">
+      <!-- <div class="movie-container">
+        <img
+          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+          class="movie-img"
+          alt="Nombre de la película"
+        />
+      </div>-->
     </section>
-    
-    <section id="genericList" class="genericList-container inactive"></section>
-    <!-- <div class="movie-container">
-      <img
-        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-        class="movie-img"
-        alt="Nombre de la película"
-      />
-    </div>-->
-  </section>
 
-  <div class="container-detail-select-movie">
-    <header id="header" class="header-container">
-      <!-- <span id="back" class="header-arrow inactive">&lt;</span> -->
-    </header>
-
-    
-    
-  </div>
-  
-
-    <section id="movieDetail" class="movieDetail-container inactive">
+    <!-- MOVIE DETAILS -->
+    <section data-aos="fade-right" id="movieDetail" class="movieDetail-container">
       <h1 class="movieDetail-title">---</h1>
       <span class="movieDetail-score">7.6</span>
       <p class="movieDetail-description">Not founded</p>
@@ -141,10 +108,8 @@
         </div>-->
       </article>
 
-
-      <h2 class="relatedMovies-title">Películas similares</h2>
       <article class="relatedMovies-container">
-        
+        <h2 class="relatedMovies-title">Películas similares</h2>
 
         <div class="relatedMovies-scrollContainer">
           <!--<div class="movie-container">
@@ -158,11 +123,21 @@
       </article>
     </section>
 
-    <footer class="footer-text">By universal moviessss</footer>
+
+    <footer>By universal moviessss</footer>
+
+    <!-- LIBRERIAS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <script type="module" src="./src/nodes.mjs"></script>
     <script type="module" src="./src/main.mjs"></script>
     <script type="module" src="./src/navigation.mjs"></script>
-    <script src="./src/mobile.js"></script>
+    <script type="module" src="./src/mobile.mjs"></script>
+
+    <!-- ANIMACION JS -->
+    <script type="module" src="./src/animations.js"></script>
     <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
   </body>
 </html>

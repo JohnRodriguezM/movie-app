@@ -11,7 +11,18 @@ import {
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-import { removeClass, addClass, displayNoneRemove, displayNoneAdd } from './utils/helpers.mjs'
+import { 
+  removeClass,
+  addClass,
+  displayNoneRemove,
+  displayNoneAdd, 
+  displayInactiveClassAnimation,
+  displayRemoveClassAnimation, 
+  displayRemoveClassAnimationInactive,
+  addClassStatusInactive,
+  addClassStatusactive,
+  removeStatus
+} from './utils/helpers.mjs'
 
 const {
   headerSection,
@@ -24,11 +35,9 @@ const {
   movieDetailSection,
   categoriesPreviewSection,
   searchFormBtn,
-  trendingBtn } = DOM_ELEMENTS;
-
-
-
-
+  trendingBtn,
+  glassSection
+} = DOM_ELEMENTS;
 
 
 window.addEventListener('DOMContentLoaded', e => {
@@ -48,13 +57,24 @@ document.addEventListener('click', e => {
 })
 
 
-
+// START PAGES 
 const homePage = () => {
+  
+
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
 
-  displayNoneAdd(arrowButton, headerCategoryTitle, genericSection, movieDetailSection)
+  /** BACKUP 
+   *  displayNoneAdd(arrowButton, headerCategoryTitle,  genericSection, movieDetailSection)
+   */
+
+  removeStatus(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection)
+
+  displayInactiveClassAnimation(movieDetailSection);
+  displayRemoveClassAnimation(movieDetailSection);
+
+  displayNoneAdd(arrowButton, headerCategoryTitle, genericSection)
 
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
@@ -69,28 +89,38 @@ const categoriesPage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
+
+  /*
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
+  */
+
+  displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
   console.log('we are in categories mode');
 }
 
+// UPDATE DETAILS MOVIE
 const movieDetailsPage = () => {
   addClass(headerSection, 'header-container--long')
   addClass(arrowButton, 'header-arrow--white')
+  addClass(movieDetailSection, 'active-details')
+
+  displayRemoveClassAnimationInactive(movieDetailSection);
+
+  addClassStatusInactive(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection);
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
-
-  displayNoneRemove(arrowButton, movieDetailSection)
 
   console.log('we are in movie details mode')
 }
 
+// TRENDS PAGES
 const trendsPage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-
+  
 
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
