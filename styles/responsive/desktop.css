@@ -80,6 +80,7 @@ body{
 .header-container{
     width: 100%;
     height: 70vh;
+    max-height: 1024px;
 
     display: flex;
     flex-wrap: nowrap;
@@ -181,6 +182,11 @@ input{
     align-items: center;
 
     background-color: var(--color2);
+}
+
+.trendsOnTv{
+    margin-top: 15px !important;
+    margin-right: 0 !important;
 }
 
 /* BACKGROUND TRENDS */

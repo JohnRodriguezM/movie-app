@@ -158,9 +158,9 @@ export const getCategegoriesPageTwo = async () => {
 
     const mapOverMap = mapeo.map(elMap => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
-        <div class="movie-container">
+        <div data-aos="fade-up" class="movie-container trendsOnTv">
           <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
-          <p>${elMap.title}</p>
+          <p class="movie-name" >${elMap.title}</p>
         </div>
       `)
 

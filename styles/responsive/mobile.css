@@ -154,6 +154,11 @@ input{
     background-color: var(--color2);
 }
 
+.trendsOnTv{
+    margin-top: 15px !important;
+    margin-right: 0 !important;
+}
+
 /* CONTENEDOR TRENDS */
 .trendingPreview-header{
     height: 50px;

@@ -160,6 +160,11 @@ input{
     background-color: var(--color2);
 }
 
+.trendsOnTv{
+    margin-top: 15px !important;
+    margin-right: 10px !important;
+}
+
 /* CONTENEDOR TRENDS */
 .trendingPreview-header{
     height: 50px;
@@ -192,7 +197,7 @@ input{
     color: var(--colorText);
 }
 
-/* TITULO TRENDS */
+/* TITULO TRENDS genericList-container*/
 /* .trendingPreview-title{
 } */
 
