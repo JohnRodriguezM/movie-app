@@ -25,7 +25,7 @@ const {
 
 import { navigator } from './navigation.mjs'
 
-import { toggleOpacity } from './utils/helpers.mjs'
+import { toggleOpacity, scrollMove} from './utils/helpers.mjs'
 
 
 export const getTrendingMoviesPreview = async () => {
@@ -75,6 +75,7 @@ export const getTrendingMoviesPreview = async () => {
       img.addEventListener('click', e => {
         console.log("click card");
         card.style.opacity = 1
+        card.style.visibility = "visible"
         //card.style.top = '20%'
         //toggleOpacity(.97, headerSection, categoriesPreviewSection, containerMovie)
         //toggleOpacity(.97, trendingMoviesPreviewList)
@@ -84,6 +85,7 @@ export const getTrendingMoviesPreview = async () => {
       closeTag.addEventListener('click', e => {
         console.log("cerrando");
         card.style.opacity = 0
+        card.style.visibility = 'hidden'
         //card.style.top = '-40%'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
       })
@@ -116,11 +118,13 @@ export const getCategegoriesPreview = async () => {
 
       const categoryTitle = categoryContainer.querySelector('.category-title')
 
+      // EXECUTE ACTION FOR CLICK 
       categoryTitle.addEventListener('click', (e) => {
         /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
         //!pendiente pasar data a navigator pero sin necesidad de un doble click
+        
         location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
-        getMovieByCategory(String(e.target.dataset.id), elMap.name)
+        getMovieByCategory(String(e.target.dataset.id), elMap.name).then(scrollMove(1022))   
       })
 
       categoriesPreviewList.appendChild(categoryContainer)
@@ -181,14 +185,17 @@ export async function getMovieByCategory(id, name) {
 
     filterElementsWithoutImg.map(el => {
 
-      const divContent = document.createRange().createContextualFragment(/*html*/`
-        <div data-aos="fade-right" class="movie-container movie-category" id = "${el.id}">
+      const  divContent = document.createRange().createContextualFragment(/*html*/`
+        <div data-aos="fade-up" class="movie-container movie-category" id = "${el.id}">
           <img class="movie-img movie-img-category" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
           <section class="movie-description">
             <p class="movie-name" id = "${el.id}">${el.title}</p>
           </section>
         </div>
       `)
+      
+
+      
 
       const mainMovieContainer = divContent.querySelector('.movie-container')
 

@@ -14,7 +14,7 @@ export const displayNoneRemove = (...elements) => elements.map(el => {
   el.classList.remove('inactive');
 })
 
-// Duvan -> addclass and remove class active detailmovie
+// addclass and remove class active detailmovie
 export const displayInactiveClassAnimation = (...element) => element.map ( el => {
   el.classList.add('inactive-details')
 })
@@ -32,13 +32,25 @@ export const addClassStatusInactive = (...elements) => elements.map((el) => {
   el.classList.add('inactiveStatus');
 })
 
+export const removeStatus = (...elements) => elements.map((el) => {
+  el.classList.remove('inactiveStatus')
+})
+
 export const addClassStatusactive = (...elements) => elements.map((el) => {
   el.classList.add('activeStatus');
 })
 
-export const removeStatus = (...elements) => elements.map((el) => {
-  el.classList.remove('inactiveStatus')
-})
+export const removeStatusActive = (...elements) => elements.map( el => el,classList.remove('active'))
+
+
+
+// Dezplazamiento vectical del scroll
+export const scrollMove = (vertical) => {
+  window.scrollTo({
+    behavior: 'smooth',
+    top: vertical
+  })
+}
 // ----
 
 export const toggleOpacity = (opacity, ...elements) => {

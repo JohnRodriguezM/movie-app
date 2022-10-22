@@ -1,11 +1,15 @@
 :root {
-    --color-light: rgb(255, 255, 255);
-    --color-yellow-medium: #f78400;
-    --color-yellow-light-navar: #f8be00;
-    --color-dark: #111111;
+    /* COLOR PALETTE */
+    --color1: #111138;
+    --color2: #111111;
+    --color3: #fff;
+    --gradiante: linear-gradient(rgb(116,9,121), rgb(185,8,246), rgb(91,28,230));
+    /* BOTONES */
+    --colorButton1: rgb(181,53,246);
+    /* LETRA*/
+    --colorText: #fff;
+    /* FONDO IMG*/
     --background-img: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
-    --font-family-titles: "Dosis", sans-serif;
-    --font-family-text: "Red Hat Display", sans-serif;
 }
 
 *{
@@ -16,9 +20,11 @@
 }
 
 body{
-    background-color: var(--color-dark);
+    background-color: var(--color2);
     overflow-x: hidden;
 }
+
+
 
 /* BOTON BACK */
 .header-arrow{
@@ -33,7 +39,7 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: var(--color-yellow-light-navar);
+    background-color: var(--colorButton1);
     font-size: 20px;
     color: white;
 }
@@ -52,7 +58,7 @@ body{
     align-content: center;
     flex-wrap: nowrap;
     
-    background-color: var(--color-dark);
+    background-color: var(--color2);
 }
 
  /* ICONOS */
@@ -134,7 +140,7 @@ input{
     width: 40px;
     height: 40px;
 
-    background-color: var(--color-yellow-light-navar);
+    background: var(--gradiante);
     outline: none;
     border-style: none;
     border-bottom-right-radius: 10px;
@@ -145,7 +151,7 @@ input{
 
 /* CONTENEDOR PELICULAS Y TRENDS  */
 .trendingPreview-container{
-    background-color: var(--color-dark);
+    background-color: var(--color2);
 }
 
 /* CONTENEDOR TRENDS */
@@ -158,7 +164,7 @@ input{
     justify-content: center;
     align-items: center;
 
-    background-color: var(--color-dark);
+    background-color: var(--color2);
 }
 
 /* BACKGROUND TRENDS */
@@ -175,8 +181,8 @@ input{
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-
-    background-color: var(--color-yellow-light-navar);
+    color: var(--colorText);
+    background: var(--gradiante);
 }
 
 /* TITULO TRENDS */
@@ -188,8 +194,8 @@ input{
     outline: none;
     border-style: none;
     margin-left: 5px;
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: var(--color2);
+    color: var(--colorText);
     padding: 5px;
     border-radius: 5px;
 }
@@ -242,8 +248,8 @@ input{
     position: relative;
     top: -87px;
 
-    color: var(--color-light);
-    background-color: var(--color-yellow-medium);
+    color: var(--colorText);
+    background-color: var(--color1);
 
     opacity: 0;
     transition: opacity 500ms ease-in-out;
@@ -287,7 +293,7 @@ input{
 /* CONTAINER CATEGORY*/
 .categoriesPreview-container{
     width: 100%;
-    background-color: var(--color-yellow-light-navar);
+    background-color: var(--color1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -306,8 +312,8 @@ input{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-dark);
-    color: var(--color-yellow-light-navar);
+    background: var(--gradiante);
+    color: var(--colorText);
 
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -330,13 +336,23 @@ input{
     margin: 2px;
     padding: 5px;
     transition: all 500ms;
+    color: var(--colorText);
 }
 /* CATEGORY HOVER */
 .category-container:hover{
-    background-color: var(--color-dark);
-    color: var(--color-yellow-light-navar);
+    background-color: var(--colorButton1);
+    color: var(--colorText);
     border-radius: 5px;
     transform: scale(105%);
+}
+
+.category-container .ancla{
+    text-decoration: none;
+    color: var(--colorText);
+}
+
+.category-container:hover .ancla{
+    color: var(--colorText);
 }
 
 /* ------------------- */
@@ -364,14 +380,14 @@ input{
 .movie-name{
     width: 300px;
     height: 50px;
-    background-color: var(--color-yellow-medium);
+    background-color: var(--color1);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: relative;
-    color: var(--color-dark);
+    color: var(--colorText);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px; 
 }
@@ -393,8 +409,8 @@ input{
 .inactive-details{
     width: 0;
     position: absolute;
-    top: 350px;
-    left: -100px;
+    top: 50px;
+    left: -200px;
 
     opacity: 0;
     transition: 600ms all;
@@ -420,7 +436,7 @@ input{
     top: 570px;
     transform: translateZ(1px);
     
-    background-color: var(--color-yellow-light-navar);
+    background-color: var(--color1);
     transition: 600ms all;
 }
 
@@ -431,8 +447,8 @@ input{
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
-    background-color: var(--color-dark);
-    color: var(--color-yellow-light-navar);
+    background-color: var(--color2);
+    color: var(--colorText);
     border-radius: 5px;
 }
 
@@ -447,7 +463,7 @@ input{
     flex-direction: row;
 
     padding-left: 10px;
-    background-color: var(--color-dark);
+    background-color: var(--color2);
 
     overflow-x: scroll;
 }
@@ -473,8 +489,8 @@ input{
 
 
 .relatedMovies-title{
-    background-color: var(--color-dark);
-    color: var(--color-yellow-light-navar);
+    background-color: var(--color2);
+    color: var(--colorText);
     position: relative;
     top: 10px;
     padding: 10px;
@@ -493,7 +509,11 @@ input{
     margin-top: 0px;
 }
 
-.movieDetail-title{
+
+.movieDetail-title,
+.movieDetail-score,
+.movieDetail-description{
+    color: var(--colorText);
     text-align: center;
 }
 
@@ -521,7 +541,7 @@ input{
     border-bottom-right-radius: 10px;
     text-align: center;
     color: var(--color-dark);
-    background-color: var(--color-yellow-light-navar);
+    background-color: var(--color1);
 }
 
 /* FOOTER */
@@ -531,6 +551,27 @@ footer{
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    color: var(--color-yellow-light-navar);
+    color: var(--colorText);
+    background: var(--gradiante);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
+/* SCROLL CUSTOM*/
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--color2);
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: #484949;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    border-radius: 10px;
+    background: var(--gradiante);
 }

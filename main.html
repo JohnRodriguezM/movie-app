@@ -20,6 +20,18 @@
       href="./styles/responsive/mobile.css"
     />
 
+    <link
+      rel="stylesheet"
+      media="(min-width: 426px) and (max-width: 1024px)"
+      href="./styles/responsive/tablet.css"
+    />
+
+    <link
+      rel="stylesheet"
+      media="(min-width: 1025px)"
+      href="./styles/responsive/desktop.css"
+    />
+
     <title>Full Movies</title>
   </head>
   <body>
@@ -54,37 +66,44 @@
       </section>
     </header>
 
-    <!-- MOVIE PREVIEW  -->
-    <section id="trendingPreview" class="trendingPreview-container">
-      <div class="trendingPreview-header">
-        <div class="container-trens">
-          <h2 class="trendingPreview-title">Trends</h2>
-          <button class="trendingPreview-btn">Ver más</button>
+    <!-- DIVISION FOR DESKTOP -->
+    <section class="divisionDektop">
+
+      <!-- MOVIE PREVIEW  -->
+      <section id="trendingPreview" class="trendingPreview-container">
+        <div class="trendingPreview-header">
+          <div class="container-trens">
+            <h2 class="trendingPreview-title">Trends</h2>
+            <button class="trendingPreview-btn">Ver más</button>
+          </div>
         </div>
-      </div>
 
-      <article class="trendingPreview-movieList">
-        <!-- <div class="movie-container">
-        <img
-          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-          class="movie-img"
-          alt="Nombre de la película"
-        />
-      </div> -->
-      </article>
+        <article class="trendingPreview-movieList">
+          <!-- <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div> -->
+        </article>
+      </section>
+
+      <!-- CATEGORYS MOVIES -->
+      <section id="categoriesPreview" class="categoriesPreview-container">
+        <h2 class="categoriesPreview-title">Categories</h2>
+
+        <article class="categoriesPreview-list">
+          <!-- <div class="category-container">
+          <h3 id="id28" class="category-title">Romance</h3>
+        </div> -->
+        </article>
+      </section>
+
     </section>
+    
 
-    <!-- CATEGORYS MOVIES -->
-    <section data-aos="fade-right" id="categoriesPreview" class="categoriesPreview-container">
-      <h2 class="categoriesPreview-title">Categories</h2>
-
-      <article class="categoriesPreview-list">
-        <!-- <div class="category-container">
-        <h3 id="id28" class="category-title">Romance</h3>
-      </div> -->
-      </article>
-    </section>
-
+    
     <!-- MOVIES BY CATEGORY AND SEARCH -->
     <section id="genericList" class="genericList-container inactive">
       <!-- <div class="movie-container">
@@ -137,7 +156,9 @@
     <script type="module" src="./src/mobile.mjs"></script>
 
     <!-- ANIMACION JS -->
-    <script type="module" src="./src/animations.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
   </body>
 </html>

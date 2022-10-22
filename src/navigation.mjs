@@ -20,8 +20,8 @@ import {
   displayRemoveClassAnimation, 
   displayRemoveClassAnimationInactive,
   addClassStatusInactive,
-  addClassStatusactive,
-  removeStatus
+  removeStatus,
+  scrollMove
 } from './utils/helpers.mjs'
 
 const {
@@ -36,7 +36,8 @@ const {
   categoriesPreviewSection,
   searchFormBtn,
   trendingBtn,
-  glassSection
+  glassSection,
+  footerMovies
 } = DOM_ELEMENTS;
 
 
@@ -51,9 +52,15 @@ window.addEventListener('hashchange', e => {
 
 
 document.addEventListener('click', e => {
+  
+
   if (e.target === searchFormBtn) location.hash = "#search="
-  if (e.target === arrowButton) location.hash = "#home"
+  if (e.target === arrowButton) {
+    location.hash = "#home"
+    scrollMove(1022);
+  } 
   if (e.target === trendingBtn) location.hash = "#trends"
+
 })
 
 
@@ -69,7 +76,7 @@ const homePage = () => {
    *  displayNoneAdd(arrowButton, headerCategoryTitle,  genericSection, movieDetailSection)
    */
 
-  removeStatus(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection)
+  removeStatus(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection,footerMovies)
 
   displayInactiveClassAnimation(movieDetailSection);
   displayRemoveClassAnimation(movieDetailSection);
@@ -108,10 +115,11 @@ const movieDetailsPage = () => {
 
   displayRemoveClassAnimationInactive(movieDetailSection);
 
-  addClassStatusInactive(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection);
+  addClassStatusInactive(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection,footerMovies);
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
 
+  scrollMove(0);
   console.log('we are in movie details mode')
 }
 
@@ -125,7 +133,9 @@ const trendsPage = () => {
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-  getCategegoriesPageTwo()
+  getCategegoriesPageTwo().then(scrollMove(1022))
+
+
   console.log('estamos en trends');
 }
 
@@ -138,7 +148,7 @@ const searchPage = () => {
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection,)
 
-  getMovie()
+  getMovie().then(scrollMove(1022))
 
   console.log('we are in search mode')
 }
