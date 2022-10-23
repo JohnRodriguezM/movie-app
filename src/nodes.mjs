@@ -11,6 +11,7 @@ export const DOM_ELEMENTS = {
   trendingPreviewSection: select('#trendingPreview'),
   categoriesPreviewSection: select('#categoriesPreview'),
   movieDetailSection: select('#movieDetail'),
+  glassSection: select('.container-glass'),
 
   //list & Containers
   movieContainer: document.querySelectorAll('.movie-container'),

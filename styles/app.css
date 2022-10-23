@@ -207,6 +207,8 @@ footer {
 }
 
 
+
+
 .trendingPreview-movieList {
   user-select:none;
   overflow-x: scroll;
@@ -490,6 +492,3 @@ footer {
 .inactive {
   display: none;
 }
-
-
-/* primera prueba del branch (DuvanRGO) */

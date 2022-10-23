@@ -6,10 +6,6 @@ import { URLS, APIKEY, BASE_URL } from "./utils/urls.mjs";
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-import { prueba1 } from "./mobile.mjs";
-
-console.log(prueba1);
-
 const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY, BASE_IMG } = URLS;
 
 const {
@@ -63,39 +59,36 @@ export const getTrendingMoviesPreview = async () => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container">
           <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
+          <div class="card-hover">
+              <div class="close-card">❌</div>
+              <p class="card-title">${elMap.title}</p>
+              <p class="card-points">⭐ ${elMap.voteAverage.toFixed(1)}</p>
+          </div>
         </div>
       `)
 
-      const containerHoverDetails = document.createRange().createContextualFragment(/*html*/`
-      <div class="card-hover">
-        <p>${elMap.title}</p>
-        <div class = "close-card">❌</div>
-        <p class= "calificacion-card" > ⭐ ${elMap.voteAverage.toFixed(1)}</p>
-      </div>
-      `)
-
-      const card = containerHoverDetails.querySelector('.card-hover')
-      const closeTag = containerHoverDetails.querySelector('.close-card')
+      const card = movieContainer.querySelector('.card-hover')
+      const closeTag = movieContainer.querySelector('.close-card')
       const containerMovie = movieContainer.querySelector('.movie-container')
       const img = movieContainer.querySelector('.movie-img')
 
       img.addEventListener('click', e => {
-        // console.log(e.target)
-        console.log(e)
+        console.log("click card");
         card.style.opacity = 1
-        card.style.top = '50%'
-        toggleOpacity(.7, headerSection, categoriesPreviewSection)
-        // toggleOpacity(.7, headerSection, categoriesPreviewSection, containerMovie)
-        toggleOpacity(.97, trendingMoviesPreviewList)
+        //card.style.top = '20%'
+        //toggleOpacity(.97, headerSection, categoriesPreviewSection, containerMovie)
+        //toggleOpacity(.97, trendingMoviesPreviewList)
+
       })
 
       closeTag.addEventListener('click', e => {
+        console.log("cerrando");
         card.style.opacity = 0
-        card.style.top = '-40%'
+        //card.style.top = '-40%'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
       })
 
-      trendingMoviesPreviewList.append(movieContainer, containerHoverDetails)
+      trendingMoviesPreviewList.append(movieContainer)
 
     })
   } catch (error) { console.error(error) }
@@ -122,18 +115,12 @@ export const getCategegoriesPreview = async () => {
       `)
 
       const categoryTitle = categoryContainer.querySelector('.category-title')
-      const category = categoryContainer.querySelector('.category-container')
-
-      // console.log(category)
 
       categoryTitle.addEventListener('click', (e) => {
         /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
         //!pendiente pasar data a navigator pero sin necesidad de un doble click
         location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
         getMovieByCategory(String(e.target.dataset.id), elMap.name)
-
-        prueba1(categoriesPreviewSection);
-
       })
 
       categoriesPreviewList.appendChild(categoryContainer)
@@ -195,9 +182,11 @@ export async function getMovieByCategory(id, name) {
     filterElementsWithoutImg.map(el => {
 
       const divContent = document.createRange().createContextualFragment(/*html*/`
-        <div class="movie-container" id = "${el.id}">
-          <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
-          <p id = "${el.id}">${el.title}</p>
+        <div data-aos="fade-right" class="movie-container movie-category" id = "${el.id}">
+          <img class="movie-img movie-img-category" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
+          <section class="movie-description">
+            <p class="movie-name" id = "${el.id}">${el.title}</p>
+          </section>
         </div>
       `)
 
@@ -227,15 +216,15 @@ export const getMovie = async () => {
   const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
 
   filterElementsWithoutImg.map(el => {
-
+    // CREATE ELEMENT MOVIE FOR SEARCH
     const divContent = document.createRange().createContextualFragment(/*html*/`
-      <div class="movie-container" id = "${el.id}">
+      <div data-aos="fade-right" class="movie-search" id = "${el.id}">
         <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
         <p id = "${el.id}">${el.title}</p>
       </div>
     `)
 
-    const mainMovieContainer = divContent.querySelector('.movie-container')
+    const mainMovieContainer = divContent.querySelector('.movie-search')
 
     mainMovieContainer.addEventListener('click', (e) => {
       //*se trae la información de la pelicula usando el id de la pelicula
@@ -278,7 +267,7 @@ export const getDataDetails = async URL => {
 
     })
 
-
+      
   } catch (err) { console.log(err) }
 }
 
@@ -294,7 +283,7 @@ const getSimilarMovies = async (URLL) => {
     arraySliced.map(el => {
 
       const divContent = document.createRange().createContextualFragment(/*html*/`
-        <div class="movie-container">
+        <div class="movie-container similarMovie">
           <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}">
         </div>
       `)
