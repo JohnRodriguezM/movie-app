@@ -25,7 +25,7 @@ const {
 
 import { navigator } from './navigation.mjs'
 
-import { toggleOpacity, scrollMove} from './utils/helpers.mjs'
+import { toggleOpacity, scrollMove } from './utils/helpers.mjs'
 
 
 export const getTrendingMoviesPreview = async () => {
@@ -122,9 +122,9 @@ export const getCategegoriesPreview = async () => {
       categoryTitle.addEventListener('click', (e) => {
         /*navigator(`#category=${elMap.id}-${elMap.name}`)*/
         //!pendiente pasar data a navigator pero sin necesidad de un doble click
-        
+
         location.hash = `#category=` /*${elMap.id}-${elMap.name}*/
-        getMovieByCategory(String(e.target.dataset.id), elMap.name).then(scrollMove(1022))   
+        getMovieByCategory(String(e.target.dataset.id), elMap.name).then(scrollMove(1022))
       })
 
       categoriesPreviewList.appendChild(categoryContainer)
@@ -171,13 +171,14 @@ export const getCategegoriesPageTwo = async () => {
   } catch (error) { console.error(error) }
 }
 
-export async function getMovieByCategory(id, name) {
+
+//!this function work for categories movies
+
+export const getMovieByCategory = async (id, name) => {
   try {
     let urlMovieByCategory = `${CATEGORY}&language=es-US&include_adult=true&with_genres=${id}`
-
-    let response = await fetch(urlMovieByCategory)
-    let { results } = await response.json();
-
+    const response = await fetch(urlMovieByCategory)
+    const { results } = await response.json();
     genericSection.innerHTML = ""
     Title.innerHTML = `${name}`;
 
@@ -185,17 +186,19 @@ export async function getMovieByCategory(id, name) {
 
     filterElementsWithoutImg.map(el => {
 
-      const  divContent = document.createRange().createContextualFragment(/*html*/`
-        <div data-aos="fade-up" class="movie-container movie-category" id = "${el.id}">
+      const divContent = document.createRange().createContextualFragment(/*html*/`
+        <div data-aos="zoom-in-up" 
+        data-aos-duration="1000"
+        class="movie-container movie-category" id = "${el.id}">
           <img class="movie-img movie-img-category" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
           <section class="movie-description">
             <p class="movie-name" id = "${el.id}">${el.title}</p>
           </section>
         </div>
       `)
-      
 
-      
+
+
 
       const mainMovieContainer = divContent.querySelector('.movie-container')
 
@@ -220,9 +223,9 @@ export const getMovie = async () => {
   genericSection.innerHTML = ""
 
   Title.innerHTML = `Results for ${searchFormInput.value}`;
-  const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
+  /*  const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)*/
 
-  filterElementsWithoutImg.map(el => {
+  results.filter(el => el.backdrop_path !== null).map(el => {
     // CREATE ELEMENT MOVIE FOR SEARCH
     const divContent = document.createRange().createContextualFragment(/*html*/`
       <div data-aos="fade-right" class="movie-search" id = "${el.id}">
@@ -274,7 +277,7 @@ export const getDataDetails = async URL => {
 
     })
 
-      
+
   } catch (err) { console.log(err) }
 }
 
