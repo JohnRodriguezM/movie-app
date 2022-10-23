@@ -79,10 +79,16 @@ body{
     align-items: center;
     flex-direction: column;
 
-    background-image: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
+   /* background-image: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');*/
     background-size: cover;
     background-position: -110px;
 }
+
+/*@media(min-width: 768px){
+    .header-container{
+
+    }
+}*/
 
 /* CONTENEDOR GLASS*/
 .container-glass{
@@ -154,9 +160,9 @@ input{
     background-color: var(--color2);
 }
 
-.trendsOnTv{
-    margin-top: 15px !important;
-    margin-right: 0 !important;
+#genericList .trendsOnTv{
+    margin-top: 15px;
+    margin-right: 0;
 }
 
 /* CONTENEDOR TRENDS */

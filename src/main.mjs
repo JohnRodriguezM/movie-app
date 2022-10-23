@@ -27,6 +27,28 @@ import { navigator } from './navigation.mjs'
 
 import { toggleOpacity, scrollMove } from './utils/helpers.mjs'
 
+/*
+
+function to change the background image of the header
+and scroll of the categories section
+
+window.addEventListener('resize', (e) => {
+
+  console.log(window.innerWidth);
+
+})*/
+
+
+export const getSpecificMovieInit = async () => {
+  try {
+    const response = await fetch(URL_TRENDING_MOVIES)
+    const { results } = await response.json();
+    let backGroundImageHomePage = `url(https://image.tmdb.org/t/p/w500/${results[0].backdrop_path})`;
+    headerSection.style.backgroundImage = backGroundImageHomePage
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 export const getTrendingMoviesPreview = async () => {
   try {
@@ -158,7 +180,7 @@ export const getCategegoriesPageTwo = async () => {
 
     const mapOverMap = mapeo.map(elMap => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
-        <div data-aos="fade-up" class="movie-container trendsOnTv">
+        <div data-aos="fade-up" class="movie-container trendsOnTv " id = "">
           <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
           <p class="movie-name" >${elMap.title}</p>
         </div>
@@ -182,10 +204,9 @@ export const getMovieByCategory = async (id, name) => {
     genericSection.innerHTML = ""
     Title.innerHTML = `${name}`;
 
-    const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)
+    /*const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)*/
 
-    filterElementsWithoutImg.map(el => {
-
+    results.filter(el => el.backdrop_path !== null).map(el => {
       const divContent = document.createRange().createContextualFragment(/*html*/`
         <div data-aos="zoom-in-up" 
         data-aos-duration="1000"
@@ -196,10 +217,6 @@ export const getMovieByCategory = async (id, name) => {
           </section>
         </div>
       `)
-
-
-
-
       const mainMovieContainer = divContent.querySelector('.movie-container')
 
       mainMovieContainer.addEventListener('click', e => {
@@ -223,7 +240,8 @@ export const getMovie = async () => {
   genericSection.innerHTML = ""
 
   Title.innerHTML = `Results for ${searchFormInput.value}`;
-  /*  const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)*/
+  /*  
+    const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)*/
 
   results.filter(el => el.backdrop_path !== null).map(el => {
     // CREATE ELEMENT MOVIE FOR SEARCH
@@ -236,7 +254,7 @@ export const getMovie = async () => {
 
     const mainMovieContainer = divContent.querySelector('.movie-search')
 
-    mainMovieContainer.addEventListener('click', (e) => {
+    mainMovieContainer.addEventListener('click', e => {
       //*se trae la información de la pelicula usando el id de la pelicula
       getDataDetails(`${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
       getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
@@ -282,9 +300,9 @@ export const getDataDetails = async URL => {
 }
 
 
-const getSimilarMovies = async (URLL) => {
+const getSimilarMovies = async (URL) => {
   try {
-    let response = await fetch(URLL)
+    let response = await fetch(URL)
     let { results } = await response.json();
 
     const arraySliced = results.slice(12)
@@ -304,6 +322,5 @@ const getSimilarMovies = async (URLL) => {
     console.log(err)
   }
 }
-
 
 

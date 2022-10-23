@@ -11,9 +11,15 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="./styles/app.css" /> -->
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       rel="stylesheet"
       media="(max-width: 425px)"
@@ -40,17 +46,18 @@
       <span class="header-arrow inactive">&lt;</span>
 
       <section class="navar">
-        <img
-          class="icon"
-          src="./styles/icons/icon_instagram.svg"
-          alt="Instagram"
-        />
-        <img class="icon" src="./styles/icons/icon_twitter.svg" alt="Twitter" />
-        <img
-          class="icon"
-          src="./styles/icons/icon_usuario.svg"
-          alt="Portafolio"
-        />
+        <!--icon / --- -->
+        <i
+          class="fa-brands fa-instagram"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i
+          class="fa-brands fa-twitter"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i class="fa-brands fa-facebook"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem" ></i
+        >
       </section>
       <section class="container-glass">
         <h1 class="header-title">Universal Movies</h1>
@@ -68,7 +75,6 @@
 
     <!-- DIVISION FOR DESKTOP -->
     <section class="divisionDektop">
-
       <!-- MOVIE PREVIEW  -->
       <section id="trendingPreview" class="trendingPreview-container">
         <div class="trendingPreview-header">
@@ -99,11 +105,8 @@
         </div> -->
         </article>
       </section>
-
     </section>
-    
 
-    
     <!-- MOVIES BY CATEGORY AND SEARCH -->
     <section id="genericList" class="genericList-container inactive">
       <!-- <div class="movie-container">
@@ -116,7 +119,11 @@
     </section>
 
     <!-- MOVIE DETAILS -->
-    <section data-aos="fade-right" id="movieDetail" class="movieDetail-container">
+    <section
+      data-aos="fade-right"
+      id="movieDetail"
+      class="movieDetail-container"
+    >
       <h1 class="movieDetail-title">---</h1>
       <span class="movieDetail-score">7.6</span>
       <p class="movieDetail-description">Not founded</p>
@@ -142,18 +149,33 @@
       </article>
     </section>
 
-
-    <footer>By universal moviessss</footer>
+    <footer>
+      <section>
+        <i
+          class="fa-brands fa-github"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i
+          class="fa-brands fa-github-alt"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <!--legal-->
+      </section>
+    </footer>
 
     <!-- LIBRERIAS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <script type="module" src="./src/nodes.mjs"></script>
     <script type="module" src="./src/main.mjs"></script>
     <script type="module" src="./src/navigation.mjs"></script>
-    <script type="module" src="./src/mobile.mjs"></script>
+   <!-- <script type="module" src="./src/mobile.mjs"></script>-->
 
     <!-- ANIMACION JS -->
     <script>

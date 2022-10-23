@@ -6,18 +6,24 @@
 import {
   getCategegoriesPreview,
   getTrendingMoviesPreview,
+  getSpecificMovieInit,
   getMovie,
-  getCategegoriesPageTwo } from "./main.mjs"
+  getCategegoriesPageTwo
+} from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-import { 
+
+
+
+
+import {
   removeClass,
   addClass,
   displayNoneRemove,
-  displayNoneAdd, 
+  displayNoneAdd,
   displayInactiveClassAnimation,
-  displayRemoveClassAnimation, 
+  displayRemoveClassAnimation,
   displayRemoveClassAnimationInactive,
   addClassStatusInactive,
   removeStatus,
@@ -41,7 +47,10 @@ const {
 } = DOM_ELEMENTS;
 
 
+
+
 window.addEventListener('DOMContentLoaded', e => {
+  /*console.log(screen.width);*/
   navigator()
   if (location.hash !== '#home') return location.hash = '#home'
 })
@@ -52,21 +61,18 @@ window.addEventListener('hashchange', e => {
 
 
 document.addEventListener('click', e => {
-  
-
   if (e.target === searchFormBtn) location.hash = "#search="
   if (e.target === arrowButton) {
     location.hash = "#home"
-    scrollMove(1022);
-  } 
+    scrollMove(500);
+  }
   if (e.target === trendingBtn) location.hash = "#trends"
-
 })
 
 
 // START PAGES 
 const homePage = () => {
-  
+
 
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
@@ -76,7 +82,7 @@ const homePage = () => {
    *  displayNoneAdd(arrowButton, headerCategoryTitle,  genericSection, movieDetailSection)
    */
 
-  removeStatus(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection,footerMovies)
+  removeStatus(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies)
 
   displayInactiveClassAnimation(movieDetailSection);
   displayRemoveClassAnimation(movieDetailSection);
@@ -87,6 +93,8 @@ const homePage = () => {
 
   getCategegoriesPreview()
   getTrendingMoviesPreview()
+  //*initial movie
+  getSpecificMovieInit()
 
   console.log('we are in home mode')
 }
@@ -115,7 +123,7 @@ const movieDetailsPage = () => {
 
   displayRemoveClassAnimationInactive(movieDetailSection);
 
-  addClassStatusInactive(categoriesPreviewSection,genericSection,trendingPreviewSection,glassSection,footerMovies);
+  addClassStatusInactive(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies);
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
 
@@ -128,7 +136,7 @@ const trendsPage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  
+
 
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
