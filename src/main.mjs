@@ -38,24 +38,26 @@ window.addEventListener('resize', (e) => {
 
 })*/
 
-
+//* it is not necessary to fetch the background image
 export const getSpecificMovieInit = async () => {
-  try {
+  /*try {
     const response = await fetch(URL_TRENDING_MOVIES)
     const { results } = await response.json();
     let backGroundImageHomePage = `url(https://image.tmdb.org/t/p/w500/${results[0].backdrop_path})`;
     headerSection.style.backgroundImage = backGroundImageHomePage
   } catch (err) {
     console.log(err)
-  }
+  }*/
 }
 
+//!función reemplazada por una función con axios en el archivo mainAxios.mjs
 export const getTrendingMoviesPreview = async () => {
   try {
     const response = await fetch(URL_TRENDING_MOVIES)
     const { results } = await response.json();
 
-
+    let backGroundImageHomePage = `url(https://image.tmdb.org/t/p/w500/${results[0].backdrop_path})`;
+    headerSection.style.backgroundImage = backGroundImageHomePage
 
     const mapeo = results.map(movie => {
       return {
@@ -70,21 +72,17 @@ export const getTrendingMoviesPreview = async () => {
       }
     })
 
-
     trendingMoviesPreviewList.innerHTML = ""
-
-
     const mapOverMap = mapeo.map(elMap => {
-
-      /*let imageMovie = `${BASE_IMG}${elMap.backPath}`*/
-
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container">
           <img class="movie-img" src="${BASE_IMG}${elMap.backPath}">
           <div class="card-hover">
-              <div class="close-card">❌</div>
+              <div  class="close-card">❌</div>
+              <div>
               <p class="card-title">${elMap.title}</p>
               <p class="card-points">⭐ ${elMap.voteAverage.toFixed(1)}</p>
+              </div>
           </div>
         </div>
       `)
@@ -98,17 +96,12 @@ export const getTrendingMoviesPreview = async () => {
         console.log("click card");
         card.style.opacity = 1
         card.style.visibility = "visible"
-        //card.style.top = '20%'
-        //toggleOpacity(.97, headerSection, categoriesPreviewSection, containerMovie)
-        //toggleOpacity(.97, trendingMoviesPreviewList)
-
       })
 
       closeTag.addEventListener('click', e => {
         console.log("cerrando");
         card.style.opacity = 0
         card.style.visibility = 'hidden'
-        //card.style.top = '-40%'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
       })
 

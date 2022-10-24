@@ -354,6 +354,7 @@ input{
     padding: 5px;
     transition: all 500ms;
     color: var(--colorText);
+    
 }
 /* CATEGORY HOVER */
 .category-container:hover{

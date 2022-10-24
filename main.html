@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,15 +20,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!--se realiza cambios en los media de los link para que los cambios se vayan adaptando según la resolución y absorba los cambios en herencia-->
     <link
       rel="stylesheet"
-      media="(max-width: 425px)"
+      media="(min-width: 10px)"
       href="./styles/responsive/mobile.css"
     />
 
     <link
       rel="stylesheet"
-      media="(min-width: 426px) and (max-width: 1024px)"
+      media="(min-width: 426px)"
       href="./styles/responsive/tablet.css"
     />
 
@@ -181,6 +182,6 @@
     <script>
       AOS.init();
     </script>
-    <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
+    <script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>
   </body>
 </html>

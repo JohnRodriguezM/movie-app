@@ -1,5 +1,7 @@
 export const select = (id) => document.querySelector(id)
 
+export const selectSpecific = (element, id) => element.querySelector(id)
+
 export const removeClass = (el, classEl) => {
   el.classList.remove(classEl)
 }
@@ -15,15 +17,15 @@ export const displayNoneRemove = (...elements) => elements.map(el => {
 })
 
 // addclass and remove class active detailmovie
-export const displayInactiveClassAnimation = (...element) => element.map ( el => {
+export const displayInactiveClassAnimation = (...element) => element.map(el => {
   el.classList.add('inactive-details')
 })
 
-export const displayRemoveClassAnimation = (...element) => element.map ( el => {
+export const displayRemoveClassAnimation = (...element) => element.map(el => {
   el.classList.remove('active-details')
 })
 
-export const displayRemoveClassAnimationInactive = (...element) => element.map ( el => {
+export const displayRemoveClassAnimationInactive = (...element) => element.map(el => {
   el.classList.remove('inactive-details')
 })
 
@@ -40,7 +42,7 @@ export const addClassStatusactive = (...elements) => elements.map((el) => {
   el.classList.add('activeStatus');
 })
 
-export const removeStatusActive = (...elements) => elements.map( el => el,classList.remove('active'))
+export const removeStatusActive = (...elements) => elements.map(el => el, classList.remove('active'))
 
 
 

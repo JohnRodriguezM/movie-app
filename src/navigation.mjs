@@ -6,16 +6,11 @@
 import {
   getCategegoriesPreview,
   getTrendingMoviesPreview,
-  getSpecificMovieInit,
   getMovie,
   getCategegoriesPageTwo
 } from "./main.mjs"
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
-
-
-
-
 
 import {
   removeClass,
@@ -46,6 +41,10 @@ const {
   footerMovies
 } = DOM_ELEMENTS;
 
+
+//!funciones de migración a axios para comodidad
+
+import { getTrendingMoviesPreviewAxios, getCategegoriesPreviewAxios } from './axiosMain/mainAxios.mjs'
 
 
 
@@ -91,10 +90,15 @@ const homePage = () => {
 
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
-  getCategegoriesPreview()
-  getTrendingMoviesPreview()
+  /*getCategegoriesPreview()*/
+  /*getTrendingMoviesPreview()*/
   //*initial movie
-  getSpecificMovieInit()
+  /*getSpecificMovieInit()*/
+
+
+  //!ejecución de funciones con axios
+  getTrendingMoviesPreviewAxios()
+  getCategegoriesPreviewAxios()
 
   console.log('we are in home mode')
 }

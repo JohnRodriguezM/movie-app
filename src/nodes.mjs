@@ -45,4 +45,4 @@ export const DOM_ELEMENTS = {
 
 }
 
-console.log(DOM_ELEMENTS)
+/*console.log(DOM_ELEMENTS)*/
