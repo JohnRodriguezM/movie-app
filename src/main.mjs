@@ -322,5 +322,3 @@ const getSimilarMovies = async (URL) => {
     console.log(err)
   }
 }
-
-
