@@ -380,37 +380,46 @@ input {
   width: 100%;
 
   overflow-x: hidden;
-
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   align-content: center;
-
   position: relative;
   top: 570px;
   transform: translateZ(1px);
-
   opacity: 1;
   visibility: visible;
   background-color: var(--color1);
   transition: 600ms all;
 }
 
-.categories-list {
-  width: 90%;
-
-  display: flex;
-  flex-direction: row;
-  overflow-x: hidden;
-  background-color: var(--color2);
-  color: var(--colorText);
-  border-radius: 5px;
+@media (min-width: 620px) {
+  .active-details {
+    width: 600px;
+    overflow-x: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    top: 570px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    visibility: visible;
+    background-color: var(--color1);
+    transition: 600ms all;
+  }
 }
+
 
 .relatedMovies-scrollContainer {
   width: 100%;
@@ -457,10 +466,15 @@ input {
 
 .header-container--long {
   position: fixed;
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  /* position: fixed;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
+  height: 100%;*/
 }
 
 .similarMovie {
