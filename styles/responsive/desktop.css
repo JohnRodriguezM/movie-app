@@ -1,32 +1,3 @@
-:root {
-  /* COLOR PALETTE */
-  --color1: #111138;
-  --color2: #111111;
-  --color3: #fff;
-  --gradiante: linear-gradient(
-    rgb(116, 9, 121),
-    rgb(185, 8, 246),
-    rgb(91, 28, 230)
-  );
-  /* BOTONES */
-  --colorButton1: rgb(181, 53, 246);
-  /* LETRA*/
-  --colorText: #fff;
-  /* FONDO IMG*/
-  --background-img: url("../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg");
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", "Arial Narrow", Arial, sans-serif;
-}
-
-body {
-  background-color: var(--color2);
-  max-width: 1920px;
-}
 
 .divisionDektop {
   display: flex;
@@ -35,49 +6,12 @@ body {
 }
 
 /* BOTON BACK */
-.header-arrow {
-  height: 30px;
-  width: 30px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  transform: translateZ(-10px);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  background-color: var(--colorButton1);
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-}
 
 /* NAVAR */
-.navar {
-  width: 100%;
-  height: 50px;
 
-  position: static;
-  top: 0px;
 
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  align-content: center;
-  flex-wrap: nowrap;
 
-  background-color: var(--color2);
-}
-
-/* ICONOS */
-.icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 5px;
-}
-
-/* CONTENEDOR PRESENTACION */
 .header-container {
   width: 100%;
   height: 70vh;
@@ -261,14 +195,14 @@ input {
 
 /* CARD PELICULA */
 .card-hover {
-  width: 300px;
+  width: 295px;
   height: 80px;
 
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   flex-wrap: nowrap;
-
+    left:7.5px;
   border-radius: 10px;
 
   position: relative;

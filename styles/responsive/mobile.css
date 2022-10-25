@@ -234,6 +234,7 @@ input {
 
 /* PELICULA */
 .movie-img {
+  margin: 0 5px;
   cursor: pointer;
   width: 300px;
   height: 170px;
@@ -259,12 +260,6 @@ input {
   display: grid;
   place-items: center;
   grid-template-columns: 10% auto;
-  /*justify-content: flex-start;
-    align-items: flex-end;
-    flex-wrap: nowrap;*/
-  /*
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;*/
   position: relative;
   top: -90px;
   color: var(--colorText);
