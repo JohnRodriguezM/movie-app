@@ -50,8 +50,10 @@ export const removeStatusActive = (...elements) => elements.map(el => el, classL
 export const scrollMove = (vertical) => {
   window.scrollTo({
     behavior: 'smooth',
-    top: vertical
+    top: vertical,
   })
+
+
 }
 // ----
 

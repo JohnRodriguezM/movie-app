@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+      integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,9 +61,10 @@
           class="fa-brands fa-twitter"
           style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
         ></i>
-        <i class="fa-brands fa-facebook"
-          style="font-size: 1.5rem; color: #fff; margin-right: 1rem" ></i
-        >
+        <i
+          class="fa-brands fa-facebook"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
       </section>
       <section class="container-glass">
         <h1 class="header-title">Universal Movies</h1>
@@ -69,7 +75,7 @@
 
         <form id="searchForm" class="header-searchForm">
           <input type="text" placeholder="Ej: Avengers" autofocus />
-          <button id="searchBtn">🔍</button>
+          <a href="#genericList" id="searchBtn"> 🔍 </a>
         </form>
       </section>
     </header>
@@ -81,6 +87,7 @@
         <div class="trendingPreview-header">
           <div class="container-trens">
             <h2 class="trendingPreview-title">Trends</h2>
+            <!--<a href="#genericList" id="searchBtn"> 🔍 </a>-->
             <button class="trendingPreview-btn">Ver más</button>
           </div>
         </div>
@@ -109,7 +116,11 @@
     </section>
 
     <!-- MOVIES BY CATEGORY AND SEARCH -->
-    <section id="genericList" class="genericList-container inactive">
+    <section
+      id="genericList"
+      name="genericList"
+      class="genericList-container inactive"
+    >
       <!-- <div class="movie-container">
         <img
           src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
@@ -176,12 +187,12 @@
     <script type="module" src="./src/nodes.mjs"></script>
     <script type="module" src="./src/main.mjs"></script>
     <script type="module" src="./src/navigation.mjs"></script>
-   <!-- <script type="module" src="./src/mobile.mjs"></script>-->
+    <!-- <script type="module" src="./src/mobile.mjs"></script>-->
 
     <!-- ANIMACION JS -->
     <script>
       AOS.init();
     </script>
-    <script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>
+    <script type="module" src="./src/axiosMain/mainAxios.mjs"></script>
   </body>
 </html>

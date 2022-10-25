@@ -39,16 +39,6 @@ window.addEventListener('resize', (e) => {
 })*/
 
 //* it is not necessary to fetch the background image
-export const getSpecificMovieInit = async () => {
-  /*try {
-    const response = await fetch(URL_TRENDING_MOVIES)
-    const { results } = await response.json();
-    let backGroundImageHomePage = `url(https://image.tmdb.org/t/p/w500/${results[0].backdrop_path})`;
-    headerSection.style.backgroundImage = backGroundImageHomePage
-  } catch (err) {
-    console.log(err)
-  }*/
-}
 
 //!función reemplazada por una función con axios en el archivo mainAxios.mjs
 export const getTrendingMoviesPreview = async () => {
@@ -148,7 +138,7 @@ export const getCategegoriesPreview = async () => {
 }
 
 
-//* se obtienen los trends de la tv
+//* se reemplaza por una función con axios en el archivo mainAxios.mjs - axios
 export const getCategegoriesPageTwo = async () => {
   let urlCategoryPageTwo = `${BASE_URL}trending/tv/week?api_key=${APIKEY}`
   try {
@@ -233,28 +223,35 @@ export const getMovie = async () => {
   genericSection.innerHTML = ""
 
   Title.innerHTML = `Results for ${searchFormInput.value}`;
-  /*  
-    const filterElementsWithoutImg = results.filter(el => el.backdrop_path !== null)*/
 
   results.filter(el => el.backdrop_path !== null).map(el => {
-    // CREATE ELEMENT MOVIE FOR SEARCH
-    const divContent = document.createRange().createContextualFragment(/*html*/`
+    if (el.backdrop_path !== null) {
+      const divContent = document.createRange().createContextualFragment(/*html*/`
       <div data-aos="fade-right" class="movie-search" id = "${el.id}">
         <img class="movie-img" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}" />
         <p id = "${el.id}">${el.title}</p>
       </div>
     `)
 
-    const mainMovieContainer = divContent.querySelector('.movie-search')
+      const mainMovieContainer = divContent.querySelector('.movie-search')
 
-    mainMovieContainer.addEventListener('click', e => {
-      //*se trae la información de la pelicula usando el id de la pelicula
-      getDataDetails(`${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
-      getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
-      location.hash = "#movie="
-    })
+      mainMovieContainer.addEventListener('click', e => {
+        //*se trae la información de la pelicula usando el id de la pelicula
+        getDataDetails(`${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
+        getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
+        location.hash = "#movie="
+      })
 
-    genericSection.append(divContent)
+      genericSection.append(divContent)
+
+
+
+    }
+
+    // CREATE ELEMENT MOVIE FOR SEARCH
+
+
+
 
   })
 
@@ -293,7 +290,7 @@ export const getDataDetails = async URL => {
 }
 
 
-const getSimilarMovies = async (URL) => {
+export const getSimilarMovies = async (URL) => {
   try {
     let response = await fetch(URL)
     let { results } = await response.json();

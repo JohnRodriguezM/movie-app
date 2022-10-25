@@ -44,7 +44,20 @@ const {
 
 //!funciones de migración a axios para comodidad
 
-import { getTrendingMoviesPreviewAxios, getCategegoriesPreviewAxios } from './axiosMain/mainAxios.mjs'
+import { getTrendingMoviesPreviewAxios, getCategegoriesPreviewAxios, getCategegoriesPageTwoAxios, getMovieFromInputSearchAxios } from './axiosMain/mainAxios.mjs'
+
+
+//resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    displayNoneRemove(genericSection)
+    displayNoneRemove(trendingPreviewSection)
+    displayNoneRemove(categoriesPreviewSection)
+    displayNoneRemove(movieDetailSection)
+    displayNoneRemove(glassSection)
+    displayNoneRemove(footerMovies)
+  }
+})
 
 
 
@@ -60,10 +73,13 @@ window.addEventListener('hashchange', e => {
 
 
 document.addEventListener('click', e => {
-  if (e.target === searchFormBtn) location.hash = "#search="
+  if (e.target === searchFormBtn) {
+    getMovieFromInputSearchAxios()
+    location.hash = "#search="
+  }
   if (e.target === arrowButton) {
     location.hash = "#home"
-    scrollMove(500);
+    /*scrollMove(500);*/
   }
   if (e.target === trendingBtn) location.hash = "#trends"
 })
@@ -77,10 +93,6 @@ const homePage = () => {
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
 
-  /** BACKUP 
-   *  displayNoneAdd(arrowButton, headerCategoryTitle,  genericSection, movieDetailSection)
-   */
-
   removeStatus(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies)
 
   displayInactiveClassAnimation(movieDetailSection);
@@ -90,17 +102,11 @@ const homePage = () => {
 
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
-  /*getCategegoriesPreview()*/
-  /*getTrendingMoviesPreview()*/
-  //*initial movie
-  /*getSpecificMovieInit()*/
-
-
   //!ejecución de funciones con axios
   getTrendingMoviesPreviewAxios()
   getCategegoriesPreviewAxios()
 
-  console.log('we are in home mode')
+  console.log('we are in home')
 }
 
 
@@ -108,15 +114,10 @@ const categoriesPage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-
-  /*
-  displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
-  */
-
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
-  console.log('we are in categories mode');
+  console.log('we are in categories');
 }
 
 // UPDATE DETAILS MOVIE
@@ -145,8 +146,9 @@ const trendsPage = () => {
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-  getCategegoriesPageTwo().then(scrollMove(1022))
-
+  /*getCategegoriesPageTwo().then(scrollMove(1022))*/
+  //*ponerle el then
+  getCategegoriesPageTwoAxios().then(scrollMove(1020))
 
   console.log('estamos en trends');
 }
@@ -160,7 +162,10 @@ const searchPage = () => {
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection,)
 
-  getMovie().then(scrollMove(1022))
+
+  //*reemplazar por funcion axios
+  /*getMovieFromInputSearchAxios()*/
+  /*getMovie().then(scrollMove(1022))*/
 
   console.log('we are in search mode')
 }
