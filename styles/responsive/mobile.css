@@ -255,18 +255,25 @@ input {
 
 /* CARD PELICULA */
 .card-hover {
-  width: 300px;
-  height: 85px;
-  display: grid;
-  place-items: center;
-  grid-template-columns: 10% auto;
+  width: 295px;
+  height: 80px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+    left:7.5px;
+  border-radius: 10px;
+
   position: relative;
-  top: -90px;
+  top: -87px;
+
   color: var(--colorText);
-  background-color: var(--color1);
+  background: var(--gradiante);
+
   opacity: 0;
-  transition: opacity 500ms ease-in-out;
-  animation: all 2s;
+  visibility: hidden;
+  transition: all 500ms ease-in-out;
 }
 
 /* CARD TITULO */
@@ -297,8 +304,14 @@ input {
   width: 30px;
   cursor: pointer;
   position: relative;
-  top: -20px;
+  top: -55px;
   left: 10px;
+}
+
+@media(min-width:420px){
+  .close-card {
+    top: -30px;
+  }
 }
 
 /* ----------------- */
@@ -421,8 +434,6 @@ input {
 .movie-img-category {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  /*  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;*/
 }
 
 .movie-description {
@@ -489,11 +500,6 @@ input {
   background-color: var(--color2);
 
   overflow-x: scroll;
-}
-
-.inactiveStatus {
-  height: 0;
-  overflow-x: hidden;
 }
 
 .relatedMovies-container {

@@ -172,20 +172,6 @@ input {
   padding-left: 10px;
 }
 
-/* PELICULA */
-/*.movie-img{
-    width: 300px;
-    height: 170px;
-    border-radius: 10px;
-    transition: all 600ms;
-    cursor: pointer;
-} */
-
-/*.movie-container{
-    margin-top: 70px;
-    margin-right: 20px;
-}*/
-
 /*ANIMATION PELICULA*/
 .movie-img:hover {
   border-radius: 10px;
@@ -194,27 +180,7 @@ input {
 }
 
 /* CARD PELICULA */
-.card-hover {
-  width: 295px;
-  height: 80px;
 
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-    left:7.5px;
-  border-radius: 10px;
-
-  position: relative;
-  top: -87px;
-
-  color: var(--colorText);
-  background: var(--gradiante);
-
-  opacity: 0;
-  visibility: hidden;
-  transition: all 500ms ease-in-out;
-}
 
 /* CARD TITULO */
 .card-title {
@@ -238,13 +204,7 @@ input {
 
 /* CERRAR CARD */
 .close-card {
-  width: 30px;
-
-  position: relative;
-  top: -50px;
-  left: 10px;
-
-  cursor: pointer;
+  top: -25px;
 }
 
 /* ----------------- */
@@ -255,76 +215,16 @@ input {
 .categoriesPreview-container {
   width: 45%;
   background-color: var(--color1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 /* CONTAINER TITLE */
 .categoriesPreview-title {
-  width: 200px;
-  height: 50px;
-  /* border-radius: 5px; */
-  margin-top: 10px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--gradiante);
-  color: var(--colorText);
-
   position: relative;
   top: -30px;
-
   border-radius: 10px;
 }
 
-/* CONTAINER LIST CATEGORY */
-.categoriesPreview-list {
-  width: 100%;
-  height: 280px;
 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  align-content: space-around;
-}
-
-/* CATEGORY */
-.category-container {
-  width: 120px;
-  margin: 2px;
-  padding: 5px;
-  transition: all 500ms;
-  color: var(--colorText);
-}
-/* CATEGORY HOVER */
-.category-container:hover {
-  background: var(--gradiante);
-  color: var(--colorText);
-  border-radius: 5px;
-  transform: scale(105%);
-}
-
-/* CATEGORY */
-.category-container {
-  width: 120px;
-  margin: 2px;
-  padding: 5px;
-  transition: all 500ms;
-  color: var(--colorText);
-}
-/* CATEGORY HOVER */
-.category-container:hover {
-  background: var(--gradiante);
-  color: var(--colorText);
-  border-radius: 5px;
-  transform: scale(105%);
-}
 
 /* ------------------- */
 
@@ -334,111 +234,28 @@ input {
 }
 
 .movie-category{
-    width: 300px;
-    margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}*/
-
-.movie-name{
-    width: 300px;
-    height: 50px;
-    background-color: var(--color1);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    color: var(--colorText);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; 
-}*/
 
 .movie-img-category{
-    border-top-left-radius: 10px ;
-    border-top-right-radius: 10px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px; 
 }
 
-.movie-description{
-    position: relative;
-    top: -7px;
 
-}
-
-/* ACTIVITY DETAIL MOVIES */
-.inactive-details {
-  width: 0;
-  position: absolute;
-  top: 50px;
-  left: -50px;
-
-  opacity: 0;
-  visibility: hidden;
-  transition: 600ms all;
-}
 
 .active-details {
-  width: 600px;
 
-  overflow-x: hidden;
-
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-
-  position: relative;
-  top: 570px;
   margin-left: auto;
   margin-right: auto;
 
   opacity: 1;
   visibility: visible;
-  background-color: var(--color1);
-  transition: 600ms all;
+
 }
 
-.relatedMovies-scrollContainer {
-  width: 100%;
-  height: 300px;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  flex-direction: row;
-
-  padding-left: 10px;
-  background-color: var(--color2);
-
-  overflow-x: scroll;
-}
-
-.inactiveStatus {
-  height: 0;
-  overflow-x: hidden;
-}
-
-.relatedMovies-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .movieDetail-title,
 .movieDetail-description {
@@ -501,33 +318,3 @@ input {
 }
 
 /* FOOTER */
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  color: var(--colorText);
-  background: var(--gradiante);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-/* SCROLL CUSTOM*/
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color2);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #484949;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  border-radius: 10px;
-  background: var(--gradiante);
-}

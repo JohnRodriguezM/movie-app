@@ -1,6 +1,3 @@
-
-
-
 /* CONTENEDOR PRESENTACION */
 .header-container {
   width: 100%;
@@ -154,24 +151,14 @@ input {
   padding-left: 10px;
 }
 
-
-
 /* CATEGORY */
-
-
-
 
 /* CONTAINER LIST CATEGORY */
 .categoriesPreview-list {
-  width: 100%;
   height: 280px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
+
   align-content: space-around;
 }
-
 
 .movie-category {
   width: 300px;
@@ -268,7 +255,6 @@ input {
   }
 }
 
-
 .relatedMovies-scrollContainer {
   width: 100%;
   height: 300px;
@@ -290,30 +276,8 @@ input {
   overflow-x: hidden;
 }
 
-.relatedMovies-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.movieDetail-title,
-.movieDetail-description {
-  padding: 20px;
-}
-
-.relatedMovies-title {
-  background-color: var(--color-dark);
-  color: var(--colorText);
-  position: relative;
-  top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
 
 .header-container--long {
-  position: fixed;
   background-position: center 10%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -325,76 +289,17 @@ input {
   height: 100%;*/
 }
 
-.similarMovie {
-  margin-top: 0px;
-}
+
 
 .movieDetail-title {
   text-align: center;
 }
 
-.movieDetail-title,
-.movieDetail-score,
-.movieDetail-description {
-  color: var(--colorText);
-  text-align: center;
-}
+
 
 /* MOVIE SEARCH */
 
 .movie-search {
-  margin-top: 10px;
-  width: 300px;
   margin-right: 12px;
 }
 
-.movie-search img {
-  position: relative;
-  top: 15px;
-  width: 300px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.movie-search p {
-  width: 300px;
-  height: 60px;
-  padding: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  text-align: center;
-  color: var(--colorText);
-  background-color: var(--color1);
-}
-
-/* FOOTER */
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  color: var(--colorText);
-  background: var(--gradiante);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-/* SCROLL CUSTOM*/
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color2);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #484949;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  border-radius: 10px;
-  background: var(--gradiante);
-}
