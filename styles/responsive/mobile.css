@@ -100,9 +100,9 @@ body {
 /* CONTENEDOR GLASS*/
 .container-glass {
   min-width: 300px;
-  max-width: 400px;
-  height: 350px;
-  width: 92%;
+  max-width: 800px;
+  height: 370px;
+  width: 85%;
 
   margin-top: 15px;
   margin-bottom: 15px;
@@ -114,7 +114,6 @@ body {
   );
   box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
   backdrop-filter: blur(8.5px);
-  /* Note: backdrop-filter has minimal browser support */
   border-radius: 15px;
 
   display: flex;
@@ -361,6 +360,7 @@ input {
 
 /* CATEGORY */
 .category-container {
+  text-align: center;
   width: 120px;
   margin: 2px;
   padding: 5px;
@@ -454,12 +454,12 @@ input {
 
 .active-details {
   width: 100%;
-
+  margin: 0 auto;
   overflow-x: hidden;
 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+  text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -468,8 +468,8 @@ input {
   align-content: center;
 
   position: relative;
-  top: 570px;
-  transform: translateZ(1px);
+  top: 470px;
+  /*transform: translateZ(1px);*/
 
   background-color: var(--color1);
   transition: 600ms all;
@@ -599,4 +599,8 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   border-radius: 10px;
   background: var(--gradiante);
+}
+.inactiveStatus {
+  height: 0;
+  overflow-x: hidden;
 }

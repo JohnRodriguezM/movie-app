@@ -2,13 +2,7 @@
 "use strict"
 
 //@ts-check
-//? ready
-import {
-  getCategegoriesPreview,
-  getTrendingMoviesPreview,
-  getMovie,
-  getCategegoriesPageTwo
-} from "./main.mjs"
+
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
@@ -62,7 +56,6 @@ window.addEventListener('resize', () => {
 
 
 window.addEventListener('DOMContentLoaded', e => {
-  /*console.log(screen.width);*/
   navigator()
   if (location.hash !== '#home') return location.hash = '#home'
 })
@@ -110,11 +103,15 @@ const homePage = () => {
 }
 
 
-const categoriesPage = () => {
+export const categoriesPage = () => {
+  console.log('aqui estamsos');
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
+  movieDetailSection.style.display = "none"
+
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
+
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
   console.log('we are in categories');
@@ -126,8 +123,8 @@ const movieDetailsPage = () => {
   addClass(arrowButton, 'header-arrow--white')
   addClass(movieDetailSection, 'active-details')
 
-  displayRemoveClassAnimationInactive(movieDetailSection);
-
+  /*displayRemoveClassAnimationInactive(movieDetailSection);*/
+  displayNoneRemove(movieDetailSection)
   addClassStatusInactive(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies);
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)

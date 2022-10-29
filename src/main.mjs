@@ -27,16 +27,6 @@ import { navigator } from './navigation.mjs'
 
 import { toggleOpacity, scrollMove } from './utils/helpers.mjs'
 
-/*
-
-function to change the background image of the header
-and scroll of the categories section
-
-window.addEventListener('resize', (e) => {
-
-  console.log(window.innerWidth);
-
-})*/
 
 //* it is not necessary to fetch the background image
 
@@ -177,7 +167,7 @@ export const getCategegoriesPageTwo = async () => {
 }
 
 
-//!this function work for categories movies
+//!this function works for categories movies
 
 export const getMovieByCategory = async (id, name) => {
   try {

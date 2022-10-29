@@ -15,33 +15,6 @@
   background-repeat: no-repeat;
 }
 
-/* CONTENEDOR GLASS*/
-.container-glass {
-  min-width: 400px;
-  max-width: 900px;
-  height: 350px;
-  width: 92%;
-
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(217, 217, 217, 0.47) 2.19%,
-    rgba(255, 252, 252, 0.12) 99.95%
-  );
-  box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
-  backdrop-filter: blur(8.5px);
-  /* Note: backdrop-filter has minimal browser support */
-  border-radius: 15px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  align-content: center;
-}
 
 /* TITULO DE GLASS */
 .header-title {
@@ -271,10 +244,6 @@ input {
   overflow-x: scroll;
 }
 
-.inactiveStatus {
-  height: 0;
-  overflow-x: hidden;
-}
 
 
 .header-container--long {
@@ -282,11 +251,6 @@ input {
   background-repeat: no-repeat;
   background-size: contain;
   height: 100%;
-  /* position: fixed;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;*/
 }
 
 
