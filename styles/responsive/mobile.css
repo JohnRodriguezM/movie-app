@@ -79,23 +79,14 @@ body {
 .header-container {
   width: 100%;
   height: 300px;
-
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
-  /* background-image: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');*/
   background-size: cover;
   background-position: -110px;
 }
-
-/*@media(min-width: 768px){
-    .header-container{
-
-    }
-}*/
 
 /* CONTENEDOR GLASS*/
 .container-glass {
@@ -163,6 +154,7 @@ input {
   border-style: none;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
+  cursor: pointer;
 }
 
 /* ----------- */
