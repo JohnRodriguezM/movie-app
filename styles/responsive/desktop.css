@@ -1,336 +1,295 @@
-:root {
-    --background-button: #f78400;
-    --background-navar: #f8be00;
-    --background: #111111;
-    --background-img: url('./icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
-    --font-family-titles: "Dosis", sans-serif;
-    --font-family-text: "Red Hat Display", sans-serif;
-    --font-weight-title1: 800;
-    --font-weight-title2: 700;
-    --font-weight-text1: 400;
-    --font-weight-text2: 500;
-  }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-} 
-
-
-html {
-    user-select: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    
+.divisionDektop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-body::-webkit-scrollbar{
-    background-color: #111111;
-    width: 12px;
-}
+/* BOTON BACK */
 
-body::-webkit-scrollbar-thumb{
-    background: linear-gradient(transparent,var(--background-button));
-    border-radius: 6px;
-}
-
-body::-webkit-scrollbar-thumb:hover{
-    background: linear-gradient(transparent,rgb(0, 140, 255));
-}
 
 /* NAVAR */
-.header-container{
-    background-color: var(--background);
-    width: 100%;
-    height: 35px;
-    margin: 0;
-    padding: 0;
-    position: static;
+
+
+
+.header-container {
+  width: 100%;
+  height: 70vh;
+  max-height: 1024px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  /*background-image: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');*/
+  background-size: cover;
+  background-position: 0px;
+  background-repeat: no-repeat;
 }
 
-.icon-back{
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    left: 0.5rem;
-    top: 0.5rem;
+/* CONTENEDOR GLASS*/
+
+
+/* TITULO DE GLASS */
+.header-title {
+  font-size: 3.6rem;
+  text-align: center;
+  line-height: 50px;
+  max-width: 300px;
 }
 
-.icon-twitter{
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-}
-
-.icon-instagram{
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 2.2rem;
-    top: 0.5rem;
-}
-
-.icon-usuario{
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 4rem;
-    top: 0.5rem;
+/* SEARCH CONTENEDOR*/
+.header-searchForm {
+  margin-top: 10px;
+  width: 240px;
+  display: flex;
 }
 
 /* SEARCH */
+input {
+  outline: none;
+  border-style: none;
+  height: 40px;
+  width: 100%;
 
-.search-background {
-    background-size: cover;
-    background-image: url('./icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');
-    padding-top: 35px;
-    padding-bottom: 500px;
-}    
-
-.glass-search-container{
-    position: absolute;
-    width: 90%;
-    min-width: 500px;
-    max-width: 94%;
-    height: 400px;
-    left: 5%;
-    top: 65px;
-    
-
-    background: linear-gradient(180deg, rgba(217, 217, 217, 0.47) 2.19%, rgba(255, 252, 252, 0.12) 99.95%);
-    box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
-    backdrop-filter: blur(7px);
-
-    border-radius: 59px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding-left: 10px;
 }
 
-#tittle-page{
-    width: 300px;
-    max-width: 300px;
-    position: absolute;
-    top: 8rem;
-    left: 4rem;
-    font-size: 70px;
-    text-align: center;
-    line-height: 60px;
+/* ICON SEARCH */
+#searchBtn {
+  width: 40px;
+  height: 40px;
+
+  background: var(--gradiante);
+  outline: none;
+  border-style: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
 }
 
-#categoryTitle{
-    position: absolute;
-    bottom: 1rem;
-    right: 8rem;
-    color: #313131;
+/* ----------- */
+
+/* CONTENEDOR PELICULAS Y TRENDS  */
+.trendingPreview-container {
+  width: 50%;
+  margin-right: 20px;
+  background-color: var(--color2);
 }
 
-.header-searchForm {
-    position: absolute;
-    top: 10rem;
-    left: 32rem;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* CONTENEDOR TRENDS */
+.trendingPreview-header {
+  height: 50px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color2);
 }
 
-#input-movie {
-    height: 50px;
-    width: 300px;
-    max-width: 500px;
-    min-width: 1px;
-    background: #FFFFFF;
-    border-radius: 20px 0px 0px 20px;
+/*#genericList .trendsOnTv{
+    margin-top: 15px;
+    margin-right: 0;
+}*/
+
+/* BACKGROUND TRENDS */
+.container-trens {
+  position: relative;
+  top: -20px;
+
+  width: 170px;
+  height: 50px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  background: var(--gradiante);
+  color: var(--colorText);
+}
+
+/* TITULO TRENDS */
+/* .trendingPreview-title{
+} */
+
+/* BOTON TRENDS */
+/*.trendingPreview-btn{
+    outline: none;
     border-style: none;
-    outline-style: none;
-    color: #111111;
-    font-size: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-left: 5px;
+    background-color: var(--color2);
+    color: var(--colorText);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}*/
 
-    box-shadow: 0px 4px 20px 17px rgba(0, 0, 0, 0.53);
+/* CONTENEDOR PELICULAS */
+.trendingPreview-movieList {
+  width: 100%;
+  height: 307px;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
 }
 
-#input-movie::placeholder{
-    color: #111111;
+/*ANIMATION PELICULA*/
+.movie-img:hover {
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px white;
+  transition: all 600ms;
 }
 
-#searchBtn{
-    height: 50px;
-    width: 50px;
-    background: #FFE500;
-    border-radius: 0px 20px 20px 0px;
-    border-style: none;
+/* CARD PELICULA */
+
+
+/* CARD TITULO */
+.card-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
 }
 
-#searchBtn img {
-    height: 30px;
-    width: 30px;
+/* CARD PUNTOS */
+.card-points {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+
+  position: relative;
+  top: -10px;
+  left: -10px;
 }
 
-/* CONTENEDOR ENTRETENIMIENTO */
-
-.view-contenedor {
-    /* display: flex;
-    flex-wrap: wrap; */
-
-    display: grid;
-    grid-template-columns: 0.2fr 1fr;
+/* CERRAR CARD */
+.close-card {
+  top: -25px;
 }
 
+/* ----------------- */
 
-/* CATEGORIAS */
-#categoriesPreview{
-    flex: 0%;
-    width: 270px;
-    height: 940px;
+/* CATEGORY */
 
-    background: linear-gradient(269.86deg, #151515 0.15%, #242424 42.65%, #242424 99.9%);
-    border-radius: 0px;
-    position: static;
+/* CONTAINER CATEGORY*/
+.categoriesPreview-container {
+  width: 45%;
+  background-color: var(--color1);
 }
 
-.category-title-container {
-    height: 48px;
-    width: 200px;
-    position: relative;
-    top: -26px;
-    left: 2rem;
-
-    background: #FFE600;
-    border-radius: 16px;
-}
-
-.categoriesPreview-title{
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 72px;
-
-    position: relative;
-    top: -10px;
-    left: 26px;
-}
-
-.categoriesPreview-list{
-    margin-left: 30px;
-    color: #FFFFFF;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 46px;
-}
-
-.categoriesPreview-list .category-container:hover{
-    background-color: #f8be00;
-    color: #111111;
-
-    border-radius: 8px;
-    margin-right: 70px;
-    padding-left: 30px;
-
-    position: relative;
-    left: 5px;
-}
-
-/* TRENDS */
-
-.trendingPreview-container{
-    flex: 60%;
-    width: 100%;
-    height: 940px;
-
-    background-color: #151515;
-}
-
-.trendingPreview-header{
-    display: inline-flex;
-    padding: 10px;
-
-    position: relative;
-    top: -26px;
-    right: -250px;
-
-    background: #FFE600;
-    border-radius: 16px;
-}
-
-.trendingPreview-title{
-    padding-left: 10px;
-}
-
-.trendingPreview-btn{
-    margin-left: 30px;
-    border-radius: 8px;
-    border: none;
-    padding-left: 10px;
-    padding-right: 10px;
-
-    background-color: #111111;
-    color: #FFE600;
-    font-family: 'Poppins';
-    font-style: normal;
-}
-
-.trendingPreview-btn:hover {
-    color: white;
-}
-
-.container-movies{
-    height: 865px;
-    width: 100%;
-     
-    padding-left: 40px;
-
-    overflow-y: scroll;
-}
-
-.container-movies::-webkit-scrollbar{
-    width: 10px;
-    
-}
-
-.trendingPreview-movieList{
-    padding-top: 20px;
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(6, 100px);
-    gap: 60px;
-
-    flex-wrap: wrap;
-} 
-
-/* .trendingPreview-movieList .movie-container{
-    background-color: blue;
-}  */
-
-.trendingPreview-movieList .movie-container img{
-    border-radius: 14px;
+/* CONTAINER TITLE */
+.categoriesPreview-title {
+  position: relative;
+  top: -30px;
+  border-radius: 10px;
 }
 
 
-.trendingPreview-movieList .card-hover{
-    color: white;
-    
-    margin-top: 10px;
-    width: 300px; 
-    height: 170px; 
 
-    padding-left: 20px;
-    padding-top: 85px; 
-    
-    
-    position: relative;
-    left: -160px;
-    bottom: 11px; 
+/* ------------------- */
 
-    border-radius: 14px;
-    opacity: 0%;
+/* MOVIE CONTAINER (CATEGORY) */
+.genericList-container {
+  grid-template-columns: auto auto auto;
 }
 
-.trendingPreview-movieList .card-hover:hover{
-    opacity: 90%;
-    background-color: #f78400;
+.movie-category{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
+
+.movie-img-category{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; 
+}
+
+
+
+.active-details {
+
+  margin-left: auto;
+  margin-right: auto;
+
+  opacity: 1;
+  visibility: visible;
+
+}
+
+
+.movieDetail-title,
+.movieDetail-description {
+  padding: 20px;
+}
+
+.relatedMovies-title {
+  background-color: var(--color-dark);
+  color: var(--colorText);
+  position: relative;
+  top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.header-container--long {
+  position: fixed;
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+}
+
+.similarMovie {
+  margin-top: 0px;
+}
+
+.movieDetail-title,
+.movieDetail-score,
+.movieDetail-description {
+  color: var(--colorText);
+  text-align: center;
+}
+
+/* MOVIE SEARCH */
+
+.movie-search {
+  margin-top: 10px;
+  width: 300px;
+  margin-right: 12px;
+}
+
+.movie-search img {
+  position: relative;
+  top: 15px;
+  width: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.movie-search p {
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  color: var(--colorText);
+  background-color: var(--color1);
+}
+
+/* FOOTER */
