@@ -1,8 +1,5 @@
-
 "use strict";
 //@ts-check
-
-
 
 export const BASE_URL = 'https://api.themoviedb.org/3/'
 export const APIKEY = "8250c76f81ee5b7089c23a813705401b";

@@ -2,16 +2,22 @@
 "use strict"
 
 //@ts-check
-//? ready
-import {
-  getCategegoriesPreview,
-  getTrendingMoviesPreview,
-  getMovie,
-  getCategegoriesPageTwo } from "./main.mjs"
+
 
 import { DOM_ELEMENTS } from "./nodes.mjs"
 
-import { removeClass, addClass, displayNoneRemove, displayNoneAdd } from './utils/helpers.mjs'
+import {
+  removeClass,
+  addClass,
+  displayNoneRemove,
+  displayNoneAdd,
+  displayInactiveClassAnimation,
+  displayRemoveClassAnimation,
+  displayRemoveClassAnimationInactive,
+  addClassStatusInactive,
+  removeStatus,
+  scrollMove
+} from './utils/helpers.mjs'
 
 const {
   headerSection,
@@ -24,68 +30,117 @@ const {
   movieDetailSection,
   categoriesPreviewSection,
   searchFormBtn,
-  trendingBtn } = DOM_ELEMENTS;
+  trendingBtn,
+  glassSection,
+  footerMovies
+} = DOM_ELEMENTS;
 
 
+//!funciones de migración a axios para comodidad
 
+import { getTrendingMoviesPreviewAxios, getCategegoriesPreviewAxios, getCategegoriesPageTwoAxios, getMovieFromInputSearchAxios } from './axiosMain/mainAxios.mjs'
+
+
+//resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    displayNoneRemove(genericSection)
+    displayNoneRemove(trendingPreviewSection)
+    displayNoneRemove(categoriesPreviewSection)
+    displayNoneRemove(movieDetailSection)
+    displayNoneRemove(glassSection)
+    displayNoneRemove(footerMovies)
+  }
+})
 
 
 
 window.addEventListener('DOMContentLoaded', e => {
   navigator()
   if (location.hash !== '#home') return location.hash = '#home'
+
 })
 
 window.addEventListener('hashchange', e => {
   navigator()
+  
+  if(location.hash === "#movie=") {
+    document.querySelector('footer').style.display = 'none'
+  }else{
+    document.querySelector('footer').style.display = 'grid'
+  }
 })
 
 
 document.addEventListener('click', e => {
-  if (e.target === searchFormBtn) location.hash = "#search="
-  if (e.target === arrowButton) location.hash = "#home"
+  if (e.target === searchFormBtn) {
+    getMovieFromInputSearchAxios()
+    location.hash = "#search="
+  }
+  if (e.target === arrowButton) {
+    location.hash = "#home"
+    /*scrollMove(500);*/
+  }
   if (e.target === trendingBtn) location.hash = "#trends"
 })
 
 
-
+// START PAGES 
 const homePage = () => {
+
+
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
 
-  displayNoneAdd(arrowButton, headerCategoryTitle, genericSection, movieDetailSection)
+  removeStatus(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies)
+
+  displayInactiveClassAnimation(movieDetailSection);
+  displayRemoveClassAnimation(movieDetailSection);
+
+  displayNoneAdd(arrowButton, headerCategoryTitle, genericSection)
 
   displayNoneRemove(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
-  getCategegoriesPreview()
-  getTrendingMoviesPreview()
+  //!ejecución de funciones con axios
+  getTrendingMoviesPreviewAxios()
+  getCategegoriesPreviewAxios()
 
-  console.log('we are in home mode')
+  console.log('we are in home')
 }
 
 
-const categoriesPage = () => {
+export const categoriesPage = () => {
+  console.log('aqui estamsos');
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
   headerSection.style.background = '';
-  displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
+  movieDetailSection.style.display = "none"
+
+  displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection)
+
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
 
-  console.log('we are in categories mode');
+  console.log('we are in categories');
 }
 
+// UPDATE DETAILS MOVIE
 const movieDetailsPage = () => {
   addClass(headerSection, 'header-container--long')
   addClass(arrowButton, 'header-arrow--white')
+  addClass(movieDetailSection, 'active-details')
+
+  /*displayRemoveClassAnimationInactive(movieDetailSection);*/
+  displayNoneRemove(movieDetailSection)
+  addClassStatusInactive(categoriesPreviewSection, genericSection, trendingPreviewSection, glassSection, footerMovies);
 
   displayNoneAdd(headerTitle, searchForm, trendingPreviewSection, categoriesPreviewSection, headerCategoryTitle, genericSection)
 
-  displayNoneRemove(arrowButton, movieDetailSection)
-
+  scrollMove(0);
   console.log('we are in movie details mode')
 }
 
+// TRENDS PAGES
 const trendsPage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
@@ -95,7 +150,10 @@ const trendsPage = () => {
   displayNoneAdd(headerTitle, movieDetailSection, searchForm, trendingPreviewSection, categoriesPreviewSection)
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection)
-  getCategegoriesPageTwo()
+  /*getCategegoriesPageTwo().then(scrollMove(1022))*/
+  //*ponerle el then
+  getCategegoriesPageTwoAxios().then(scrollMove(1020))
+
   console.log('estamos en trends');
 }
 
@@ -108,7 +166,10 @@ const searchPage = () => {
 
   displayNoneRemove(headerCategoryTitle, arrowButton, genericSection,)
 
-  getMovie()
+
+  //*reemplazar por funcion axios
+  /*getMovieFromInputSearchAxios()*/
+  /*getMovie().then(scrollMove(1022))*/
 
   console.log('we are in search mode')
 }

@@ -4,59 +4,123 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+      integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/app.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./styles/app.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--se realiza cambios en los media de los link para que los cambios se vayan adaptando según la resolución y absorba los cambios en herencia-->
+    <link
+      rel="stylesheet"
+      media="(min-width: 10px)"
+      href="./styles/responsive/mobile.css"
+    />
+
+    <link
+      rel="stylesheet"
+      media="(min-width: 426px)"
+      href="./styles/responsive/tablet.css"
+    />
+
+    <link
+      rel="stylesheet"
+      media="(min-width: 1025px)"
+      href="./styles/responsive/desktop.css"
+    />
 
     <title>Full Movies</title>
   </head>
   <body>
+    <!-- HEADER -->
     <header id="header" class="header-container">
       <span class="header-arrow inactive">&lt;</span>
-      <h1 class="header-title">Universal Movies</h1>
-      <h1
-        class="header-title header-title--categoryView inactive"
-        id="categoryTitle"
-      ></h1>
 
-      <form id="searchForm" class="header-searchForm">
-        <input type="text" placeholder="Ej: Avengers" autofocus />
-        <button id="searchBtn">🔍</button>
-      </form>
+      <section class="navar">
+        <!--icon / --- -->
+        <i
+          class="fa-brands fa-instagram"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i
+          class="fa-brands fa-twitter"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i
+          class="fa-brands fa-facebook"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+      </section>
+      <section class="container-glass">
+        <h1 class="header-title">Universal Movies</h1>
+        <h1
+          class="header-title header-title--categoryView inactive"
+          id="categoryTitle"
+        ></h1>
+
+        <form id="searchForm" class="header-searchForm">
+          <input type="text" placeholder="Ej: Avengers" autofocus />
+          <a href="#genericList" id="searchBtn"> 🔍 </a>
+        </form>
+      </section>
     </header>
-    <section id="trendingPreview" class="trendingPreview-container">
-      <div class="trendingPreview-header">
-        <h2 class="trendingPreview-title">Trends</h2>
-        <button class="trendingPreview-btn">Ver más</button>
-      </div>
 
-      <article class="trendingPreview-movieList">
-        <!-- <div class="movie-container">
-        <img
-          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-          class="movie-img"
-          alt="Nombre de la película"
-        />
-      </div> -->
-      </article>
+    <!-- DIVISION FOR DESKTOP -->
+    <section class="divisionDektop">
+      <!-- MOVIE PREVIEW  -->
+      <section id="trendingPreview" class="trendingPreview-container">
+        <div class="trendingPreview-header">
+          <div class="container-trens">
+            <h2 class="trendingPreview-title">Trends</h2>
+            <!--<a href="#genericList" id="searchBtn"> 🔍 </a>-->
+            <button class="trendingPreview-btn">Ver más</button>
+          </div>
+        </div>
+
+        <article class="trendingPreview-movieList">
+          <!-- <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div> -->
+        </article>
+      </section>
+
+      <!-- CATEGORYS MOVIES -->
+      <section id="categoriesPreview" class="categoriesPreview-container">
+        <h2 class="categoriesPreview-title">Categories</h2>
+
+        <article class="categoriesPreview-list">
+          <!-- <div class="category-container">
+          <h3 id="id28" class="category-title">Romance</h3>
+        </div> -->
+        </article>
+      </section>
     </section>
 
-    <section id="categoriesPreview" class="categoriesPreview-container">
-      <h2 class="categoriesPreview-title">Categories</h2>
-
-      <article class="categoriesPreview-list">
-        <!-- <div class="category-container">
-        <h3 id="id28" class="category-title">Romance</h3>
-      </div> -->
-      </article>
-    </section>
-
-    <section id="genericList" class="genericList-container inactive">
+    <!-- MOVIES BY CATEGORY AND SEARCH -->
+    <section
+      id="genericList"
+      name="genericList"
+      class="genericList-container inactive"
+    >
       <!-- <div class="movie-container">
         <img
           src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
@@ -66,9 +130,11 @@
       </div>-->
     </section>
 
-    <section id="movieDetail" class="movieDetail-container inactive">
+    <!-- MOVIE DETAILS -->
+    <!--data-aos="fade-right"-->
+    <section id="movieDetail" class="movieDetail-container">
       <h1 class="movieDetail-title">---</h1>
-      <span class="movieDetail-score">7.6</span>
+      <span class="movieDetail-score">---</span>
       <p class="movieDetail-description">Not founded</p>
 
       <article class="categories-list">
@@ -92,10 +158,57 @@
       </article>
     </section>
 
-    <footer>By universal moviessss</footer>
+    <footer class="footer_container">
+      <ul class="social_media">
+        <li>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </li>
+      </ul>
+      <p>Full movies ©2022 All Rights Reserved.</p>
+    </footer>
+    <!-- <footer>
+      <section>
+        <i
+          class="fa-brands fa-github"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+        <i
+          class="fa-brands fa-github-alt"
+          style="font-size: 1.5rem; color: #fff; margin-right: 1rem"
+        ></i>
+      </section>
+    </footer>-->
+
+    <!-- LIBRERIAS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
     <script type="module" src="./src/nodes.mjs"></script>
-    <script type="module" src="./src/main.mjs"></script>
+
     <script type="module" src="./src/navigation.mjs"></script>
-    <!--<script type = "module" src="./src/axiosMain/mainAxios.mjs"></script>-->
+    <!-- <script type="module" src="./src/mobile.mjs"></script>-->
+
+    <!-- ANIMACION JS -->
+    <script>
+      AOS.init();
+    </script>
+    <script type="module" src="./src/axiosMain/mainAxios.mjs"></script>
   </body>
 </html>

@@ -1,0 +1,295 @@
+
+.divisionDektop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOTON BACK */
+
+
+/* NAVAR */
+
+
+
+.header-container {
+  width: 100%;
+  height: 70vh;
+  max-height: 1024px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  /*background-image: url('../icons/marvel-avengers-infinity-war-poster-oficial-cover.jpg');*/
+  background-size: cover;
+  background-position: 0px;
+  background-repeat: no-repeat;
+}
+
+/* CONTENEDOR GLASS*/
+
+
+/* TITULO DE GLASS */
+.header-title {
+  font-size: 3.6rem;
+  text-align: center;
+  line-height: 50px;
+  max-width: 300px;
+}
+
+/* SEARCH CONTENEDOR*/
+.header-searchForm {
+  margin-top: 10px;
+  width: 240px;
+  display: flex;
+}
+
+/* SEARCH */
+input {
+  outline: none;
+  border-style: none;
+  height: 40px;
+  width: 100%;
+
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding-left: 10px;
+}
+
+/* ICON SEARCH */
+#searchBtn {
+  width: 40px;
+  height: 40px;
+
+  background: var(--gradiante);
+  outline: none;
+  border-style: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+/* ----------- */
+
+/* CONTENEDOR PELICULAS Y TRENDS  */
+.trendingPreview-container {
+  width: 50%;
+  margin-right: 20px;
+  background-color: var(--color2);
+}
+
+/* CONTENEDOR TRENDS */
+.trendingPreview-header {
+  height: 50px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color2);
+}
+
+/*#genericList .trendsOnTv{
+    margin-top: 15px;
+    margin-right: 0;
+}*/
+
+/* BACKGROUND TRENDS */
+.container-trens {
+  position: relative;
+  top: -20px;
+
+  width: 170px;
+  height: 50px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  background: var(--gradiante);
+  color: var(--colorText);
+}
+
+/* TITULO TRENDS */
+/* .trendingPreview-title{
+} */
+
+/* BOTON TRENDS */
+/*.trendingPreview-btn{
+    outline: none;
+    border-style: none;
+    margin-left: 5px;
+    background-color: var(--color2);
+    color: var(--colorText);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}*/
+
+/* CONTENEDOR PELICULAS */
+.trendingPreview-movieList {
+  width: 100%;
+  height: 307px;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+}
+
+/*ANIMATION PELICULA*/
+.movie-img:hover {
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px white;
+  transition: all 600ms;
+}
+
+/* CARD PELICULA */
+
+
+/* CARD TITULO */
+.card-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+}
+
+/* CARD PUNTOS */
+.card-points {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+
+  position: relative;
+  top: -10px;
+  left: -10px;
+}
+
+/* CERRAR CARD */
+.close-card {
+  top: -25px;
+}
+
+/* ----------------- */
+
+/* CATEGORY */
+
+/* CONTAINER CATEGORY*/
+.categoriesPreview-container {
+  width: 45%;
+  background-color: var(--color1);
+}
+
+/* CONTAINER TITLE */
+.categoriesPreview-title {
+  position: relative;
+  top: -30px;
+  border-radius: 10px;
+}
+
+
+
+/* ------------------- */
+
+/* MOVIE CONTAINER (CATEGORY) */
+.genericList-container {
+  grid-template-columns: auto auto auto;
+}
+
+.movie-category{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.movie-img-category{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; 
+}
+
+
+
+.active-details {
+
+  margin-left: auto;
+  margin-right: auto;
+
+  opacity: 1;
+  visibility: visible;
+
+}
+
+
+.movieDetail-title,
+.movieDetail-description {
+  padding: 20px;
+}
+
+.relatedMovies-title {
+  background-color: var(--color-dark);
+  color: var(--colorText);
+  position: relative;
+  top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.header-container--long {
+  position: fixed;
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+}
+
+.similarMovie {
+  margin-top: 0px;
+}
+
+.movieDetail-title,
+.movieDetail-score,
+.movieDetail-description {
+  color: var(--colorText);
+  text-align: center;
+}
+
+/* MOVIE SEARCH */
+
+.movie-search {
+  margin-top: 10px;
+  width: 300px;
+  margin-right: 12px;
+}
+
+.movie-search img {
+  position: relative;
+  top: 15px;
+  width: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.movie-search p {
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  color: var(--colorText);
+  background-color: var(--color1);
+}
+
+/* FOOTER */
