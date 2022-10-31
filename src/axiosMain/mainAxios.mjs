@@ -17,6 +17,7 @@ const {
   movieDetailTitle,
   movieDetailDescription,
   spanValue,
+  movieDetailSection,
   categoriesPreviewSection,
   categoriesList,
   relatedMovies,
@@ -26,7 +27,7 @@ const {
 import { categoriesPage } from '../navigation.mjs';
 
 //!funciones internas auxilares, poner en otro archivo cuando se refactorice el code
-import { getDataDetails, getSimilarMovies } from '../main.mjs'
+/*import { getSimilarMovies } from '../main.mjs'*/
 
 //*pendiente de refactorizar esta funcion, se trata de la funcion que se encarga de mostrar las peliculas en relacion a la categoria seleccionada en el home
 
@@ -124,20 +125,32 @@ export const getCategegoriesPageTwoAxios = async () => {
   try {
     const { data: { results } } = await api('trending/tv/week')
     console.log(results);
-
+    categoriesList.innerHTML = ""
     genericSection.innerHTML = ""
     Title.innerHTML = `Trends on tv`;
 
     const mapOverMap = results.map(elTrendsOnTv => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
-        <div data-aos="fade-up" class="movie-container trendsOnTv " id = "">
-          <img class="movie-img" src="${BASE_IMG}${elTrendsOnTv.backdrop_path}">
+        <div data-aos="fade-up" class="movie-container trendsOnTv " id ="${elTrendsOnTv.id}">
+          <img class="movie-img"
+          alt = "${elTrendsOnTv.id}"
+          src="${BASE_IMG}${elTrendsOnTv.backdrop_path}">
           <p class="movie-name" >${elTrendsOnTv.name}</p>
         </div>
       `)
 
       const mainMovieContainer = movieContainer.querySelector('.movie-container')
 
+
+
+      mainMovieContainer.addEventListener('click', e => {
+        console.log("click card");
+        location.hash = `#movie=`
+        getDataSimilarCategoriesInDetailsAxios(`movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
+        getSimilarMoviesAxios(
+          `movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US`
+        )
+      })
       genericSection.append(mainMovieContainer)
     })
 
@@ -149,7 +162,6 @@ export const getCategegoriesPageTwoAxios = async () => {
 export const getMovieFromInputSearchAxios = async () => {
   try {
     const { data: { results } } = await api(`search/movie?query=${searchFormInput.value}`)
-    console.log(results)
     genericSection.innerHTML = ""
     if (results.length === 0) {
       genericSection.innerHTML = ""
@@ -177,10 +189,10 @@ export const getMovieFromInputSearchAxios = async () => {
         const mainMovieContainer = movieContainer.querySelector('.movie-container')
 
         mainMovieContainer.addEventListener('click', e => {
-          //*se trae la información de la pelicula usando el id de la pelicula
-          getDataDetails(`${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
-          getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
           location.hash = "#movie="
+          //*se trae la información de la pelicula usando el id de la pelicula
+          getDataSimilarCategoriesInDetailsAxios(`movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`)
+          getSimilarMoviesAxios(`movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
         })
 
         genericSection.append(mainMovieContainer)
@@ -192,10 +204,9 @@ export const getMovieFromInputSearchAxios = async () => {
 
 
 //*empizan las funciones auxiliares
-export const getMovieByCategoryAxios = async (id, name) => {
+export const getMovieByCategoryAxios = async (id, name = "i") => {
   try {
     const { data: { results } } = await api(`discover/movie?with_genres=${id}`)
-    console.log(results);
     genericSection.innerHTML = ""
     Title.innerHTML = `${name}`;
 
@@ -217,12 +228,12 @@ export const getMovieByCategoryAxios = async (id, name) => {
         const mainMovieContainer = movieContainer.querySelector('.movie-container')
 
         mainMovieContainer.addEventListener('click', e => {
-          let url = `${BASE_URL}movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`
+          let url = `movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`
           //*
           //!replace function
           getDataSimilarCategoriesInDetailsAxios(url)
           //*
-          getSimilarMovies(`${BASE_URL}movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
+          getSimilarMoviesAxios(`movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
           location.hash = "#movie="
         })
 
@@ -242,13 +253,13 @@ export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
   try {
     let { data } = await api(url)
     const { title, overview, release_date, vote_average, poster_path, backdrop_path, genres, runtime, id } = data
-
+    /*movieDetailSection.innerHTML = ""*/
     categoriesList.innerHTML = ""
 
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${poster_path || backdrop_path})`;
     movieDetailTitle.innerHTML = title;
     movieDetailDescription.innerHTML = overview;
-    spanValue.innerHTML = vote_average.toFixed(1)
+    spanValue.innerHTML = `⭐ ${vote_average.toFixed(1)}`
 
     genres.map(el => {
       if (el.backdrop_path !== null || el.poster_path !== null) {
@@ -261,14 +272,9 @@ export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
 
         const mainDivContent = divContent.querySelector('.category-title')
         mainDivContent.addEventListener('click', e => {
-          /*console.log(String(e.target.id));*/
-          console.log(el.name);
-          /*console.log('jij siuuuuu');*/
-          getMovieByCategoryAxios(String(e.target.id), el.name)
-          location.hash = "#category="
-          /*, genreElement.name).then(scrollMove(1022))
-          getMovieByCategoryAxios(e.target.id, e.target.innerText)
-          location.hash = "#category="*/
+          getMovieByCategoryAxios(e.target.dataset.id, e.target.innerText)
+          console.log(e.target);
+          location.hash = `#category=${e.target.dataset.id}`
         })
         categoriesList.appendChild(divContent)
 
@@ -282,23 +288,45 @@ export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
 }
 
 
-
-
-
-
-
-
-
-
-/*
-const getData = async (url: string) => {
+export const getSimilarMoviesAxios = async (URL) => {
   try {
-    axios.get(url).then(({ data }: any) => {
-      const { episode } = data;
-      setInfoCharacter(data);
-      filterRepeatEpisode(episode);
-    });
+
+    const { data: { results } } = await api(URL)
+
+    relatedMovies.innerHTML = ""
+    results.map(el => {
+
+      if (el.backdrop_path !== null) {
+
+
+
+        const divContent = document.createRange().createContextualFragment(/*html*/`
+        <div class="movie-container similarMovie" id = "${el.id}">
+          <img class="movie-img" 
+          id = "${el.id}" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}">
+        </div>
+      `)
+
+
+        const mainDivContent = divContent.querySelector('.movie-container')
+        mainDivContent.addEventListener('click', e => {
+          location.hash = "#movie="
+          //*se trae la información de la pelicula usando el id de la pelicula
+          getDataSimilarCategoriesInDetailsAxios(`movie/${e.target.alt}?api_key=${APIKEY}&language=en-US`)
+          getSimilarMoviesAxios(`movie/${e.target.alt}/similar?api_key=${APIKEY}&language=en-US&page=1`)
+        })
+      
+
+
+      relatedMovies.append(divContent)
+  }})
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-};*/
+}
+
+
+
+
+
+

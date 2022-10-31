@@ -15,7 +15,6 @@
   background-repeat: no-repeat;
 }
 
-
 /* TITULO DE GLASS */
 .header-title {
   font-size: 2.6rem;
@@ -177,7 +176,7 @@ input {
   width: 0;
   position: absolute;
   top: 50px;
-  left: -50px;
+  /*left: -50px;*/
 
   opacity: 0;
   visibility: hidden;
@@ -244,8 +243,6 @@ input {
   overflow-x: scroll;
 }
 
-
-
 .header-container--long {
   background-position: center 10%;
   background-repeat: no-repeat;
@@ -253,17 +250,17 @@ input {
   height: 100%;
 }
 
-
-
 .movieDetail-title {
   text-align: center;
 }
-
-
 
 /* MOVIE SEARCH */
 
 .movie-search {
   margin-right: 12px;
 }
-
+@media (min-width: 550px) {
+  .social_media {
+    grid-template-columns: auto auto;
+  }
+}

@@ -261,7 +261,7 @@ input {
   justify-content: flex-start;
   align-items: flex-end;
   flex-wrap: nowrap;
-    left:7.5px;
+  left: 7.5px;
   border-radius: 10px;
 
   position: relative;
@@ -307,7 +307,7 @@ input {
   left: 10px;
 }
 
-@media(min-width:420px){
+@media (min-width: 420px) {
   .close-card {
     top: -30px;
   }
@@ -446,7 +446,7 @@ input {
   width: 0;
   position: absolute;
   top: 50px;
-  left: -200px;
+  /*left: -200px;*/
 
   opacity: 0;
   transition: 600ms all;
@@ -454,23 +454,21 @@ input {
 
 .active-details {
   width: 100%;
-  margin: 0 auto;
-  overflow-x: hidden;
 
+  overflow-x: hidden;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   align-content: center;
-
   position: relative;
-  top: 470px;
-  /*transform: translateZ(1px);*/
-
+  top: 570px;
+  transform: translateZ(1px);
+  opacity: 1;
+  visibility: visible;
   background-color: var(--color1);
   transition: 600ms all;
 }
@@ -479,7 +477,7 @@ input {
   width: 90%;
 
   display: flex;
-  justify-content:center;
+  justify-content: center;
   flex-direction: row;
   background-color: var(--color2);
   color: var(--colorText);
@@ -571,7 +569,7 @@ input {
 
 /* FOOTER */
 
-footer {
+/*footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -580,7 +578,7 @@ footer {
   background: var(--gradiante);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-}
+}*/
 
 /* SCROLL CUSTOM*/
 ::-webkit-scrollbar {
@@ -600,6 +598,55 @@ footer {
   border-radius: 10px;
   background: var(--gradiante);
 }
+
+/*footer example*/
+
+.ground {
+  min-height: 100vh;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  color: var(--color3);
+  margin: 10px auto;
+  background: var(--gradiante);
+  padding: 20px 0;
+}
+
+.footer_container {
+  display: grid;
+  place-items: center;
+  line-height: 40px;
+}
+@media (min-width: 550px) {
+  .footer_container {
+    grid-template-columns: auto auto;
+  }
+}
+.logo {
+  text-align: center;
+  width: 180px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.social_media {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.social_media li {
+  list-style: none;
+  font-size: 24px;
+  transition: 0.6s;
+}
+.social_media li a {
+  color: var(--color3);
+}
+
 .inactiveStatus {
   height: 0;
   overflow-x: hidden;

@@ -58,10 +58,17 @@ window.addEventListener('resize', () => {
 window.addEventListener('DOMContentLoaded', e => {
   navigator()
   if (location.hash !== '#home') return location.hash = '#home'
+
 })
 
 window.addEventListener('hashchange', e => {
   navigator()
+  
+  if(location.hash === "#movie=") {
+    document.querySelector('footer').style.display = 'none'
+  }else{
+    document.querySelector('footer').style.display = 'grid'
+  }
 })
 
 
