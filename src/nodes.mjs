@@ -6,14 +6,11 @@ import {select} from './utils/helpers.mjs'
 
 
 export const DOM_ELEMENTS = {
-  //sections
   headerSection: select('#header'),
   trendingPreviewSection: select('#trendingPreview'),
   categoriesPreviewSection: select('#categoriesPreview'),
   movieDetailSection: select('#movieDetail'),
   glassSection: select('.container-glass'),
-
-  //list & Containers
   movieContainer: document.querySelectorAll('.movie-container'),
   searchForm: select('#searchForm'),
   Title: select('#categoryTitle'),
@@ -27,13 +24,9 @@ export const DOM_ELEMENTS = {
   categoriesList: select('.categories-list'),
   relatedMovies: select('.relatedMovies-scrollContainer'),
   footerMovies: select('footer'),
-
-  //elements
   headerTitle: select('.header-title'),
   arrowButton: select('.header-arrow'),
   headerCategoryTitle: select('.header-title--categoryView'),
-
-  //search and form
   searchForm: select('#searchForm'),
   searchFormInput: select('#searchForm input'),
   searchFormBtn: select('#searchBtn'),
@@ -44,5 +37,3 @@ export const DOM_ELEMENTS = {
   spanValue: select('.movieDetail-score')
 
 }
-
-/*console.log(DOM_ELEMENTS)*/
