@@ -26,58 +26,6 @@
   margin-right: 20px;
 }
 
-/* CONTENEDOR TRENDS */
-.trendingPreview-header {
-  height: 50px;
-
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--color2);
-}
-
-/*#genericList .trendsOnTv{
-    margin-top: 15px;
-    margin-right: 0;
-}*/
-
-/* BACKGROUND TRENDS */
-.container-trens {
-  position: relative;
-  top: -20px;
-
-  width: 170px;
-  height: 50px;
-
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-
-  background: var(--gradiante);
-  color: var(--colorText);
-}
-
-/* TITULO TRENDS */
-/* .trendingPreview-title{
-} */
-
-/* BOTON TRENDS */
-/*.trendingPreview-btn{
-    outline: none;
-    border-style: none;
-    margin-left: 5px;
-    background-color: var(--color2);
-    color: var(--colorText);
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}*/
 
 /* CONTENEDOR PELICULAS */
 .trendingPreview-movieList {
