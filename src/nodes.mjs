@@ -26,6 +26,7 @@ export const DOM_ELEMENTS = {
   imageMovies: select('.movie-img'),
   categoriesList: select('.categories-list'),
   relatedMovies: select('.relatedMovies-scrollContainer'),
+  footerMovies: select('footer'),
 
   //elements
   headerTitle: select('.header-title'),
@@ -44,4 +45,4 @@ export const DOM_ELEMENTS = {
 
 }
 
-console.log(DOM_ELEMENTS)
+/*console.log(DOM_ELEMENTS)*/

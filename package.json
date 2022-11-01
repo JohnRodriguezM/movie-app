@@ -9,7 +9,6 @@
   "author": "John Jairo Rodriguez M",
   "license": "MIT",
   "dependencies": {
-    "axios": "0.27.2"
-  },
-  "devDependencies": {}
+    "axios": "^1.1.3"
+  }
 }

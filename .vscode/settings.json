@@ -1,6 +1,9 @@
 {
   "workbench.colorCustomizations": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix
     "activityBar.activeBackground": "#fbed80",
     "activityBar.background": "#fbed80",
     "activityBar.foreground": "#15202b",
@@ -18,6 +21,7 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#f9e64f99",
     "titleBar.inactiveForeground": "#15202b99"
+<<<<<<< HEAD
 =======
     // "activityBar.activeBackground": "#fbed80",
     // "activityBar.activeBorder": "#06b9a5",
@@ -38,6 +42,8 @@
     // "titleBar.inactiveForeground": "#15202b99",
     // "commandCenter.border": "#15202b99"
 >>>>>>> 18441194fd6fb47e224f88f124305fe81937d7d2
+=======
+>>>>>>> fix
   },
   "peacock.color": "#f9e64f"
 }
