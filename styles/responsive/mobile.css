@@ -215,7 +215,6 @@ input {
   width: 100%;
   height: 210px;
   overflow-y: hidden;
-
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -248,20 +247,16 @@ input {
 .card-hover {
   width: 295px;
   height: 80px;
-
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   flex-wrap: nowrap;
   left: 7.5px;
   border-radius: 10px;
-
   position: relative;
   top: -87px;
-
   color: var(--colorText);
   background: var(--gradiante);
-
   opacity: 0;
   visibility: hidden;
   transition: all 500ms ease-in-out;
@@ -284,10 +279,8 @@ input {
   justify-content: flex-end;
   align-items: flex-end;
   flex-wrap: nowrap;
-
   position: relative;
   top: -10px;
-  /*left: -15px;*/
 }
 
 /* CERRAR CARD */
@@ -316,7 +309,6 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -326,7 +318,6 @@ input {
   margin-bottom: 25px;
   width: 200px;
   height: 50px;
-  /* border-radius: 5px; */
   margin-top: 10px;
   text-align: center;
   display: flex;
@@ -334,7 +325,6 @@ input {
   justify-content: center;
   background: var(--gradiante);
   color: var(--colorText);
-
   border-bottom-left-radius: 50px;
   border-top-right-radius: 50px;
 }
@@ -343,7 +333,6 @@ input {
 .categoriesPreview-list {
   width: 100%;
   height: 400px;
-
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -386,9 +375,6 @@ input {
   display: grid;
   align-items: center;
   place-items: center;
-  /*flex-direction: column;
-
-  flex-wrap: nowrap;*/
   align-items: center;
 }
 
@@ -426,6 +412,8 @@ input {
 .movie-img-category {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .movie-description {
@@ -438,8 +426,6 @@ input {
   width: 0;
   position: absolute;
   top: 50px;
-  /*left: -200px;*/
-
   opacity: 0;
   transition: 600ms all;
 }
@@ -558,19 +544,6 @@ input {
   color: var(--color-dark);
   background-color: var(--color1);
 }
-
-/* FOOTER */
-
-/*footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  color: var(--colorText);
-  background: var(--gradiante);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}*/
 
 /* SCROLL CUSTOM*/
 ::-webkit-scrollbar {

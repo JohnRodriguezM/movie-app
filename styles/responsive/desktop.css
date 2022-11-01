@@ -4,10 +4,6 @@
   align-items: center;
 }
 
-/* BOTON BACK */
-
-/* NAVAR */
-
 .header-container {
   height: 70vh;
   max-height: 1024px;
@@ -16,69 +12,26 @@
   background-repeat: no-repeat;
 }
 
-/* ICON SEARCH */
-
-/* ----------- */
-
-/* CONTENEDOR PELICULAS Y TRENDS  */
 .trendingPreview-container {
   width: 50%;
   margin-right: 20px;
 }
 
-
-/* CONTENEDOR PELICULAS */
-.trendingPreview-movieList {
-  width: 100%;
-  height: 307px;
-  overflow-y: hidden;
-
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 10px;
-}
-
-/*ANIMATION PELICULA*/
 .movie-img:hover {
   border-radius: 10px;
   box-shadow: 0 0 10px 5px white;
   transition: all 600ms;
 }
 
-/* CARD PELICULA */
-
-/* CARD TITULO */
-.card-title {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-}
-
-/* CARD PUNTOS */
 .card-points {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-
-  position: relative;
   top: -10px;
   left: -10px;
 }
 
-/* CERRAR CARD */
 .close-card {
   top: -25px;
 }
 
-/* ----------------- */
-
-/* CATEGORY */
-
-/* CONTAINER CATEGORY*/
 .categoriesPreview-container {
   width: 45%;
   background-color: var(--color1);
@@ -91,9 +44,6 @@
   border-radius: 10px;
 }
 
-/* ------------------- */
-
-/* MOVIE CONTAINER (CATEGORY) */
 .genericList-container {
   grid-template-columns: auto auto auto;
 }
@@ -116,18 +66,9 @@
   visibility: visible;
 }
 
-.movieDetail-title,
-.movieDetail-description {
-  padding: 20px;
-}
 
 .relatedMovies-title {
   background-color: var(--color-dark);
-  color: var(--colorText);
-  position: relative;
-  top: 10px;
-  padding: 10px;
-  border-radius: 5px;
 }
 
 .header-container--long {
@@ -138,18 +79,12 @@
   height: 100%;
 }
 
-.similarMovie {
-  margin-top: 0px;
-}
-
 .movieDetail-title,
 .movieDetail-score,
 .movieDetail-description {
   color: var(--colorText);
   text-align: center;
 }
-
-/* MOVIE SEARCH */
 
 .movie-search {
   margin-top: 10px;
@@ -176,4 +111,3 @@
   background-color: var(--color1);
 }
 
-/* FOOTER */
