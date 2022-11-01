@@ -5,7 +5,7 @@ import { toggleOpacity, scrollMove, select, selectSpecific } from '../utils/help
 import { DOM_ELEMENTS } from "../nodes.mjs"
 
 
-const { URL_TRENDING_MOVIES, URL_CATEGORY, CATEGORY, BASE_IMG } = URLS;
+const { BASE_IMG } = URLS;
 
 const {
   trendingMoviesPreviewList,
@@ -17,21 +17,11 @@ const {
   movieDetailTitle,
   movieDetailDescription,
   spanValue,
-  movieDetailSection,
   categoriesPreviewSection,
   categoriesList,
   relatedMovies,
 } = DOM_ELEMENTS;
 
-
-import { categoriesPage } from '../navigation.mjs';
-
-//!funciones internas auxilares, poner en otro archivo cuando se refactorice el code
-/*import { getSimilarMovies } from '../main.mjs'*/
-
-//*pendiente de refactorizar esta funcion, se trata de la funcion que se encarga de mostrar las peliculas en relacion a la categoria seleccionada en el home
-
-//@ts-ignore
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -55,7 +45,7 @@ export const getTrendingMoviesPreviewAxios = async () => {
     const mapOverMap = results.map(movieElement => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container">
-          <img class="movie-img" src="${BASE_IMG}${movieElement.backdrop_path}">
+          <img class="movie-img" alt="${movieElement.title}" src="${BASE_IMG}${movieElement.backdrop_path}">
           <div class="card-hover">
               <div  class="close-card">❌</div>
               <div>
@@ -75,7 +65,6 @@ export const getTrendingMoviesPreviewAxios = async () => {
         card.style.opacity = 1
         card.style.visibility = "visible"
       })
-
       closeTag.addEventListener('click', e => {
         console.log("cerrando");
         card.style.opacity = 0
@@ -84,7 +73,6 @@ export const getTrendingMoviesPreviewAxios = async () => {
       })
 
       trendingMoviesPreviewList.append(movieContainer)
-
     })
   } catch (error) { console.error(error) }
 }
@@ -107,9 +95,7 @@ export const getCategegoriesPreviewAxios = async () => {
       `)
       const categoriesName = selectSpecific(categoryContainer, '.category-title')
 
-      // EXECUTE ACTION FOR CLICK
-
-      //*i have to update this function when I refactor the getMovieByCategory function
+      // EXECUTE ACTION FOR CLICKING ON A CATEGORY
       categoriesName.addEventListener('click', e => {
         console.log("click category");
         location.hash = `#category=${genreElement.id}`
@@ -117,7 +103,6 @@ export const getCategegoriesPreviewAxios = async () => {
       })
       categoriesPreviewList.appendChild(categoryContainer)
     })
-
   } catch (error) { console.error(error) }
 }
 
@@ -141,8 +126,6 @@ export const getCategegoriesPageTwoAxios = async () => {
 
       const mainMovieContainer = movieContainer.querySelector('.movie-container')
 
-
-
       mainMovieContainer.addEventListener('click', e => {
         console.log("click card");
         location.hash = `#movie=`
@@ -153,8 +136,6 @@ export const getCategegoriesPageTwoAxios = async () => {
       })
       genericSection.append(mainMovieContainer)
     })
-
-
   } catch (error) { console.error(error) }
 }
 
@@ -201,8 +182,6 @@ export const getMovieFromInputSearchAxios = async () => {
   } catch (error) { console.error(error) }
 }
 
-
-
 //*empizan las funciones auxiliares
 export const getMovieByCategoryAxios = async (id, name = "i") => {
   try {
@@ -213,8 +192,6 @@ export const getMovieByCategoryAxios = async (id, name = "i") => {
     const mapOverMap = results.map(el => {
 
       if (el.backdrop_path !== null) {
-        /*data-aos="fade-up"*/
-
         const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div  class="movie-container" id = "${el.id}"
         data-id = "${el.id}">
@@ -226,7 +203,6 @@ export const getMovieByCategoryAxios = async (id, name = "i") => {
       `)
 
         const mainMovieContainer = movieContainer.querySelector('.movie-container')
-
         mainMovieContainer.addEventListener('click', e => {
           let url = `movie/${e.target.alt ?? e.target.id}?api_key=${APIKEY}&language=en-US`
           //*
@@ -236,24 +212,17 @@ export const getMovieByCategoryAxios = async (id, name = "i") => {
           getSimilarMoviesAxios(`movie/${e.target.alt ?? e.target.id}/similar?api_key=${APIKEY}&language=en-US&page=1`)
           location.hash = "#movie="
         })
-
         genericSection.appendChild(mainMovieContainer)
-
       }
     })
-
   } catch (error) { console.error(error) }
 }
-
-
-/*import { getSimilarMovies } from '../main.mjs'*/
 
 
 export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
   try {
     let { data } = await api(url)
     const { title, overview, release_date, vote_average, poster_path, backdrop_path, genres, runtime, id } = data
-    /*movieDetailSection.innerHTML = ""*/
     categoriesList.innerHTML = ""
 
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${poster_path || backdrop_path})`;
@@ -277,10 +246,8 @@ export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
           location.hash = `#category=${e.target.dataset.id}`
         })
         categoriesList.appendChild(divContent)
-
       }
     })
-
   }
   catch (err) {
     console.log(err);
@@ -297,17 +264,12 @@ export const getSimilarMoviesAxios = async (URL) => {
     results.map(el => {
 
       if (el.backdrop_path !== null) {
-
-
-
         const divContent = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container similarMovie" id = "${el.id}">
           <img class="movie-img" 
           id = "${el.id}" src="${BASE_IMG}${el.backdrop_path}" alt = "${el.id}">
         </div>
       `)
-
-
         const mainDivContent = divContent.querySelector('.movie-container')
         mainDivContent.addEventListener('click', e => {
           location.hash = "#movie="
@@ -315,11 +277,9 @@ export const getSimilarMoviesAxios = async (URL) => {
           getDataSimilarCategoriesInDetailsAxios(`movie/${e.target.alt}?api_key=${APIKEY}&language=en-US`)
           getSimilarMoviesAxios(`movie/${e.target.alt}/similar?api_key=${APIKEY}&language=en-US&page=1`)
         })
-      
-
-
-      relatedMovies.append(divContent)
-  }})
+        relatedMovies.append(divContent)
+      }
+    })
   } catch (err) {
     console.log(err)
   }
