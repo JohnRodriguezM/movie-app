@@ -42,7 +42,7 @@ export const addClassStatusactive = (...elements) => elements.map((el) => {
   el.classList.add('activeStatus');
 })
 
-export const removeStatusActive = (...elements) => elements.map(el => el, classList.remove('active'))
+export const removeStatusActive = (...elements) => elements.map(el => el.classList.remove('active'))
 
 
 

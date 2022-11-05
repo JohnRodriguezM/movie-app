@@ -1,7 +1,7 @@
 
 import { URLS, APIKEY, BASE_URL } from '../utils/urls.mjs'
 
-import { toggleOpacity, scrollMove, select, selectSpecific } from '../utils/helpers.mjs'
+import { toggleOpacity, scrollMove, selectSpecific } from '../utils/helpers.mjs'
 import { DOM_ELEMENTS } from "../nodes.mjs"
 
 
@@ -22,6 +22,7 @@ const {
   relatedMovies,
 } = DOM_ELEMENTS;
 
+// eslint-disable-next-line no-undef
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -42,6 +43,7 @@ export const getTrendingMoviesPreviewAxios = async () => {
 
     trendingMoviesPreviewList.innerHTML = ""
 
+    // eslint-disable-next-line no-unused-vars
     const mapOverMap = results.map(movieElement => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div class="movie-container">
@@ -60,13 +62,13 @@ export const getTrendingMoviesPreviewAxios = async () => {
       const containerMovie = selectSpecific(movieContainer, '.movie-container')
       const imgMovie = selectSpecific(movieContainer, '.movie-img')
 
-      imgMovie.addEventListener('click', e => {
-        console.log("click card");
+      imgMovie.addEventListener('click', (e) => {
+        console.log("click card",e);
         card.style.opacity = 1
         card.style.visibility = "visible"
       })
-      closeTag.addEventListener('click', e => {
-        console.log("cerrando");
+      closeTag.addEventListener('click', (e) => {
+        console.log("cerrando",e);
         card.style.opacity = 0
         card.style.visibility = 'hidden'
         toggleOpacity(1, headerSection, categoriesPreviewSection, trendingMoviesPreviewList, containerMovie)
@@ -83,6 +85,7 @@ export const getCategegoriesPreviewAxios = async () => {
 
     categoriesPreviewList.innerHTML = ""
 
+    // eslint-disable-next-line no-unused-vars
     const mapeoCategoriesHome = genres.map(genreElement => {
       let id = `id${genreElement.id}`
 
@@ -114,6 +117,7 @@ export const getCategegoriesPageTwoAxios = async () => {
     genericSection.innerHTML = ""
     Title.innerHTML = `Trends on tv`;
 
+    // eslint-disable-next-line no-unused-vars
     const mapOverMap = results.map(elTrendsOnTv => {
       const movieContainer = document.createRange().createContextualFragment(/*html*/`
         <div data-aos="fade-up" class="movie-container trendsOnTv " id ="${elTrendsOnTv.id}">
@@ -153,6 +157,8 @@ export const getMovieFromInputSearchAxios = async () => {
 
     genericSection.innerHTML = ""
     Title.innerHTML = `Results for ${searchFormInput.value}`;
+
+    // eslint-disable-next-line no-unused-vars
     const mapOverMap = results.map(elMovieSearched => {
 
 
@@ -189,6 +195,7 @@ export const getMovieByCategoryAxios = async (id, name = "i") => {
     genericSection.innerHTML = ""
     Title.innerHTML = `${name}`;
 
+    // eslint-disable-next-line no-unused-vars
     const mapOverMap = results.map(el => {
 
       if (el.backdrop_path !== null) {
@@ -222,7 +229,7 @@ export const getMovieByCategoryAxios = async (id, name = "i") => {
 export const getDataSimilarCategoriesInDetailsAxios = async (url) => {
   try {
     let { data } = await api(url)
-    const { title, overview, release_date, vote_average, poster_path, backdrop_path, genres, runtime, id } = data
+    const { title, overview, vote_average, poster_path, backdrop_path, genres } = data
     categoriesList.innerHTML = ""
 
     headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${poster_path || backdrop_path})`;
