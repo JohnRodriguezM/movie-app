@@ -52,13 +52,13 @@ window.addEventListener('resize', () => {
 
 
 
-window.addEventListener('DOMContentLoaded', e => {
+window.addEventListener('DOMContentLoaded', (/* e */) => {
   navigator()
   if (location.hash !== '#home') return location.hash = '#home'
 
 })
 
-window.addEventListener('hashchange', e => {
+window.addEventListener('hashchange', (/* e */) => {
   navigator()
   if (location.hash === "#movie=") {
     document.querySelector('footer').style.display = 'none'
@@ -80,7 +80,7 @@ document.addEventListener('click', e => {
 })
 
 
-// START PAGES 
+// START PAGES
 const homePage = () => {
   removeClass(headerSection, 'header-container--long')
   removeClass(arrowButton, 'header-arrow--white')
